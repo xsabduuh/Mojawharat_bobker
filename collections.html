@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head> <title>مجموعاتنا - L'ÉCLAT</title> </head>
+<head>...</head>
 <body>
+    <header> (نفس الهيدر) </header>
     <main>
         <div class="container">
-            <div class="page-header"><h1>مجموعاتنا</h1><p>استكشف تشكيلاتنا الحصرية</p></div>
-            <div class="products-grid" style="margin-top:40px;">
-                <!-- يمكن إعادة استخدام نفس بطاقات المنتجات من الرئيسية مع إمكانية تصفيتها حسب الفئة باستخدام URL parameters -->
-                <!-- مثال -->
-                <div class="product-card" data-category="rings">...</div>
-                <!-- ... -->
+            <div class="page-header"><h1>مجموعاتنا</h1></div>
+            <div class="products-grid" id="productsGrid">
+                <!-- نسخ نفس المنتجات من index.html مع إضافة data-category -->
             </div>
         </div>
     </main>
+    <footer>...</footer>
+    <script src="cart.js"></script>
     <script>
-        // فلترة بسيطة حسب ?category=
-        const params = new URLSearchParams(window.location.search);
+        // فلترة حسب ?category=
+        const params = new URLSearchParams(location.search);
         const cat = params.get('category');
         if(cat) {
             document.querySelectorAll('.product-card').forEach(card => {
