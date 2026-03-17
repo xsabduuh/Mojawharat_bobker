@@ -8,29 +8,222 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* استيراد نفس التنسيقات من index.html */
-        /* يمكن وضعها في ملف CSS مشترك */
-        /* للاختصار، سنستخدم نفس الأنماط السابقة */
-        /* ... */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body.dark-mode { --bg-primary: #0a0a0a; --bg-secondary: #121212; --bg-card: #1a1a1a; --text-primary: #ffffff; --text-secondary: #b0b0b0; --accent: #c9a45b; --accent-hover: #dbb671; --border: #2a2a2a; --shadow: 0 25px 50px -12px rgba(0,0,0,0.8); --input-bg: #1e1e1e; }
+        body.light-mode { --bg-primary: #faf7f2; --bg-secondary: #ffffff; --bg-card: #ffffff; --text-primary: #2e2e2e; --text-secondary: #6b6b6b; --accent: #b08d5c; --accent-hover: #9e7b4b; --border: #e5d9cc; --shadow: 0 25px 50px -12px rgba(0,0,0,0.15); --input-bg: #f5f0e9; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; direction: rtl; transition: background-color 0.3s, color 0.3s; }
+        body.ltr { direction: ltr; font-family: 'Playfair Display', 'Cairo', serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* Header (مطابق للصفحة الرئيسية) */
+        header { background-color: var(--bg-secondary); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo h1 { font-size: 2rem; font-weight: 400; letter-spacing: 6px; color: var(--accent); font-family: 'Playfair Display', serif; text-transform: uppercase; }
+        .logo p { font-size: 0.7rem; letter-spacing: 3px; color: var(--text-secondary); margin-top: -5px; }
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-menu a { color: var(--text-primary); text-decoration: none; font-weight: 500; position: relative; padding: 5px 0; }
+        .nav-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent); transition: width 0.3s; }
+        .nav-menu a:hover { color: var(--accent); }
+        .nav-menu a:hover::after { width: 100%; }
+        .nav-controls { display: flex; gap: 15px; align-items: center; }
+        .icon-btn { background: none; border: 1px solid var(--border); color: var(--text-primary); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 1.2rem; }
+        .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.1); }
+        .cart-btn { position: relative; }
+        .cart-count { position: absolute; top: -5px; right: -5px; background-color: var(--accent); color: #000; font-size: 0.7rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .language-select { position: relative; }
+        .language-btn { background: none; border: 1px solid var(--border); color: var(--text-primary); padding: 10px 18px; border-radius: 40px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; font-size: 0.9rem; }
+        .language-btn:hover { border-color: var(--accent); }
+        .language-btn i { color: var(--accent); }
+        .language-dropdown { position: absolute; top: 120%; left: 0; background-color: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); width: 160px; display: none; overflow: hidden; z-index: 10; }
+        .language-dropdown.show { display: block; }
+        .language-dropdown a { display: block; padding: 12px 20px; text-decoration: none; color: var(--text-primary); transition: all 0.2s; }
+        .language-dropdown a:hover { background-color: var(--accent); color: #000; }
+
+        /* صفحة الأسئلة الشائعة */
+        .page-header {
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .faq-section {
+            padding: 40px 0 80px;
+        }
+        .faq-grid {
+            display: grid;
+            gap: 30px;
+        }
+        .faq-item {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        .faq-item h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+        .footer { background-color: var(--bg-secondary); padding: 60px 0 20px; border-top: 1px solid var(--border); }
+        .footer-content { display: grid; grid-template-columns: repeat(4,1fr); gap: 40px; margin-bottom: 40px; }
+        .footer-col h3 { color: var(--accent); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: var(--accent); }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { color: var(--text-secondary); border: 1px solid var(--border); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s; }
+        .social-links a:hover { border-color: var(--accent); color: var(--accent); }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-secondary); }
+
+        @media (max-width: 992px) {
+            .footer-content { grid-template-columns: repeat(2,1fr); }
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 15px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .container { padding: 0 20px; }
+            .page-header h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body class="dark-mode" dir="rtl">
-    <header> <!-- نفس الهيدر مع تعديل الروابط --> </header>
-    <main>
-        <div class="container" style="padding: 60px 0;">
-            <h1 style="color: var(--accent); font-size: 2.5rem; margin-bottom: 40px;">الأسئلة الشائعة</h1>
-            <div class="faq-section">
-                <!-- أسئلة وأجوبة -->
-                <div class="faq-item">
-                    <h3>ما هي طرق الدفع المتاحة؟</h3>
-                    <p>نقبل جميع بطاقات الائتمان الرئيسية (فيزا، ماستركارد، أمريكان إكسبريس) وكذلك الدفع عبر باي بال والتحويل البنكي.</p>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>L'ÉCLAT</h1>
+                <p>HAUTE JOAILLERIE</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="../index.html">الرئيسية</a>
+                <a href="collections.html">المجموعات</a>
+                <a href="about.html">عن الدار</a>
+                <a href="craftsmanship.html">الحرفية</a>
+                <a href="boutiques.html">معارضنا</a>
+            </nav>
+            <div class="nav-controls">
+                <div class="language-select">
+                    <button class="language-btn" id="languageBtn"><i class="fas fa-globe"></i> <span id="current-lang">AR</span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
                 </div>
-                <!-- المزيد من الأسئلة -->
+                <button class="icon-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+                <button class="icon-btn"><i class="fas fa-user"></i></button>
+                <button class="icon-btn cart-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+                <button class="icon-btn" id="themeToggle"><i class="fas fa-sun"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- مودال البحث والسلة (يمكن تضمينها هنا) -->
+    <!-- ... نفس الكود السابق ... -->
+
+    <main>
+        <div class="container">
+            <div class="page-header" data-aos="fade-up">
+                <h1>الأسئلة الشائعة</h1>
+                <p>إجابات على أكثر الأسئلة شيوعاً حول منتجاتنا وخدماتنا</p>
+            </div>
+            <div class="faq-section" data-aos="fade-up">
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>ما هي طرق الدفع المتاحة؟</h3>
+                        <p>نقبل جميع بطاقات الائتمان الرئيسية (فيزا، ماستركارد، أمريكان إكسبريس) والدفع عبر باي بال والتحويل البنكي المباشر.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>كم تستغرق عملية الشحن؟</h3>
+                        <p>الشحن المحلي يستغرق 2-3 أيام عمل، والشحن الدولي 5-7 أيام عمل. يتم شحن جميع الطلبات مع تأمين شامل.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>كيف يمكنني معرفة مقاسي الصحيح للخاتم؟</h3>
+                        <p>يمكنك استخدام دليل المقاسات الموجود في موقعنا، أو زيارة أحد معارضنا لقياس مقاسك بدقة.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>هل يمكن إرجاع المنتج؟</h3>
+                        <p>نعم، نوفر سياسة إرجاع لمدة 30 يوماً مع استرداد كامل القيمة بشرط أن يكون المنتج بحالته الأصلية.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-    <footer> <!-- نفس التذييل --> </footer>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>الدار</h3>
+                    <ul>
+                        <li><a href="about.html">عن الدار</a></li>
+                        <li><a href="collections.html">مجموعاتنا</a></li>
+                        <li><a href="craftsmanship.html">الحرفية</a></li>
+                        <li><a href="boutiques.html">معارضنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>مساعدة</h3>
+                    <ul>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="shipping.html">الشحن والتوصيل</a></li>
+                        <li><a href="size-guide.html">دليل المقاسات</a></li>
+                        <li><a href="jewelry-care.html">العناية بالمجوهرات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>سياسات</h3>
+                    <ul>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="returns.html">سياسة الاسترجاع</a></li>
+                        <li><a href="terms.html">شروط الاستخدام</a></li>
+                        <li><a href="warranty.html">الضمان</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> contact@leclat.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 L'ÉCLAT - HAUTE JOAILLERIE. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script src="../cart.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        // نفس أحداث اللغة والثيم والسلة من cart.js
+    </script>
 </body>
 </html>
