@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head> <title>مجموعاتنا - L'ÉCLAT</title> </head>
+<body>
+    <main>
+        <div class="container">
+            <div class="page-header"><h1>مجموعاتنا</h1><p>استكشف تشكيلاتنا الحصرية</p></div>
+            <div class="products-grid" style="margin-top:40px;">
+                <!-- يمكن إعادة استخدام نفس بطاقات المنتجات من الرئيسية مع إمكانية تصفيتها حسب الفئة باستخدام URL parameters -->
+                <!-- مثال -->
+                <div class="product-card" data-category="rings">...</div>
+                <!-- ... -->
+            </div>
+        </div>
+    </main>
+    <script>
+        // فلترة بسيطة حسب ?category=
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('category');
+        if(cat) {
+            document.querySelectorAll('.product-card').forEach(card => {
+                if(!card.dataset.category.includes(cat)) card.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
