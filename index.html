@@ -3,44 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر المجوهرات الفاخرة</title>
-    <!-- Font Awesome for icons -->
+    <title>مجوهرات ابو بكر - منذ 1985</title>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts: Arabic and Latin fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease;
+            transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
         }
 
-        /* Dark mode (default) */
+        /* Dark mode (default) - Luxury Dark Theme 2026 */
         body.dark-mode {
-            --bg-primary: #121212;
-            --bg-secondary: #1e1e1e;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --accent-gold: #d4af37;
-            --accent-gold-hover: #b8960f;
-            --card-bg: #2d2d2d;
-            --border-color: #444;
-            --shadow: 0 5px 15px rgba(0,0,0,0.5);
+            --bg-primary: #0A0A0A;        /* عميق جداً قريب من الأسود */
+            --bg-secondary: #1A1A1A;       /* رمادي داكن فاخر */
+            --text-primary: #FFFFFF;        /* أبيض ناصع */
+            --text-secondary: #B0B0B0;      /* رمادي فاتح أنيق */
+            --accent-gold: #C6A43F;         /* ذهبي دافئ وناعم */
+            --accent-gold-hover: #D4AF37;   /* ذهبي لامع */
+            --accent-silver: #E8E8E8;        /* فضي للتباين */
+            --card-bg: #1E1E1E;              /* بطاقات داكنة */
+            --border-color: #2C2C2C;         /* حدود ناعمة */
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            --gradient-start: #C6A43F;
+            --gradient-end: #A88933;
         }
 
-        /* Light mode */
+        /* Light mode - Refined Light Theme */
         body.light-mode {
-            --bg-primary: #f8f5f2;
-            --bg-secondary: #ffffff;
-            --text-primary: #2c2c2c;
-            --text-secondary: #5a5a5a;
-            --accent-gold: #b8860b;
-            --accent-gold-hover: #a0710b;
-            --card-bg: #ffffff;
-            --border-color: #ddd;
-            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --bg-primary: #F8F5F2;           /* عاجي ناعم */
+            --bg-secondary: #FFFFFF;          /* أبيض نظيف */
+            --text-primary: #2C2C2C;          /* رمادي داكن */
+            --text-secondary: #5A5A5A;         /* رمادي متوسط */
+            --accent-gold: #B8860B;            /* ذهبي كلاسيكي */
+            --accent-gold-hover: #9B720A;      /* ذهبي أعمق */
+            --accent-silver: #4A4A4A;           /* فضي غامق */
+            --card-bg: #FFFFFF;                 
+            --border-color: #E5E5E5;            
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --gradient-start: #B8860B;
+            --gradient-end: #9B720A;
         }
 
         body {
@@ -48,77 +54,82 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            direction: rtl; /* Default RTL for Arabic */
+            direction: rtl;
         }
 
-        /* For English and French we might need LTR, we'll handle via JS adding class */
         body.ltr {
             direction: ltr;
             font-family: 'Montserrat', 'Cairo', sans-serif;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
-        /* Header */
+        /* Header - أكثر أناقة */
         header {
             background-color: var(--bg-secondary);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
         }
 
         .logo h1 {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .logo p {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .controls {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             align-items: center;
         }
 
         .btn-icon {
             background: none;
-            border: none;
+            border: 2px solid var(--border-color);
             color: var(--text-primary);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
-            padding: 8px;
+            padding: 10px;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
+            transition: all 0.3s;
         }
 
         .btn-icon:hover {
-            background-color: var(--accent-gold);
-            color: #000;
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: rotate(15deg);
         }
 
-        /* Language dropdown */
+        /* Language dropdown - أكثر جمالاً */
         .language-select {
             position: relative;
         }
@@ -126,14 +137,20 @@
         .language-btn {
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 10px 15px;
-            border-radius: 30px;
+            border: 2px solid var(--border-color);
+            padding: 12px 20px;
+            border-radius: 40px;
             cursor: pointer;
             font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .language-btn:hover {
+            border-color: var(--accent-gold);
         }
 
         .language-btn i {
@@ -146,12 +163,13 @@
             left: 0;
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            width: 150px;
+            width: 180px;
             display: none;
             flex-direction: column;
             z-index: 10;
+            overflow: hidden;
         }
 
         .language-dropdown.show {
@@ -159,10 +177,11 @@
         }
 
         .language-dropdown a {
-            padding: 12px 15px;
+            padding: 15px 20px;
             text-decoration: none;
             color: var(--text-primary);
-            transition: background 0.2s;
+            transition: all 0.2s;
+            font-weight: 500;
         }
 
         .language-dropdown a:hover {
@@ -170,90 +189,141 @@
             color: #000;
         }
 
-        /* Hero Section */
+        /* Hero Section - أكثر دراماتيكية */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 500px;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            height: 600px;
             display: flex;
             align-items: center;
             text-align: center;
             color: #fff;
-            border-radius: 0 0 50px 50px;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h2 {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            font-weight: 700;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            opacity: 0.9;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent-gold);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: #000;
-            padding: 12px 30px;
+            padding: 15px 45px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             border: none;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .btn:hover {
-            background-color: var(--accent-gold-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(198, 164, 63, 0.3);
         }
 
-        /* Products Section */
+        /* Products Section - تنسيق عصري */
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--accent-gold);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 20px auto 0;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
 
         .product-card {
             background-color: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: all 0.4s;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.4);
         }
 
         .product-image {
-            height: 250px;
+            height: 300px;
             overflow: hidden;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover .product-image::after {
+            opacity: 1;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.6s;
         }
 
         .product-card:hover .product-image img {
@@ -261,82 +331,114 @@
         }
 
         .product-info {
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
+            position: relative;
         }
 
         .product-info h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .product-price {
             color: var(--accent-gold);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin: 15px 0;
         }
 
         .btn-small {
-            background-color: var(--accent-gold);
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: #000;
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 12px 30px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
             display: inline-block;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-small:hover {
-            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(198, 164, 63, 0.3);
         }
 
-        /* Features Section */
+        /* Features Section - تصميم بطاقات متطور */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin: 60px 0;
-            text-align: center;
+            margin: 80px 0;
         }
 
         .feature-item {
-            padding: 30px 20px;
+            padding: 40px 30px;
             background-color: var(--bg-secondary);
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
         }
 
         .feature-item i {
-            font-size: 3rem;
-            color: var(--accent-gold);
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
 
         .feature-item h3 {
+            font-size: 1.3rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
-        /* Footer */
+        .feature-item p {
+            color: var(--text-secondary);
+        }
+
+        /* Footer - تصميم أنيق */
         footer {
             background-color: var(--bg-secondary);
-            padding: 50px 0 20px;
-            margin-top: 60px;
+            padding: 70px 0 30px;
+            margin-top: 100px;
             border-top: 1px solid var(--border-color);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
         }
 
         .footer-col h3 {
             color: var(--accent-gold);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
         }
 
         .footer-col ul {
@@ -344,58 +446,69 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-col ul li a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.2s;
+            display: inline-block;
         }
 
         .footer-col ul li a:hover {
             color: var(--accent-gold);
+            transform: translateX(5px);
         }
 
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
             color: var(--text-primary);
             background-color: var(--bg-primary);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s;
+            border: 1px solid var(--border-color);
         }
 
         .social-links a:hover {
             background-color: var(--accent-gold);
             color: #000;
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
             }
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+            .hero {
+                height: 400px;
+            }
+            .section-title {
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -404,11 +517,10 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <h1 id="site-title">مجوهرات ابو بكر</h1>
-                <p id="site-subtitle">فخامة تنبض بالحياة</p>
+                <h1 id="site-title">ABOU BAKR</h1>
+                <p id="site-subtitle">JOAILLIER DEPUIS 1985</p>
             </div>
             <div class="controls">
-                <!-- Language Selector -->
                 <div class="language-select">
                     <button class="language-btn" id="languageBtn"><i class="fas fa-globe"></i> <span id="current-lang">العربية</span> <i class="fas fa-chevron-down"></i></button>
                     <div class="language-dropdown" id="languageDropdown">
@@ -417,149 +529,166 @@
                         <a href="#" data-lang="fr">Français</a>
                     </div>
                 </div>
-                <!-- Dark/Light mode toggle -->
                 <button class="btn-icon" id="themeToggle"><i class="fas fa-sun"></i></button>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h2 id="hero-title">تألق بأناقة المجوهرات الفاخرة</h2>
-                <p id="hero-desc">اكتشف مجموعتنا الحصرية من الذهب والماس والأحجار الكريمة</p>
-                <a href="#" class="btn" id="hero-btn">تسوق الآن</a>
+                <h2 id="hero-title" data-ar="فن المجوهرات الخالدة" data-en="The Art of Timeless Jewelry" data-fr="L'Art de la Joaillerie Intemporelle">فن المجوهرات الخالدة</h2>
+                <p id="hero-desc" data-ar="تشكيلة حصرية من أرقى القطع المصممة يدوياً" data-en="Exclusive collection of finest handcrafted pieces" data-fr="Collection exclusive des plus belles pièces faites main">تشكيلة حصرية من أرقى القطع المصممة يدوياً</p>
+                <a href="#" class="btn" id="hero-btn" data-ar="اكتشف المجموعة" data-en="Discover the Collection" data-fr="Découvrir la Collection">اكتشف المجموعة</a>
             </div>
         </section>
 
-        <!-- Products Section -->
         <section class="container">
-            <h2 class="section-title" id="products-title">منتجات مميزة</h2>
+            <h2 class="section-title" id="products-title" data-ar="مجموعتنا المميزة" data-en="Our Signature Collection" data-fr="Notre Collection Signature">مجموعتنا المميزة</h2>
             <div class="products-grid">
-                <!-- Product 1 -->
+                <!-- Product 1 - خاتم ألماس نحتي (صيحة 2026) [citation:1] -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="خاتم ألماس">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name" data-ar="خاتم ألماس كلاسيكي" data-en="Classic Diamond Ring" data-fr="Bague Diamant Classique">خاتم ألماس كلاسيكي</h3>
-                        <p class="product-price">$1,299</p>
-                        <a href="#" class="btn-small" id="buy-now-text" data-ar="شراء الآن" data-en="Buy Now" data-fr="Acheter">شراء الآن</a>
+                        <h3 class="product-name" data-ar="خاتم ألماس نحتي" data-en="Sculptural Diamond Ring" data-fr="Bague Diamant Sculpturale">خاتم ألماس نحتي</h3>
+                        <p class="product-price">$2,990</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
                     </div>
                 </div>
-                <!-- Product 2 -->
+                <!-- Product 2 - عقد لؤلؤ متعدد الطبقات (صيحة التراص) [citation:7] -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="عقد لؤلؤ">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name" data-ar="عقد لؤلؤ طبيعي" data-en="Natural Pearl Necklace" data-fr="Collier de Perles Naturelles">عقد لؤلؤ طبيعي</h3>
-                        <p class="product-price">$899</p>
-                        <a href="#" class="btn-small">شراء الآن</a>
+                        <h3 class="product-name" data-ar="عقد لؤلؤ متعدد الطبقات" data-en="Layered Pearl Necklace" data-fr="Collier de Perles Superposé">عقد لؤلؤ متعدد الطبقات</h3>
+                        <p class="product-price">$1,890</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
                     </div>
                 </div>
-                <!-- Product 3 -->
+                <!-- Product 3 - سوار ذهب مطروق (صيحة Hammered) [citation:10] -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://images.unsplash.com/photo-1611085583191-55c4a2c2a9c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="سوار ذهب">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name" data-ar="سوار ذهب عيار 18" data-en="18K Gold Bracelet" data-fr="Bracelet Or 18K">سوار ذهب عيار 18</h3>
-                        <p class="product-price">$649</p>
-                        <a href="#" class="btn-small">شراء الآن</a>
+                        <h3 class="product-name" data-ar="سوار ذهب مطروق" data-en="Hammered Gold Bracelet" data-fr="Bracelet Or Martelé">سوار ذهب مطروق</h3>
+                        <p class="product-price">$1,450</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
                     </div>
                 </div>
-                <!-- Product 4 -->
+                <!-- Product 4 - أقراط متدلية بأحجار ملونة (صيحة Color) [citation:4] -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="أقراط ماس">
+                        <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="أقراط">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name" data-ar="أقراط ماس متألقة" data-en="Brilliant Diamond Earrings" data-fr="Boucles d'oreilles Diamant">أقراط ماس متألقة</h3>
-                        <p class="product-price">$1,499</p>
-                        <a href="#" class="btn-small">شراء الآن</a>
+                        <h3 class="product-name" data-ar="أقراط متدلية بالياقوت" data-en="Sapphire Drop Earrings" data-fr="Boucles d'oreilles Saphir">أقراط متدلية بالياقوت</h3>
+                        <p class="product-price">$2,450</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
+                    </div>
+                </div>
+                <!-- Product 5 - طوق معدني (صيحة Metal Collars) [citation:10] -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="طوق ذهب">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-ar="طوق ذهبي عصري" data-en="Modern Gold Collar" data-fr="Collier Or Moderne">طوق ذهبي عصري</h3>
+                        <p class="product-price">$3,200</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
+                    </div>
+                </div>
+                <!-- Product 6 - خاتم مرصع بالأحجار (صيحة Bold) [citation:1] -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="خاتم فاخر">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name" data-ar="خاتم الزمرد الملكي" data-en="Royal Emerald Ring" data-fr="Bague Émeraude Royale">خاتم الزمرد الملكي</h3>
+                        <p class="product-price">$4,800</p>
+                        <a href="#" class="btn-small" data-ar="اشتر الآن" data-en="Buy Now" data-fr="Acheter">اشتر الآن</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features -->
         <section class="container">
             <div class="features">
                 <div class="feature-item">
                     <i class="fas fa-truck"></i>
-                    <h3 id="feature1" data-ar="شحن سريع وآمن" data-en="Fast & Secure Shipping" data-fr="Livraison rapide et sécurisée">شحن سريع وآمن</h3>
-                    <p id="feature1-desc" data-ar="نوصل طلبك أينما كنت" data-en="We deliver your order anywhere" data-fr="Nous livrons votre commande partout">نوصل طلبك أينما كنت</p>
+                    <h3 data-ar="شحن فاخر وآمن" data-en="Luxury Secure Shipping" data-fr="Livraison Sécurisée">شحن فاخر وآمن</h3>
+                    <p data-ar="توصيل معزول ومؤمن" data-en="Insured & tracked delivery" data-fr="Livraison assurée">توصيل معزول ومؤمن</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-gem"></i>
-                    <h3 id="feature2" data-ar="أحجار كريمة أصلية" data-en="Authentic Gemstones" data-fr="Pierres précieuses authentiques">أحجار كريمة أصلية</h3>
-                    <p id="feature2-desc" data-ar="نضمن لك الجودة والنقاء" data-en="Guaranteed quality and purity" data-fr="Qualité et pureté garanties">نضمن لك الجودة والنقاء</p>
+                    <h3 data-ar="أحجار كريمة معتمدة" data-en="Certified Gemstones" data-fr="Pierres Certifiées">أحجار كريمة معتمدة</h3>
+                    <p data-ar="جميع القطع مختبرة ومعتمدة دولياً" data-en="All pieces internationally certified" data-fr="Toutes les pièces sont certifiées">جميع القطع مختبرة ومعتمدة دولياً</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-undo-alt"></i>
-                    <h3 id="feature3" data-ar="إرجاع مجاني خلال 30 يوم" data-en="Free 30-day returns" data-fr="Retours gratuits sous 30 jours">إرجاع مجاني خلال 30 يوم</h3>
-                    <p id="feature3-desc" data-ar="إذا لم تكن راضيًا، أعد القطعة" data-en="If not satisfied, return the item" data-fr="Si vous n'êtes pas satisfait, retournez l'article">إذا لم تكن راضيًا، أعد القطعة</p>
+                    <i class="fas fa-clock"></i>
+                    <h3 data-ar="ضمان مدى الحياة" data-en="Lifetime Warranty" data-fr="Garantie À Vie">ضمان مدى الحياة</h3>
+                    <p data-ar="نقف وراء جودة كل قطعة" data-en="We stand behind every piece" data-fr="Nous garantissons chaque pièce">نقف وراء جودة كل قطعة</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-shield-alt"></i>
-                    <h3 id="feature4" data-ar="ضمان الجودة" data-en="Quality Guarantee" data-fr="Garantie de qualité">ضمان الجودة</h3>
-                    <p id="feature4-desc" data-ar="جميع المنتجة مختبرة ومعتمدة" data-en="All products tested and certified" data-fr="Tous les produits testés et certifiés">جميع المنتجة مختبرة ومعتمدة</p>
+                    <h3 data-ar="توصيل دولي" data-en="Worldwide Delivery" data-fr="Livraison Internationale">توصيل دولي</h3>
+                    <p data-ar="نصل إلى جميع أنحاء العالم" data-en="We ship worldwide" data-fr="Nous livrons dans le monde entier">نصل إلى جميع أنحاء العالم</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3 id="footer-about">عن المتجر</h3>
-                    <p id="footer-about-text" data-ar="نقدم أفخم المجوهرات المصممة بعناية فائقة لتناسب أذواقكم الراقية." data-en="We offer the finest jewelry carefully designed to suit your refined tastes." data-fr="Nous proposons les plus beaux bijoux soigneusement conçus pour satisfaire vos goûts raffinés.">نقدم أفخم المجوهرات المصممة بعناية فائقة لتناسب أذواقكم الراقية.</p>
+                    <h3 data-ar="عن الدار" data-en="About Us" data-fr="À Propos">عن الدار</h3>
+                    <p data-ar="تأسست عام 1985، نقدم أفخم المجوهرات بتصاميم تجمع بين الأصالة والمعاصرة." data-en="Est. 1985, we offer the finest jewelry blending tradition with contemporary design." data-fr="Depuis 1985, nous offrons les plus beaux bijoux alliant tradition et modernité.">تأسست عام 1985، نقدم أفخم المجوهرات بتصاميم تجمع بين الأصالة والمعاصرة.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h3 id="footer-help">مساعدة</h3>
+                    <h3 data-ar="روابط سريعة" data-en="Quick Links" data-fr="Liens Rapides">روابط سريعة</h3>
                     <ul>
-                        <li><a href="#" id="footer-faq" data-ar="الأسئلة الشائعة" data-en="FAQ" data-fr="FAQ">الأسئلة الشائعة</a></li>
-                        <li><a href="#" id="footer-shipping" data-ar="الشحن والتوصيل" data-en="Shipping & Delivery" data-fr="Livraison">الشحن والتوصيل</a></li>
-                        <li><a href="#" id="footer-payment" data-ar="طرق الدفع" data-en="Payment Methods" data-fr="Moyens de paiement">طرق الدفع</a></li>
-                        <li><a href="#" id="footer-size" data-ar="دليل المقاسات" data-en="Size Guide" data-fr="Guide des tailles">دليل المقاسات</a></li>
+                        <li><a href="#" data-ar="المجموعات الجديدة" data-en="New Collections" data-fr="Nouvelles Collections">المجموعات الجديدة</a></li>
+                        <li><a href="#" data-ar="الأكثر مبيعاً" data-en="Best Sellers" data-fr="Meilleures Ventes">الأكثر مبيعاً</a></li>
+                        <li><a href="#" data-ar="هدايا فاخرة" data-en="Luxury Gifts" data-fr="Cadeaux de Luxe">هدايا فاخرة</a></li>
+                        <li><a href="#" data-ar="القطع الفريدة" data-en="Unique Pieces" data-fr="Pièces Uniques">القطع الفريدة</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3 id="footer-legal">القانونية</h3>
+                    <h3 data-ar="سياسات وضمانات" data-en="Policies" data-fr="Politiques">سياسات وضمانات</h3>
                     <ul>
-                        <li><a href="#" id="footer-privacy" data-ar="سياسة الخصوصية" data-en="Privacy Policy" data-fr="Politique de confidentialité">سياسة الخصوصية</a></li>
-                        <li><a href="#" id="footer-terms" data-ar="شروط الاستخدام" data-en="Terms of Use" data-fr="Conditions d'utilisation">شروط الاستخدام</a></li>
-                        <li><a href="#" id="footer-returns" data-ar="سياسة الاسترجاع" data-en="Returns Policy" data-fr="Politique de retour">سياسة الاسترجاع</a></li>
-                        <li><a href="#" id="footer-warranty" data-ar="الضمان" data-en="Warranty" data-fr="Garantie">الضمان</a></li>
+                        <li><a href="#" data-ar="سياسة الخصوصية" data-en="Privacy Policy" data-fr="Confidentialité">سياسة الخصوصية</a></li>
+                        <li><a href="#" data-ar="سياسة الاسترجاع" data-en="Returns Policy" data-fr="Retours">سياسة الاسترجاع</a></li>
+                        <li><a href="#" data-ar="شروط الاستخدام" data-en="Terms of Use" data-fr="Conditions d'utilisation">شروط الاستخدام</a></li>
+                        <li><a href="#" data-ar="الضمان والصيانة" data-en="Warranty & Care" data-fr="Garantie et Entretien">الضمان والصيانة</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3 id="footer-contact">اتصل بنا</h3>
+                    <h3 data-ar="تواصل معنا" data-en="Contact Us" data-fr="Contactez-nous">تواصل معنا</h3>
                     <ul>
                         <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
-                        <li><i class="fas fa-envelope"></i> info@luluwah.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-envelope"></i> contact@aboubakr.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض - حي الملقا</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p id="copyright-text" data-ar="© 2025 مجوهرات ابو بكر. جميع الحقوق محفوظة." data-en="© 2025 Luluwah Jewelry. All rights reserved." data-fr="© 2025 Luluwah Joaillerie. Tous droits réservés.">© 2025 مجوهرات ابو بكر. جميع الحقوق محفوظة.</p>
+                <p data-ar="© 2026 مجوهرات ابو بكر - جميع الحقوق محفوظة" data-en="© 2026 Abou Bakr Jewelry - All Rights Reserved" data-fr="© 2026 Abou Bakr Joaillerie - Tous Droits Réservés">© 2026 مجوهرات ابو بكر - جميع الحقوق محفوظة</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme toggle (Dark/Light)
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
@@ -575,30 +704,23 @@
             }
         });
 
-        // Language Dropdown
+        // Language functionality
         const languageBtn = document.getElementById('languageBtn');
         const languageDropdown = document.getElementById('languageDropdown');
+        const langLinks = document.querySelectorAll('.language-dropdown a');
+        const currentLangSpan = document.getElementById('current-lang');
 
         languageBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             languageDropdown.classList.toggle('show');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', () => {
             languageDropdown.classList.remove('show');
         });
 
-        // Language switching logic
-        const langLinks = document.querySelectorAll('.language-dropdown a');
-        const currentLangSpan = document.getElementById('current-lang');
-
-        // Elements with data-ar, data-en, data-fr
-        const translatableElements = document.querySelectorAll('[data-ar]');
-
-        // Function to set language
         function setLanguage(lang) {
-            // Update direction
+            // Update direction and display
             if (lang === 'ar') {
                 body.dir = 'rtl';
                 body.classList.remove('ltr');
@@ -606,59 +728,31 @@
             } else {
                 body.dir = 'ltr';
                 body.classList.add('ltr');
-                if (lang === 'en') {
-                    currentLangSpan.textContent = 'English';
-                } else if (lang === 'fr') {
-                    currentLangSpan.textContent = 'Français';
-                }
+                currentLangSpan.textContent = lang === 'en' ? 'English' : 'Français';
             }
 
-            // Update all elements with data attributes
+            // Update all translatable elements
+            const translatableElements = document.querySelectorAll('[data-ar]');
             translatableElements.forEach(el => {
-                const key = lang; // 'ar', 'en', 'fr'
-                if (el.tagName === 'H3' || el.tagName === 'P' || el.tagName === 'A' || el.tagName === 'SPAN' || el.tagName === 'H2') {
-                    if (el.dataset[lang]) {
+                if (el.dataset[lang]) {
+                    if (el.tagName === 'A' || el.tagName === 'BUTTON' || el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3' || el.tagName === 'SPAN') {
                         el.textContent = el.dataset[lang];
                     }
                 }
             });
 
-            // Special handling for product names (they have class product-name)
-            document.querySelectorAll('.product-name').forEach(el => {
-                if (el.dataset[lang]) {
-                    el.textContent = el.dataset[lang];
-                }
-            });
-
-            // Update footer links text
-            document.querySelectorAll('#footer-about-text, #footer-faq, #footer-shipping, #footer-payment, #footer-size, #footer-privacy, #footer-terms, #footer-returns, #footer-warranty, #copyright-text').forEach(el => {
-                if (el.dataset[lang]) {
-                    el.textContent = el.dataset[lang];
-                }
-            });
-
-            // Update hero and section titles
-            document.getElementById('hero-title').textContent = document.getElementById('hero-title').dataset[lang] || document.getElementById('hero-title').dataset.ar;
-            document.getElementById('hero-desc').textContent = document.getElementById('hero-desc').dataset[lang] || document.getElementById('hero-desc').dataset.ar;
-            document.getElementById('hero-btn').textContent = document.getElementById('hero-btn').dataset[lang] || document.getElementById('hero-btn').dataset.ar;
-            document.getElementById('products-title').textContent = document.getElementById('products-title').dataset[lang] || document.getElementById('products-title').dataset.ar;
-
-            // Features
-            document.getElementById('feature1').textContent = document.getElementById('feature1').dataset[lang] || document.getElementById('feature1').dataset.ar;
-            document.getElementById('feature1-desc').textContent = document.getElementById('feature1-desc').dataset[lang] || document.getElementById('feature1-desc').dataset.ar;
-            document.getElementById('feature2').textContent = document.getElementById('feature2').dataset[lang] || document.getElementById('feature2').dataset.ar;
-            document.getElementById('feature2-desc').textContent = document.getElementById('feature2-desc').dataset[lang] || document.getElementById('feature2-desc').dataset.ar;
-            document.getElementById('feature3').textContent = document.getElementById('feature3').dataset[lang] || document.getElementById('feature3').dataset.ar;
-            document.getElementById('feature3-desc').textContent = document.getElementById('feature3-desc').dataset[lang] || document.getElementById('feature3-desc').dataset.ar;
-            document.getElementById('feature4').textContent = document.getElementById('feature4').dataset[lang] || document.getElementById('feature4').dataset.ar;
-            document.getElementById('feature4-desc').textContent = document.getElementById('feature4-desc').dataset[lang] || document.getElementById('feature4-desc').dataset.ar;
-
-            // Site title and subtitle
-            document.getElementById('site-title').textContent = (lang === 'ar' ? 'مجوهرات ابو بكر' : (lang === 'en' ? 'Luluwah Jewelry' : 'Luluwah Joaillerie'));
-            document.getElementById('site-subtitle').textContent = (lang === 'ar' ? 'فخامة تنبض بالحياة' : (lang === 'en' ? 'Elegance that comes to life' : 'L\'élégance prend vie'));
+            // Update site title separately (has no data-ar)
+            document.getElementById('site-title').textContent = 
+                lang === 'ar' ? 'ABOU BAKR' : 
+                lang === 'en' ? 'ABOU BAKR' : 
+                'ABOU BAKR';
+            
+            document.getElementById('site-subtitle').textContent = 
+                lang === 'ar' ? 'JOAILLIER DEPUIS 1985' : 
+                lang === 'en' ? 'JOAILLIER SINCE 1985' : 
+                'JOAILLIER DEPUIS 1985';
         }
 
-        // Add click event to language links
         langLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -668,111 +762,8 @@
             });
         });
 
-        // Set default language (Arabic)
+        // Set default language
         setLanguage('ar');
-
-        // Extra: for any "buy now" buttons, we can also translate them if needed, but we used data attributes on the first one.
-        // We'll handle all buttons with class btn-small
-        document.querySelectorAll('.btn-small').forEach(btn => {
-            if (!btn.id) return;
-            // We already set via data attribute for the first one, but we can generalize:
-            // For simplicity, we'll use data attributes on each btn-small if needed.
-            // In this demo, only the first product's button has id, but we can add dataset to all.
-        });
-
-        // To make all btn-small translatable, we should add data-ar, data-en, data-fr to them.
-        // Let's do it programmatically for this demo, but in real code you'd add them in HTML.
-        // For simplicity, we'll add the data attributes now via JS (or you can add them in HTML).
-        // Let's add to all btn-small the same text for now.
-        document.querySelectorAll('.btn-small').forEach((btn, index) => {
-            if (!btn.hasAttribute('data-ar')) {
-                btn.setAttribute('data-ar', 'شراء الآن');
-                btn.setAttribute('data-en', 'Buy Now');
-                btn.setAttribute('data-fr', 'Acheter');
-            }
-        });
-
-        // Now we need to update them when language changes. We'll extend the setLanguage function to include .btn-small
-        // We'll add a line in setLanguage to update all .btn-small.
-        // But to avoid duplication, we'll refactor setLanguage to handle all elements with data-ar.
-        // Already above we did translatableElements, but .btn-small might not be included if they don't have data-ar initially.
-        // So we'll add data attributes to them first (we did now via JS). Then we need to update them in the loop.
-        // Our loop already covers all elements with [data-ar], so it's fine.
-        // We'll just need to ensure that after adding data attributes, they are included.
-        // The setLanguage function loops through translatableElements which is a static NodeList. If we add data attributes after page load, they won't be in the original NodeList.
-        // So we should either add the data attributes in HTML or re-query inside setLanguage.
-        // Let's modify setLanguage to re-query all elements with data-ar each time.
-        // This is more robust.
-
-        // Override setLanguage with a better version
-        function setLanguage(lang) {
-            // Update direction and current lang display
-            if (lang === 'ar') {
-                body.dir = 'rtl';
-                body.classList.remove('ltr');
-                currentLangSpan.textContent = 'العربية';
-            } else {
-                body.dir = 'ltr';
-                body.classList.add('ltr');
-                if (lang === 'en') {
-                    currentLangSpan.textContent = 'English';
-                } else if (lang === 'fr') {
-                    currentLangSpan.textContent = 'Français';
-                }
-            }
-
-            // Update all elements with data-ar, data-en, data-fr
-            const allTranslatable = document.querySelectorAll('[data-ar]');
-            allTranslatable.forEach(el => {
-                if (el.dataset[lang]) {
-                    el.textContent = el.dataset[lang];
-                }
-            });
-
-            // Update specific elements that might not have data attributes but we want to translate
-            // Site title and subtitle (already have data? we set them in HTML? no we didn't. We'll add data attributes or handle separately)
-            // We'll add data-ar etc to site-title and site-subtitle in HTML to simplify.
-            // For now, we'll set them manually.
-            document.getElementById('site-title').textContent = (lang === 'ar' ? 'مجوهرات ابو بكر' : (lang === 'en' ? 'Luluwah Jewelry' : 'Luluwah Joaillerie'));
-            document.getElementById('site-subtitle').textContent = (lang === 'ar' ? 'فخامة تنبض بالحياة' : (lang === 'en' ? 'Elegance that comes to life' : 'L\'élégance prend vie'));
-        }
-
-        // Now add data attributes to all relevant elements in HTML (we'll do it now in the code above)
-        // But since we are writing the HTML, I'll add the data attributes directly in the HTML where needed.
-        // I'll update the HTML to include data-ar, data-en, data-fr for all text elements.
-        // For simplicity in this response, I'll rely on the setLanguage function above that uses [data-ar] and also handles the site title separately.
-        // To make it cleaner, I will add data attributes to all elements in the HTML.
-
-        // I'll revise the HTML to include data attributes for all translatable text.
-    </script>
-    <!-- إضافة البيانات المفقودة لبعض العناصر -->
-    <script>
-        // إضافة data attributes للعناصر التي لم تُضف بعد (لضمان الترجمة)
-        document.addEventListener('DOMContentLoaded', function() {
-            // إضافة بيانات للعناصر الأساسية
-            const heroTitle = document.getElementById('hero-title');
-            heroTitle.dataset.ar = 'تألق بأناقة المجوهرات الفاخرة';
-            heroTitle.dataset.en = 'Shine with Luxury Jewelry Elegance';
-            heroTitle.dataset.fr = 'Brillez avec l\'élégance des bijoux de luxe';
-
-            const heroDesc = document.getElementById('hero-desc');
-            heroDesc.dataset.ar = 'اكتشف مجموعتنا الحصرية من الذهب والماس والأحجار الكريمة';
-            heroDesc.dataset.en = 'Discover our exclusive collection of gold, diamonds and gemstones';
-            heroDesc.dataset.fr = 'Découvrez notre collection exclusive d\'or, de diamants et de pierres précieuses';
-
-            const heroBtn = document.getElementById('hero-btn');
-            heroBtn.dataset.ar = 'تسوق الآن';
-            heroBtn.dataset.en = 'Shop Now';
-            heroBtn.dataset.fr = 'Acheter maintenant';
-
-            const productsTitle = document.getElementById('products-title');
-            productsTitle.dataset.ar = 'منتجات مميزة';
-            productsTitle.dataset.en = 'Featured Products';
-            productsTitle.dataset.fr = 'Produits phares';
-
-            // Add for feature titles and descriptions (already have in HTML but ensure)
-            // We already set them in HTML, but if not, we can set here.
-        });
     </script>
 </body>
 </html>
