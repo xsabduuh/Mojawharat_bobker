@@ -322,6 +322,7 @@
             border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.4s;
+            border-radius: 16px; /* إضافة انحناء للأطراف */
         }
 
         .product-card:hover {
@@ -334,6 +335,7 @@
             height: 350px;
             overflow: hidden;
             position: relative;
+            border-radius: 16px 16px 0 0; /* انحناء للأعلى فقط */
         }
 
         .product-image img {
@@ -379,7 +381,7 @@
             border: 1px solid var(--accent);
             color: var(--accent);
             padding: 10px 25px;
-            border-radius: 40px;
+            border-radius: 40px; /* أزرار دائرية */
             text-decoration: none;
             font-weight: 600;
             display: inline-block;
@@ -405,6 +407,7 @@
             padding: 30px 20px;
             border: 1px solid var(--border);
             background-color: var(--bg-secondary);
+            border-radius: 12px; /* إضافة انحناء خفيف لبطاقات الميزات */
         }
 
         .feature-item i {
@@ -430,6 +433,7 @@
             text-align: center;
             margin: 80px 0;
             border: 1px solid var(--border);
+            border-radius: 20px; /* انحناء للنشرة البريدية */
         }
 
         .newsletter h3 {
@@ -457,6 +461,7 @@
             border: 1px solid var(--border);
             color: var(--text-primary);
             font-size: 1rem;
+            border-radius: 30px; /* انحناء لحقل الإدخال */
         }
 
         .newsletter-form input:focus {
@@ -472,6 +477,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
+            border-radius: 30px; /* انحناء للزر */
         }
 
         .newsletter-form button:hover {
