@@ -1,127 +1,270 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'ÉCLAT - Haute Joaillerie</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        /* جميع التنسيقات السابقة (اختصاراً، انسخها من الردود السابقة) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body.dark-mode { --bg-primary: #0a0a0a; --bg-secondary: #121212; --bg-card: #1a1a1a; --text-primary: #ffffff; --text-secondary: #b0b0b0; --accent: #c9a45b; --accent-hover: #dbb671; --border: #2a2a2a; --shadow: 0 25px 50px -12px rgba(0,0,0,0.8); --input-bg: #1e1e1e; }
-        body.light-mode { --bg-primary: #faf7f2; --bg-secondary: #ffffff; --bg-card: #ffffff; --text-primary: #2e2e2e; --text-secondary: #6b6b6b; --accent: #b08d5c; --accent-hover: #9e7b4b; --border: #e5d9cc; --shadow: 0 25px 50px -12px rgba(0,0,0,0.15); --input-bg: #f5f0e9; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.6; direction: rtl; transition: background-color 0.3s, color 0.3s; }
-        body.ltr { direction: ltr; font-family: 'Playfair Display', 'Cairo', serif; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        /* باقي التنسيقات (راجع الرد السابق) */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'ÉCLAT - Haute Joaillerie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode" dir="rtl">
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <h1>L'ÉCLAT</h1>
-                <p>HAUTE JOAILLERIE</p>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html">الرئيسية</a>
-                <a href="collections.html">المجموعات</a>
-                <a href="about.html">عن الدار</a>
-                <a href="craftsmanship.html">الحرفية</a>
-                <a href="boutiques.html">معارضنا</a>
-            </nav>
-            <div class="nav-controls">
-                <div class="language-select">
-                    <button class="language-btn" id="languageBtn"><i class="fas fa-globe"></i> <span id="current-lang">AR</span> <i class="fas fa-chevron-down"></i></button>
-                    <div class="language-dropdown" id="languageDropdown">
-                        <a href="#" data-lang="ar">العربية</a>
-                        <a href="#" data-lang="en">English</a>
-                        <a href="#" data-lang="fr">Français</a>
-                    </div>
-                </div>
-                <button class="icon-btn" id="searchBtn"><i class="fas fa-search"></i></button>
-                <button class="icon-btn"><i class="fas fa-user"></i></button>
-                <button class="icon-btn cart-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
-                <button class="icon-btn" id="themeToggle"><i class="fas fa-sun"></i></button>
-            </div>
+<body class="dark-mode">
+
+<!-- HEADER -->
+<header>
+  <div class="container header-content">
+    <div class="logo">
+      <h1>L'ÉCLAT</h1>
+      <p>HAUTE JOAILLERIE</p>
+    </div>
+    <nav class="nav-menu">
+      <a href="index.html" class="active">الرئيسية</a>
+      <a href="collections.html">المجموعات</a>
+      <a href="about.html">عن الدار</a>
+      <a href="craftsmanship.html">الحرفية</a>
+      <a href="boutiques.html">معارضنا</a>
+    </nav>
+    <div class="nav-controls">
+      <div class="language-select">
+        <button class="language-btn" id="languageBtn">
+          <i class="fas fa-globe"></i>
+          <span id="current-lang">AR</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="language-dropdown" id="languageDropdown">
+          <a href="#" data-lang="ar">العربية</a>
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
         </div>
-    </header>
+      </div>
+      <button class="icon-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+      <button class="icon-btn"><i class="fas fa-user"></i></button>
+      <button class="icon-btn cart-btn" id="cartBtn">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn" id="themeToggle"><i class="fas fa-sun"></i></button>
+    </div>
+  </div>
+</header>
 
-    <!-- محتوى الصفحة (hero, products, features, newsletter) - كما في السابق مع تحديث روابط "pages/" إلى روابط مباشرة -->
-    <main>
-        <!-- Hero -->
-        <section class="hero">...</section>
-        <!-- Categories -->
-        <div class="container">
-            <div class="categories">
-                <a href="collections.html?category=rings" class="category-pill">خواتم</a>
-                <a href="collections.html?category=earrings" class="category-pill">أقراط</a>
-                <a href="collections.html?category=necklaces" class="category-pill">قلادات</a>
-                <a href="collections.html?category=bracelets" class="category-pill">أساور</a>
-                <a href="collections.html?category=watches" class="category-pill">ساعات</a>
-            </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slide">
+    <div class="hero-content container">
+      <p class="hero-subtitle">مجموعة 2026</p>
+      <h1 class="hero-title">فن المجوهرات<br>الراقية</h1>
+      <p class="hero-desc">تشكيلة حصرية من أرقى المجوهرات المصنوعة يدوياً بأجود المواد</p>
+      <div class="hero-btns">
+        <a href="collections.html" class="btn">اكتشف المجموعة</a>
+        <a href="about.html" class="btn btn-outline">عن الدار</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<div class="container">
+  <div class="categories">
+    <a href="collections.html" class="category-pill active">الكل</a>
+    <a href="collections.html?category=rings" class="category-pill">خواتم</a>
+    <a href="collections.html?category=earrings" class="category-pill">أقراط</a>
+    <a href="collections.html?category=necklaces" class="category-pill">قلادات</a>
+    <a href="collections.html?category=bracelets" class="category-pill">أساور</a>
+    <a href="collections.html?category=watches" class="category-pill">ساعات</a>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="container">
+  <div class="section-title">
+    <h2>المجموعة المميزة</h2>
+    <p>FEATURED COLLECTION</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card" data-id="p1" data-name="خاتم الألماس الملكي" data-price="12500">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80" alt="خاتم الألماس الملكي">
+        <div class="quick-view"><span>عرض سريع</span></div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">خواتم</p>
+        <h3 class="product-name">خاتم الألماس الملكي</h3>
+        <p class="product-price">$12,500</p>
+        <button class="btn-small add-to-cart">أضف للسلة</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-id="p2" data-name="قلادة الزمرد الإمبراطورية" data-price="8900">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80" alt="قلادة الزمرد">
+        <div class="quick-view"><span>عرض سريع</span></div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">قلادات</p>
+        <h3 class="product-name">قلادة الزمرد الإمبراطورية</h3>
+        <p class="product-price">$8,900</p>
+        <button class="btn-small add-to-cart">أضف للسلة</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-id="p3" data-name="أقراط الياقوت الفاخرة" data-price="6200">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80" alt="أقراط الياقوت">
+        <div class="quick-view"><span>عرض سريع</span></div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">أقراط</p>
+        <h3 class="product-name">أقراط الياقوت الفاخرة</h3>
+        <p class="product-price">$6,200</p>
+        <button class="btn-small add-to-cart">أضف للسلة</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-id="p4" data-name="سوار الذهب الأبيض" data-price="4800">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1573408301185-9519f94816b5?w=600&q=80" alt="سوار الذهب">
+        <div class="quick-view"><span>عرض سريع</span></div>
+      </div>
+      <div class="product-info">
+        <p class="product-category">أساور</p>
+        <h3 class="product-name">سوار الذهب الأبيض</h3>
+        <p class="product-price">$4,800</p>
+        <button class="btn-small add-to-cart">أضف للسلة</button>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-bottom:60px;">
+    <a href="collections.html" class="btn btn-outline">عرض جميع المنتجات</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="container">
+  <div class="features">
+    <div class="feature-item">
+      <i class="fas fa-gem"></i>
+      <h4>أحجار أصيلة</h4>
+      <p>نستخدم فقط أجود الأحجار الكريمة المعتمدة عالمياً</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-hands"></i>
+      <h4>صنع يدوي</h4>
+      <p>كل قطعة تُصنع يدوياً بإتقان وعناية فائقة</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-shield-alt"></i>
+      <h4>ضمان مدى الحياة</h4>
+      <p>نضمن جودة منتجاتنا مدى الحياة</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-shipping-fast"></i>
+      <h4>شحن مجاني</h4>
+      <p>شحن مجاني وآمن لجميع أنحاء العالم</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="container">
+  <div class="newsletter">
+    <h3>انضم إلى عالم L'ÉCLAT</h3>
+    <p>اشترك لتكون أول من يعلم بمجموعاتنا الحصرية والعروض الخاصة</p>
+    <form class="newsletter-form" onsubmit="return false;">
+      <input type="email" placeholder="بريدك الإلكتروني">
+      <button type="submit">اشترك</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>الدار</h3>
+        <ul>
+          <li><a href="about.html">عن الدار</a></li>
+          <li><a href="collections.html">مجموعاتنا</a></li>
+          <li><a href="craftsmanship.html">الحرفية</a></li>
+          <li><a href="boutiques.html">معارضنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>مساعدة</h3>
+        <ul>
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="shipping.html">الشحن والتوصيل</a></li>
+          <li><a href="size-guide.html">دليل المقاسات</a></li>
+          <li><a href="jewelry-care.html">العناية بالمجوهرات</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>سياسات</h3>
+        <ul>
+          <li><a href="privacy.html">سياسة الخصوصية</a></li>
+          <li><a href="returns.html">سياسة الاسترجاع</a></li>
+          <li><a href="terms.html">شروط الاستخدام</a></li>
+          <li><a href="warranty.html">الضمان</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>تواصل</h3>
+        <ul>
+          <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
+          <li><i class="fas fa-envelope"></i> contact@leclat.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</li>
+        </ul>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
-        <!-- Products -->
-        <section class="container">...</section>
-        <!-- Features -->
-        <section class="container">...</section>
-        <!-- Newsletter -->
-        <section class="container">...</section>
-    </main>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 L'ÉCLAT - جميع الحقوق محفوظة</p>
+    </div>
+  </div>
+</footer>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>الدار</h3>
-                    <ul>
-                        <li><a href="about.html">عن الدار</a></li>
-                        <li><a href="collections.html">مجموعاتنا</a></li>
-                        <li><a href="craftsmanship.html">الحرفية</a></li>
-                        <li><a href="boutiques.html">معارضنا</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>مساعدة</h3>
-                    <ul>
-                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
-                        <li><a href="shipping.html">الشحن والتوصيل</a></li>
-                        <li><a href="size-guide.html">دليل المقاسات</a></li>
-                        <li><a href="jewelry-care.html">العناية بالمجوهرات</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>سياسات</h3>
-                    <ul>
-                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
-                        <li><a href="returns.html">سياسة الاسترجاع</a></li>
-                        <li><a href="terms.html">شروط الاستخدام</a></li>
-                        <li><a href="warranty.html">الضمان</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>تواصل</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +966 12 345 6789</li>
-                        <li><i class="fas fa-envelope"></i> contact@leclat.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض - المملكة العربية السعودية</li>
-                    </ul>
-                    <div class="social-links">...</div>
-                </div>
-            </div>
-            <div class="copyright"><p>© 2026 L'ÉCLAT - جميع الحقوق محفوظة</p></div>
-        </div>
-    </footer>
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>سلة التسوق</h3>
+    <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>المجموع</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-btn">إتمام الشراء</button>
+  </div>
+</div>
 
-    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+<!-- SEARCH MODAL -->
+<div class="search-modal" id="searchModal">
+  <div class="search-container">
+    <div class="search-header">
+      <h3>البحث</h3>
+      <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+    </div>
+    <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن مجوهرات...">
+    <ul class="search-suggestions" id="searchSuggestions"></ul>
+  </div>
+</div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="cart.js"></script>
-    <script>
-        AOS.init();
-        // أحداث اللغة والثيم والسلة (موجودة في cart.js)
-    </script>
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<script src="cart.js"></script>
 </body>
 </html>
