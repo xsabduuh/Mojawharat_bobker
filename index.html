@@ -1,3129 +1,1439 @@
 <!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="L'ÉCLAT — Haute Joaillerie. Collections exclusives de bijoux de luxe." />
-  <title>L'ÉCLAT — Haute Joaillerie</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Tajawal:wght@300;400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-  <style>
-    /* ============================================================
-       1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
-    ============================================================ */
-    :root {
-      /* Gold palette */
-      --gold:         #c8a96e;
-      --gold-light:   #e2c98c;
-      --gold-pale:    #f0e4c4;
-      --gold-dim:     rgba(200, 169, 110, 0.15);
-      --gold-glow:    rgba(200, 169, 110, 0.28);
-
-      /* Dark theme (default) */
-      --bg:           #080807;
-      --bg-2:         #0f0f0d;
-      --bg-3:         #161614;
-      --surface:      #1c1b18;
-      --surface-2:    #242320;
-      --line:         rgba(200, 169, 110, 0.13);
-      --line-soft:    rgba(255, 255, 255, 0.06);
-      --txt:          #f0ebe0;
-      --txt-soft:     #a89f8c;
-      --txt-muted:    #6a6356;
-
-      /* Shadows */
-      --shadow-sm:    0 4px 16px rgba(0, 0, 0, 0.4);
-      --shadow-md:    0 12px 40px rgba(0, 0, 0, 0.6);
-      --shadow-lg:    0 24px 72px rgba(0, 0, 0, 0.8);
-      --shadow-gold:  0 16px 48px rgba(200, 169, 110, 0.22);
-
-      /* Typography */
-      --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
-      --font-body-ar: 'Tajawal', sans-serif;
-      --font-body-en: 'EB Garamond', Georgia, serif;
-
-      /* Layout */
-      --radius:       16px;
-      --radius-lg:    28px;
-      --radius-pill:  999px;
-      --header-h:     76px;
-      --container:    1380px;
-      --transition:   0.32s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Light theme override */
-    [data-theme="light"] {
-      --bg:           #f8f5ef;
-      --bg-2:         #ffffff;
-      --bg-3:         #f2ede3;
-      --surface:      #ffffff;
-      --surface-2:    #ede8de;
-      --line:         rgba(160, 126, 68, 0.18);
-      --line-soft:    rgba(0, 0, 0, 0.06);
-      --txt:          #1e1b14;
-      --txt-soft:     #6b6050;
-      --txt-muted:    #a09070;
-      --gold:         #a07830;
-      --gold-light:   #c49a44;
-      --gold-pale:    #e8d5a8;
-      --gold-dim:     rgba(160, 120, 48, 0.12);
-      --gold-glow:    rgba(160, 120, 48, 0.22);
-      --shadow-sm:    0 4px 16px rgba(0, 0, 0, 0.08);
-      --shadow-md:    0 12px 40px rgba(0, 0, 0, 0.12);
-      --shadow-lg:    0 24px 72px rgba(0, 0, 0, 0.15);
-      --shadow-gold:  0 16px 48px rgba(160, 120, 48, 0.18);
-    }
-
-    /* ============================================================
-       2. RESET & BASE
-    ============================================================ */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      font-family: var(--font-body-ar);
-      background-color: var(--bg);
-      color: var(--txt);
-      line-height: 1.7;
-      direction: rtl;
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background-color var(--transition), color var(--transition);
-    }
-
-    body[dir="ltr"] {
-      font-family: var(--font-body-en);
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    ul, ol {
-      list-style: none;
-    }
-
-    /* Skip to content link for accessibility */
-    .skip-link {
-      position: absolute;
-      top: -100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--gold);
-      color: #000;
-      padding: 10px 24px;
-      border-radius: 0 0 var(--radius) var(--radius);
-      font-weight: 700;
-      z-index: 10000;
-      transition: top 0.2s;
-    }
-
-    .skip-link:focus {
-      top: 0;
-    }
-
-    /* ============================================================
-       3. LAYOUT UTILITIES
-    ============================================================ */
-    .container {
-      max-width: var(--container);
-      margin-inline: auto;
-      padding-inline: 48px;
-    }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-    }
-
-    /* ============================================================
-       4. FOCUS STYLES (ACCESSIBILITY)
-    ============================================================ */
-    :focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    /* ============================================================
-       5. GRAIN TEXTURE OVERLAY
-    ============================================================ */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.022;
-      pointer-events: none;
-      z-index: 9990;
-    }
-
-    /* ============================================================
-       6. SCROLLBAR
-    ============================================================ */
-    ::-webkit-scrollbar               { width: 5px; }
-    ::-webkit-scrollbar-track         { background: var(--bg); }
-    ::-webkit-scrollbar-thumb         { background: var(--gold-dim); border-radius: 5px; }
-    ::-webkit-scrollbar-thumb:hover   { background: var(--gold); }
-
-    /* ============================================================
-       7. TYPOGRAPHY SCALE
-    ============================================================ */
-    .t-display {
-      font-family: var(--font-display);
-      font-weight: 300;
-      letter-spacing: 0.04em;
-    }
-
-    .t-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: var(--txt-muted);
-    }
-
-    /* ============================================================
-       8. BUTTON COMPONENTS
-    ============================================================ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 38px;
-      border-radius: var(--radius-pill);
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: nowrap;
-      text-decoration: none;
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: #000;
-      box-shadow: 0 8px 28px -6px var(--gold-glow);
-    }
-
-    .btn-gold:hover,
-    .btn-gold:focus-visible {
-      background: var(--gold-light);
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px -8px var(--gold-glow);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .btn-ghost:hover,
-    .btn-ghost:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-    }
-
-    .btn-outline:hover,
-    .btn-outline:focus-visible {
-      background: var(--gold);
-      color: #000;
-      transform: translateY(-2px);
-    }
-
-    /* Icon-only circular button */
-    .icon-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: none;
-      color: var(--txt-soft);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      transition: all var(--transition);
-      flex-shrink: 0;
-    }
-
-    .icon-btn:hover,
-    .icon-btn:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: var(--gold-dim);
-    }
-
-    /* ============================================================
-       9. HEADER
-    ============================================================ */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 500;
-      height: var(--header-h);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(20px) saturate(1.3);
-      -webkit-backdrop-filter: blur(20px) saturate(1.3);
-      background: rgba(8, 8, 7, 0.84);
-      transition: background var(--transition);
-    }
-
-    [data-theme="light"] .site-header {
-      background: rgba(248, 245, 239, 0.9);
-    }
-
-    .header-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    /* Brand logo */
-    .brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .brand-name {
-      font-family: var(--font-display);
-      font-size: 1.85rem;
-      font-weight: 300;
-      letter-spacing: 0.55em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .brand-tagline {
-      font-size: 0.55rem;
-      letter-spacing: 0.35em;
-      color: var(--txt-muted);
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-
-    /* Main navigation */
-    .main-nav {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-list {
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-list a {
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--txt-soft);
-      position: relative;
-      padding-bottom: 4px;
-      transition: color var(--transition);
-    }
-
-    .nav-list a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      inset-inline-end: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width var(--transition);
-    }
-
-    .nav-list a:hover,
-    .nav-list a:focus-visible {
-      color: var(--gold);
-    }
-
-    .nav-list a:hover::after,
-    .nav-list a:focus-visible::after {
-      width: 100%;
-      inset-inline-start: 0;
-      inset-inline-end: auto;
-    }
-
-    /* Header controls */
-    .header-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    /* Cart badge */
-    .cart-wrap {
-      position: relative;
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -4px;
-      inset-inline-end: -4px;
-      min-width: 17px;
-      height: 17px;
-      padding: 0 3px;
-      background: var(--gold);
-      border-radius: var(--radius-pill);
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      transition: transform 0.2s;
-    }
-
-    .cart-badge.bump {
-      animation: badge-bump 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes badge-bump {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.5); }
-      100% { transform: scale(1); }
-    }
-
-    /* Language dropdown */
-    .lang-wrap {
-      position: relative;
-    }
-
-    .lang-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      background: none;
-      color: var(--txt-soft);
-      font-size: 0.78rem;
-      font-family: inherit;
-      letter-spacing: 0.08em;
-      transition: all var(--transition);
-    }
-
-    .lang-btn .fa-globe {
-      color: var(--gold);
-    }
-
-    .lang-btn .chevron {
-      font-size: 0.6rem;
-      transition: transform 0.25s;
-    }
-
-    .lang-btn[aria-expanded="true"] .chevron {
-      transform: rotate(180deg);
-    }
-
-    .lang-btn:hover,
-    .lang-btn:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .lang-menu {
-      position: absolute;
-      top: calc(100% + 10px);
-      inset-inline-start: 0;
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      min-width: 148px;
-      box-shadow: var(--shadow-md);
-      z-index: 20;
-      overflow: hidden;
-      /* hidden by default */
-      display: none;
-    }
-
-    .lang-menu.is-open {
-      display: block;
-    }
-
-    .lang-menu a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 16px;
-      font-size: 0.85rem;
-      color: var(--txt-soft);
-      transition: background 0.18s, color 0.18s;
-    }
-
-    .lang-menu a .flag {
-      font-size: 1rem;
-    }
-
-    .lang-menu a:hover,
-    .lang-menu a:focus-visible {
-      background: var(--gold);
-      color: #000;
-    }
-
-    .lang-menu a[aria-current="true"] {
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    /* Mobile hamburger */
-    .mobile-menu-btn {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 26px;
-      height: 18px;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-    }
-
-    .mobile-menu-btn span {
-      display: block;
-      height: 1.5px;
-      background: var(--txt-soft);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .mobile-menu-btn[aria-expanded="true"] span:nth-child(1) {
-      transform: translateY(8.25px) rotate(45deg);
-    }
-
-    .mobile-menu-btn[aria-expanded="true"] span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .mobile-menu-btn[aria-expanded="true"] span:nth-child(3) {
-      transform: translateY(-8.25px) rotate(-45deg);
-    }
-
-    /* Mobile nav panel */
-    .mobile-nav {
-      position: fixed;
-      inset: 0;
-      top: var(--header-h);
-      background: var(--bg-2);
-      border-top: 1px solid var(--line);
-      z-index: 490;
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      transform: translateY(-110%);
-      transition: transform 0.36s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow-y: auto;
-    }
-
-    .mobile-nav.is-open {
-      transform: translateY(0);
-    }
-
-    .mobile-nav a {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      color: var(--txt-soft);
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      transition: all var(--transition);
-    }
-
-    .mobile-nav a i {
-      color: var(--gold);
-      width: 16px;
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: var(--gold-dim);
-    }
-
-    /* ============================================================
-       10. HERO SECTION
-    ============================================================ */
-    .hero {
-      height: 92vh;
-      min-height: 580px;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 96px;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1950&q=80');
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.08);
-      will-change: transform;
-      animation: hero-breathe 14s ease-out forwards;
-    }
-
-    @keyframes hero-breathe {
-      to { transform: scale(1); }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        108deg,
-        rgba(6, 5, 4, 0.85) 30%,
-        rgba(6, 5, 4, 0.3) 70%,
-        transparent 100%
-      );
-    }
-
-    /* RTL: overlay from right */
-    [dir="rtl"] .hero-overlay {
-      background: linear-gradient(
-        252deg,
-        rgba(6, 5, 4, 0.85) 30%,
-        rgba(6, 5, 4, 0.3) 70%,
-        transparent 100%
-      );
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      padding-inline: 48px;
-    }
-
-    .hero-content {
-      max-width: 640px;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.68rem;
-      letter-spacing: 0.55em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: slide-up 0.8s 0.3s ease forwards;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: #fff;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: slide-up 0.9s 0.55s ease forwards;
-    }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 38px;
-      max-width: 420px;
-      opacity: 0;
-      animation: slide-up 0.9s 0.8s ease forwards;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: slide-up 0.9s 1.05s ease forwards;
-    }
-
-    @keyframes slide-up {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ============================================================
-       11. SECTION HEADERS
-    ============================================================ */
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-header .eyebrow {
-      margin-bottom: 12px;
-    }
-
-    .section-header h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-      font-weight: 300;
-      color: var(--gold);
-      letter-spacing: 0.12em;
-    }
-
-    /* ============================================================
-       12. SEPARATOR / DIVIDER
-    ============================================================ */
-    .ornament-divider {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-inline: auto;
-      margin-bottom: 72px;
-      max-width: 360px;
-      color: var(--txt-muted);
-    }
-
-    .ornament-divider::before,
-    .ornament-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--line), transparent);
-    }
-
-    .ornament-divider span {
-      font-size: 0.62rem;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    /* ============================================================
-       13. CATEGORY FILTER PILLS
-    ============================================================ */
-    .categories-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 88px;
-    }
-
-    .cat-pill {
-      padding: 9px 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      background: var(--surface);
-      color: var(--txt-soft);
-      font-family: inherit;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .cat-pill:hover,
-    .cat-pill:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-3px);
-    }
-
-    .cat-pill.is-active {
-      background: var(--gold-dim);
-      border-color: var(--gold);
-      color: var(--gold);
-      font-weight: 500;
-    }
-
-    /* ============================================================
-       14. PRODUCT GRID & CARDS
-    ============================================================ */
-    .products-section {
-      margin-bottom: 110px;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
-      gap: 28px;
-    }
-
-    .product-card {
-      background: var(--bg-3);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      position: relative;
-      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .product-card[hidden] {
-      display: none;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--gold);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .product-card:focus-within {
-      border-color: var(--gold);
-    }
-
-    /* Image */
-    .product-img-wrap {
-      position: relative;
-      height: 310px;
-      overflow: hidden;
-    }
-
-    .product-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .product-card:hover .product-img-wrap img {
-      transform: scale(1.07);
-    }
-
-    /* Badge */
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      inset-inline-end: 14px;
-      background: var(--gold);
-      color: #000;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 4px 11px;
-      border-radius: var(--radius-pill);
-    }
-
-    /* Quick-view overlay */
-    .product-quick-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(6, 5, 4, 0.85) 0%, transparent 60%);
-      opacity: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 22px;
-      transition: opacity var(--transition);
-      pointer-events: none;
-    }
-
-    .product-card:hover .product-quick-overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .quick-view-label {
-      font-size: 0.73rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 7px 20px;
-      border-radius: var(--radius-pill);
-      background: rgba(6, 5, 4, 0.5);
-      backdrop-filter: blur(8px);
-    }
-
-    /* Card body */
-    .product-body {
-      padding: 22px 20px;
-      text-align: center;
-    }
-
-    .product-cat-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .product-name {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-
-    .product-price {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--gold);
-      letter-spacing: 0.04em;
-      margin-bottom: 18px;
-    }
-
-    .btn-add {
-      padding: 9px 26px;
-      border: 1px solid var(--gold);
-      border-radius: var(--radius-pill);
-      background: none;
-      color: var(--gold);
-      font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: all var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .btn-add:hover,
-    .btn-add:focus-visible {
-      background: var(--gold);
-      color: #000;
-      transform: translateY(-2px);
-    }
-
-    /* No results message */
-    .no-results-msg {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 64px 20px;
-      color: var(--txt-muted);
-    }
-
-    .no-results-msg i {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 16px;
-      color: var(--line);
-    }
-
-    /* ============================================================
-       15. FEATURES GRID
-    ============================================================ */
-    .features-section {
-      margin-bottom: 110px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-    }
-
-    .feature-card {
-      background: var(--bg-3);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 36px 24px;
-      text-align: center;
-      transition: all var(--transition);
-    }
-
-    .feature-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-gold);
-    }
-
-    .feature-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-      border: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-inline: auto;
-      margin-bottom: 20px;
-      font-size: 1.25rem;
-      color: var(--gold);
-    }
-
-    .feature-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: 0.04em;
-    }
-
-    .feature-card p {
-      font-size: 0.85rem;
-      color: var(--txt-soft);
-      line-height: 1.65;
-    }
-
-    /* ============================================================
-       16. NEWSLETTER
-    ============================================================ */
-    .newsletter-section {
-      margin-bottom: 110px;
-    }
-
-    .newsletter-inner {
-      position: relative;
-      background: var(--bg-3);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 76px 60px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    /* Radial glow decoration */
-    .newsletter-inner::before {
-      content: '';
-      position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, rgba(200, 169, 110, 0.09) 0%, transparent 68%);
-      pointer-events: none;
-    }
-
-    .newsletter-inner h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 300;
-      color: var(--gold);
-      letter-spacing: 0.2em;
-      margin-bottom: 12px;
-    }
-
-    .newsletter-inner p {
-      color: var(--txt-soft);
-      font-size: 1rem;
-      margin-bottom: 36px;
-      max-width: 500px;
-      margin-inline: auto;
-      margin-bottom: 36px;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 10px;
-      max-width: 520px;
-      margin-inline: auto;
-    }
-
-    .newsletter-input {
-      flex: 1;
-      padding: 15px 22px;
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-pill);
-      color: var(--txt);
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .newsletter-input::placeholder {
-      color: var(--txt-muted);
-    }
-
-    .newsletter-input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.12);
-    }
-
-    .newsletter-msg {
-      font-size: 0.82rem;
-      margin-top: 12px;
-      min-height: 1.2em;
-      transition: color 0.2s;
-    }
-
-    .newsletter-msg.success { color: var(--gold); }
-    .newsletter-msg.error   { color: #e05; }
-
-    /* ============================================================
-       17. FOOTER
-    ============================================================ */
-    .site-footer {
-      background: var(--bg-2);
-      border-top: 1px solid var(--line);
-      padding: 56px 0 28px;
-    }
-
-    .footer-upper {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 32px;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand .brand-name {
-      font-size: 1.5rem;
-    }
-
-    .footer-brand .brand-tagline {
-      margin-top: 6px;
-    }
-
-    .footer-links-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .footer-link-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--bg-3);
-      color: var(--txt-soft);
-      font-size: 0.8rem;
-      min-width: 124px;
-      text-align: center;
-      transition: all var(--transition);
-      cursor: pointer;
-    }
-
-    .footer-link-card i {
-      font-size: 1.4rem;
-      color: var(--gold);
-      transition: color var(--transition);
-    }
-
-    .footer-link-card:hover,
-    .footer-link-card:focus-visible {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: #000;
-      transform: translateY(-5px);
-    }
-
-    .footer-link-card:hover i,
-    .footer-link-card:focus-visible i {
-      color: #000;
-    }
-
-    .footer-lower {
-      border-top: 1px solid var(--line);
-      padding-top: 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-lower p {
-      font-size: 0.8rem;
-      color: var(--txt-muted);
-    }
-
-    .footer-lower .gold {
-      color: var(--gold);
-    }
-
-    /* ============================================================
-       18. OVERLAYS & MODALS
-    ============================================================ */
-
-    /* Backdrop */
-    .backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.68);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      z-index: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--transition);
-    }
-
-    .backdrop.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ============================================================
-       19. SEARCH MODAL
-    ============================================================ */
-    .search-modal {
-      position: fixed;
-      top: var(--header-h);
-      left: 50%;
-      transform: translateX(-50%) translateY(-18px);
-      width: 100%;
-      max-width: 620px;
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      border-top: none;
-      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-      padding: 24px 28px 28px;
-      z-index: 700;
-      box-shadow: var(--shadow-md);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--transition), transform var(--transition);
-    }
-
-    .search-modal.is-open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .search-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-    }
-
-    .search-row i {
-      color: var(--gold);
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .search-input-field {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: var(--txt);
-      font-family: inherit;
-      font-size: 1.05rem;
-    }
-
-    .search-input-field::placeholder {
-      color: var(--txt-muted);
-    }
-
-    .search-results-list {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .search-result-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 11px 12px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background 0.18s;
-      font-size: 0.9rem;
-    }
-
-    .search-result-item img {
-      width: 44px;
-      height: 44px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      flex-shrink: 0;
-    }
-
-    .search-result-item .result-info {
-      flex: 1;
-    }
-
-    .search-result-item .result-name {
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .search-result-item .result-price {
-      color: var(--gold);
-      font-size: 0.8rem;
-    }
-
-    .search-result-item:hover,
-    .search-result-item:focus {
-      background: var(--gold-dim);
-      outline: none;
-    }
-
-    .search-no-results {
-      padding: 16px 12px;
-      color: var(--txt-muted);
-      font-size: 0.88rem;
-      text-align: center;
-    }
-
-    /* ============================================================
-       20. CART SIDEBAR
-    ============================================================ */
-    .cart-sidebar {
-      position: fixed;
-      top: 0;
-      inset-inline-end: -420px;
-      width: 400px;
-      height: 100dvh;
-      background: var(--bg-2);
-      border-inline-start: 1px solid var(--line);
-      box-shadow: var(--shadow-lg);
-      z-index: 700;
-      display: flex;
-      flex-direction: column;
-      transition: inset-inline-end var(--transition);
-    }
-
-    /* Fallback for browsers without inset-inline-end transition support */
-    [dir="rtl"] .cart-sidebar {
-      right: auto;
-      left: -420px;
-      border-left: none;
-      border-right: 1px solid var(--line);
-      transition: left var(--transition);
-    }
-
-    [dir="ltr"] .cart-sidebar {
-      left: auto;
-      right: -420px;
-      border-right: none;
-      border-left: 1px solid var(--line);
-      transition: right var(--transition);
-    }
-
-    [dir="rtl"] .cart-sidebar.is-open { left: 0; }
-    [dir="ltr"] .cart-sidebar.is-open { right: 0; }
-
-    .cart-header {
-      padding: 22px 24px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-header h2 {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--gold);
-      letter-spacing: 0.06em;
-    }
-
-    .cart-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    /* Empty cart */
-    .cart-empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      height: 100%;
-      color: var(--txt-muted);
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .cart-empty-state i {
-      font-size: 2.8rem;
-      color: var(--txt-muted);
-      opacity: 0.4;
-    }
-
-    .cart-empty-state p {
-      font-size: 0.9rem;
-    }
-
-    /* Cart item */
-    .cart-item {
-      display: flex;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line-soft);
-    }
-
-    .cart-item-img {
-      width: 72px;
-      height: 72px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      flex-shrink: 0;
-    }
-
-    .cart-item-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .cart-item-name {
-      font-weight: 600;
-      font-size: 0.88rem;
-      margin-bottom: 3px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .cart-item-price {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.88rem;
-      margin-bottom: 10px;
-    }
-
-    .cart-qty-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .qty-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: none;
-      color: var(--txt-soft);
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all var(--transition);
-      line-height: 1;
-    }
-
-    .qty-btn:hover,
-    .qty-btn:focus-visible {
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    .qty-value {
-      font-weight: 600;
-      font-size: 0.95rem;
-      min-width: 22px;
-      text-align: center;
-    }
-
-    .remove-btn {
-      background: none;
-      border: none;
-      color: #c0392b;
-      font-size: 0.75rem;
-      cursor: pointer;
-      margin-top: 6px;
-      padding: 0;
-      font-family: inherit;
-      transition: opacity 0.2s;
-      display: block;
-    }
-
-    .remove-btn:hover { opacity: 0.7; }
-
-    /* Cart footer */
-    .cart-footer {
-      padding: 20px 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .cart-total-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .cart-total-amount {
-      color: var(--gold);
-    }
-
-    .checkout-btn {
-      width: 100%;
-      padding: 15px;
-      background: var(--gold);
-      border: none;
-      border-radius: var(--radius-pill);
-      color: #000;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: all var(--transition);
-    }
-
-    .checkout-btn:hover:not(:disabled),
-    .checkout-btn:focus-visible:not(:disabled) {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
-
-    .checkout-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* ============================================================
-       21. TOAST NOTIFICATION
-    ============================================================ */
-    .toast-container {
-      position: fixed;
-      top: calc(var(--header-h) + 16px);
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9000;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .toast {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      color: var(--txt);
-      padding: 12px 24px;
-      border-radius: var(--radius-pill);
-      font-size: 0.88rem;
-      font-weight: 500;
-      box-shadow: var(--shadow-md);
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(-12px) scale(0.96);
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .toast.toast-success {
-      background: var(--gold);
-      color: #000;
-      border-color: var(--gold-light);
-    }
-
-    .toast.toast-error {
-      background: #c0392b;
-      color: #fff;
-      border-color: #e74c3c;
-    }
-
-    .toast.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    /* ============================================================
-       22. BACK TO TOP
-    ============================================================ */
-    #back-to-top {
-      position: fixed;
-      bottom: 28px;
-      inset-inline-end: 28px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--gold);
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transition: all var(--transition);
-      box-shadow: var(--shadow-sm);
-      z-index: 400;
-    }
-
-    #back-to-top.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #back-to-top:hover,
-    #back-to-top:focus-visible {
-      background: var(--gold);
-      color: #000;
-      transform: translateY(-4px);
-      border-color: var(--gold);
-    }
-
-    /* RTL/LTR placement */
-    [dir="rtl"] #back-to-top { right: auto; left: 28px; }
-    [dir="ltr"] #back-to-top { left: auto; right: 28px; }
-
-    /* ============================================================
-       23. RESPONSIVE — TABLET (≤ 1100px)
-    ============================================================ */
-    @media (max-width: 1100px) {
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* ============================================================
-       24. RESPONSIVE — MOBILE (≤ 768px)
-    ============================================================ */
-    @media (max-width: 768px) {
-      :root {
-        --header-h: 68px;
-      }
-
-      .container {
-        padding-inline: 20px;
-      }
-
-      .main-nav {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: flex;
-      }
-
-      .hero {
-        height: 80vh;
-        margin-bottom: 72px;
-      }
-
-      .hero-inner {
-        padding-inline: 20px;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .newsletter-inner {
-        padding: 48px 24px;
-      }
-
-      .newsletter-form {
-        flex-direction: column;
-      }
-
-      .footer-upper {
-        flex-direction: column;
-      }
-
-      .footer-links-row {
-        justify-content: flex-start;
-      }
-
-      .footer-lower {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .cart-sidebar {
-        width: 100%;
-      }
-
-      [dir="rtl"] .cart-sidebar { left: -100%; }
-      [dir="ltr"] .cart-sidebar { right: -100%; }
-
-      .search-modal {
-        border-radius: 0;
-        max-width: 100%;
-        padding: 20px;
-      }
-    }
-
-    /* ============================================================
-       25. RESPONSIVE — SMALL MOBILE (≤ 480px)
-    ============================================================ */
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .header-controls .lang-wrap {
-        display: none; /* show in mobile menu instead */
-      }
-
-      .footer-link-card {
-        min-width: 100px;
-        padding: 12px 14px;
-      }
-    }
-
-    /* ============================================================
-       26. REDUCED MOTION
-    ============================================================ */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>L'ÉCLAT - Haute Joaillerie</title>
+    <meta name="description" content="L'ÉCLAT - المجوهرات الفاخرة منذ 1985. تشكيلة حصرية من أرقى التصاميم.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ---------- RESET & VARIABLES ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark mode (default) */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent: #c9a45b;
+            --accent-hover: #dbb671;
+            --border: #2a2a2a;
+            --shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+            --shadow-hover: 0 30px 60px -12px rgba(201,164,91,0.3);
+            --input-bg: #1e1e1e;
+            --overlay-bg: rgba(0,0,0,0.8);
+        }
+
+        body.light-mode {
+            --bg-primary: #faf7f2;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #2e2e2e;
+            --text-secondary: #6b6b6b;
+            --accent: #b08d5c;
+            --accent-hover: #9e7b4b;
+            --border: #e5d9cc;
+            --shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            --shadow-hover: 0 30px 60px -12px rgba(176,141,92,0.25);
+            --input-bg: #f5f0e9;
+            --overlay-bg: rgba(255,255,255,0.9);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            direction: rtl;
+        }
+
+        body.ltr {
+            direction: ltr;
+            font-family: 'Playfair Display', 'Cairo', serif;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+
+        /* ---------- HEADER & NAVIGATION ---------- */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background-color: rgba(18,18,18,0.85);
+        }
+        body.light-mode header {
+            background-color: rgba(255,255,255,0.85);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+        }
+        .logo p {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-top: -5px;
+        }
+
+        /* Desktop navigation */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        .nav-menu a:hover, .nav-menu a:focus-visible {
+            color: var(--accent);
+            outline: none;
+        }
+        .nav-menu a:hover::after, .nav-menu a:focus-visible::after {
+            width: 100%;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            z-index: 200;
+            transition: right 0.3s ease;
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        body.ltr .mobile-nav {
+            right: auto;
+            left: -300px;
+            border-left: none;
+            border-right: 1px solid var(--border);
+        }
+        .mobile-nav.open {
+            right: 0;
+        }
+        body.ltr .mobile-nav.open {
+            left: 0;
+        }
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .close-mobile {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Controls */
+        .nav-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .icon-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        .icon-btn:hover, .icon-btn:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: scale(1.05);
+            outline: none;
+        }
+        .cart-btn {
+            position: relative;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent);
+            color: #000;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Language selector */
+        .language-select {
+            position: relative;
+        }
+        .language-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .language-btn:hover, .language-btn:focus-visible {
+            border-color: var(--accent);
+            outline: none;
+        }
+        .language-btn i {
+            color: var(--accent);
+        }
+        .language-dropdown {
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            width: 160px;
+            display: none;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .language-dropdown.show {
+            display: block;
+        }
+        .language-dropdown a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+        .language-dropdown a:hover, .language-dropdown a:focus-visible {
+            background-color: var(--accent);
+            color: #000;
+            outline: none;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        .hero-slide {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 650px;
+            padding: 0 40px;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--accent);
+            font-weight: 300;
+        }
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        /* ---------- BUTTONS ---------- */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #000;
+            padding: 16px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px -5px rgba(201,164,91,0.3);
+        }
+        .btn:hover, .btn:focus-visible {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            outline: none;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            box-shadow: none;
+            margin-right: 15px;
+        }
+        .btn-outline:hover, .btn-outline:focus-visible {
+            background-color: var(--accent);
+            color: #000;
+        }
+        .btn-small {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn-small:hover, .btn-small:focus-visible {
+            background-color: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        /* ---------- CATEGORY PILLS ---------- */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+        .category-pill {
+            padding: 12px 30px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            background-color: var(--bg-secondary);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+        .category-pill.active, .category-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- PRODUCTS ---------- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: var(--shadow);
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+        .quick-view {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            text-align: center;
+            padding: 20px;
+            transition: bottom 0.3s;
+            pointer-events: none;
+        }
+        .product-card:hover .quick-view {
+            bottom: 0;
+        }
+        .quick-view span {
+            background-color: var(--accent);
+            color: #000;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .product-info {
+            padding: 25px 20px;
+            text-align: center;
+        }
+        .product-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* ---------- FEATURES ---------- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 100px 0;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 40px 25px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ---------- NEWSLETTER ---------- */
+        .newsletter {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            padding: 70px;
+            text-align: center;
+            margin: 100px 0;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        .newsletter h3 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .newsletter p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 18px 25px;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201,164,91,0.2);
+        }
+        .newsletter-form button {
+            padding: 18px 45px;
+            background-color: var(--accent);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .newsletter-form button:hover, .newsletter-form button:focus-visible {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .footer-link-item a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            min-width: 140px;
+            transition: all 0.3s;
+        }
+        .footer-link-item a i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        .footer-link-item a:hover, .footer-link-item a:focus-visible {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background-color: var(--accent);
+            color: #000;
+            outline: none;
+        }
+        .footer-link-item a:hover i, .footer-link-item a:focus-visible i {
+            color: #000;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- MODALS ---------- */
+        .search-modal, .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-bg);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+        .search-modal.show, .overlay.show {
+            display: flex;
+        }
+        .search-container {
+            background-color: var(--bg-secondary);
+            width: 600px;
+            max-width: 90%;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-header h3 {
+            color: var(--accent);
+        }
+        .close-search {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            background-color: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .search-suggestions {
+            list-style: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .search-suggestions li {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-suggestions li:hover, .search-suggestions li:focus-visible {
+            background-color: var(--accent);
+            color: #000;
+            outline: none;
+        }
+
+        /* Cart sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            border-left: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            z-index: 300;
+            transition: right 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        body.ltr .cart-sidebar {
+            right: auto;
+            left: -400px;
+            border-right: 1px solid var(--border);
+        }
+        .cart-sidebar.open {
+            right: 0;
+        }
+        body.ltr .cart-sidebar.open {
+            left: 0;
+        }
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h3 {
+            color: var(--accent);
+        }
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .quantity-btn {
+            background: none;
+            border: 1px solid var(--border);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+        .quantity-btn:hover, .quantity-btn:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+            outline: none;
+        }
+        .remove-item {
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .cart-total span:last-child {
+            color: var(--accent);
+        }
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .checkout-btn:hover:not(:disabled), .checkout-btn:focus-visible:not(:disabled) {
+            background-color: var(--accent-hover);
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover, .back-to-top:focus-visible {
+            transform: translateY(-5px);
+            background-color: var(--accent-hover);
+            outline: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .features { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+            .hero-title { font-size: 4rem; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .hero-title { font-size: 3rem; }
+            .hero-content { padding: 0 20px; }
+            .hero { height: 500px; }
+            .newsletter-form { flex-direction: column; }
+            .features { grid-template-columns: 1fr; }
+            .btn-outline { margin-right: 0; margin-top: 10px; }
+            .cart-sidebar { width: 100%; }
+            .footer-links { gap: 20px; }
+            .footer-link-item a { min-width: 120px; padding: 8px 15px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.5rem; }
+            .section-title h2 { font-size: 2.5rem; }
+            .product-card .product-image { height: 250px; }
+        }
+    </style>
 </head>
-
-<body data-theme="dark">
-
-  <!-- Skip to main content (accessibility) -->
-
-<a class="skip-link" href="#main-content" data-i18n="skip_link">تخطى إلى المحتوى الرئيسي</a>
-
-  <!-- Toast container -->
-
-  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
-
-  <!-- Backdrop (shared for search, cart, mobile nav) -->
-
-  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
-
-  <!-- ==============================================================
-       HEADER
-  ============================================================== -->
-
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-
-```
-  <!-- Brand -->
-  <a href="/" class="brand" aria-label="L'ÉCLAT — Haute Joaillerie">
-    <span class="brand-name">L'ÉCLAT</span>
-    <span class="brand-tagline">Haute Joaillerie</span>
-  </a>
-
-  <!-- Desktop navigation -->
-  <nav class="main-nav" aria-label="القائمة الرئيسية">
-    <ul class="nav-list" role="list">
-      <li><a href="#" data-i18n="nav_home">الرئيسية</a></li>
-      <li><a href="#products-section" data-i18n="nav_collections">المجموعات</a></li>
-      <li><a href="#" data-i18n="nav_about">عن الدار</a></li>
-      <li><a href="#" data-i18n="nav_craft">الحرفية</a></li>
-      <li><a href="#" data-i18n="nav_stores">معارضنا</a></li>
-    </ul>
-  </nav>
-
-  <!-- Controls -->
-  <div class="header-controls">
-    <!-- Language picker -->
-    <div class="lang-wrap">
-      <button class="lang-btn" id="lang-btn"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-              aria-label="اختر اللغة">
-        <i class="fas fa-globe" aria-hidden="true"></i>
-        <span id="lang-label">AR</span>
-        <i class="fas fa-chevron-down chevron" aria-hidden="true"></i>
-      </button>
-      <div class="lang-menu" id="lang-menu" role="listbox" aria-label="اللغات المتاحة">
-        <a href="#" data-lang="ar" role="option" aria-current="true" tabindex="0">
-          <span class="flag" aria-hidden="true">🇸🇦</span> العربية
-        </a>
-        <a href="#" data-lang="en" role="option" tabindex="0">
-          <span class="flag" aria-hidden="true">🇬🇧</span> English
-        </a>
-        <a href="#" data-lang="fr" role="option" tabindex="0">
-          <span class="flag" aria-hidden="true">🇫🇷</span> Français
-        </a>
-      </div>
-    </div>
-
-    <!-- Search -->
-    <button class="icon-btn" id="search-btn"
-            aria-label="فتح البحث"
-            aria-controls="search-modal"
-            aria-expanded="false">
-      <i class="fas fa-search" aria-hidden="true"></i>
-    </button>
-
-    <!-- Account -->
-    <button class="icon-btn" aria-label="حسابي">
-      <i class="fas fa-user" aria-hidden="true"></i>
-    </button>
-
-    <!-- Cart -->
-    <div class="cart-wrap">
-      <button class="icon-btn" id="cart-btn"
-              aria-label="سلة التسوق"
-              aria-controls="cart-sidebar"
-              aria-expanded="false">
-        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-      </button>
-      <span class="cart-badge" id="cart-badge" aria-label="عدد المنتجات في السلة">0</span>
-    </div>
-
-    <!-- Theme toggle -->
-    <button class="icon-btn" id="theme-btn" aria-label="تبديل المظهر">
-      <i class="fas fa-sun" aria-hidden="true"></i>
-    </button>
-
-    <!-- Mobile hamburger -->
-    <button class="mobile-menu-btn" id="mobile-menu-btn"
-            aria-label="فتح القائمة"
-            aria-expanded="false"
-            aria-controls="mobile-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</div>
-```
-
-  </header>
-
-  <!-- Mobile navigation panel -->
-
-  <nav class="mobile-nav" id="mobile-nav" aria-label="القائمة المحمول" aria-hidden="true">
-    <a href="#" data-i18n="nav_home"><i class="fas fa-home" aria-hidden="true"></i><span>الرئيسية</span></a>
-    <a href="#products-section" data-i18n="nav_collections"><i class="fas fa-gem" aria-hidden="true"></i><span>المجموعات</span></a>
-    <a href="#" data-i18n="nav_about"><i class="fas fa-star" aria-hidden="true"></i><span>عن الدار</span></a>
-    <a href="#" data-i18n="nav_craft"><i class="fas fa-hand-sparkles" aria-hidden="true"></i><span>الحرفية</span></a>
-    <a href="#" data-i18n="nav_stores"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>معارضنا</span></a>
-  </nav>
-
-  <!-- ==============================================================
-       SEARCH MODAL
-  ============================================================== -->
-
-  <div class="search-modal" id="search-modal"
-       role="dialog"
-       aria-modal="true"
-       aria-label="البحث"
-       aria-hidden="true">
-    <div class="search-row">
-      <i class="fas fa-search" aria-hidden="true"></i>
-      <input type="search"
-             class="search-input-field"
-             id="search-input"
-             data-i18n-placeholder="search_placeholder"
-             placeholder="ابحث عن خاتم، عقد، سوار..."
-             autocomplete="off"
-             aria-label="مربع البحث"
-             aria-autocomplete="list"
-             aria-controls="search-results-list" />
-      <button class="icon-btn" id="close-search-btn" aria-label="إغلاق البحث">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-    </div>
-    <ul class="search-results-list" id="search-results-list" role="listbox" aria-label="نتائج البحث"></ul>
-  </div>
-
-  <!-- ==============================================================
-       CART SIDEBAR
-  ============================================================== -->
-
-  <aside class="cart-sidebar" id="cart-sidebar"
-         role="dialog"
-         aria-modal="true"
-         aria-label="سلة التسوق"
-         aria-hidden="true">
-    <div class="cart-header">
-      <h2 data-i18n="cart_title">سلة التسوق</h2>
-      <button class="icon-btn" id="close-cart-btn" aria-label="إغلاق السلة">
-        <i class="fas fa-times" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="cart-body" id="cart-body">
-      <div class="cart-empty-state">
-        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-        <p data-i18n="cart_empty">السلة فارغة حالياً</p>
-      </div>
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total-row">
-        <span data-i18n="cart_total">المجموع</span>
-        <span class="cart-total-amount" id="cart-total">$0</span>
-      </div>
-      <button class="checkout-btn" id="checkout-btn" disabled data-i18n="cart_checkout">
-        إتمام الشراء
-      </button>
-    </div>
-  </aside>
-
-  <!-- ==============================================================
-       MAIN CONTENT
-  ============================================================== -->
-
-  <main id="main-content">
-
-```
-<!-- HERO ─────────────────────────────────────────────────── -->
-<section class="hero" aria-label="العرض الرئيسي">
-  <div class="hero-bg" role="img" aria-label="مجوهرات فاخرة"></div>
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-inner container">
-    <div class="hero-content">
-      <p class="hero-eyebrow t-eyebrow" data-i18n="hero_eyebrow">Édition Limitée · 2026</p>
-      <h1 class="hero-title t-display" data-i18n="hero_title">
-        L'ÉCLAT<br><em>de Diamant</em>
-      </h1>
-      <p class="hero-desc" data-i18n="hero_desc">
-        مجموعة حصرية من أرقى الألماس — مصممة لتعبّر عن أناقتك الأبدية
-      </p>
-      <div class="hero-actions">
-        <a href="#products-section" class="btn btn-gold" data-i18n="hero_cta_primary">
-          اكتشف المجموعة
-        </a>
-        <button class="btn btn-ghost" data-i18n="hero_cta_secondary">
-          <i class="fas fa-play" style="font-size: 0.75rem;" aria-hidden="true"></i>
-          <span>شاهد الفيديو</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORIES ───────────────────────────────────────────── -->
-<div class="container">
-  <div class="ornament-divider">
-    <span data-i18n="categories_label">التصنيفات</span>
-  </div>
-  <div class="categories-row" role="group" aria-label="تصفية حسب الفئة" id="category-filter">
-    <button class="cat-pill is-active" data-category="all" data-i18n="cat_all">الكل</button>
-    <button class="cat-pill" data-category="ring"     data-i18n="cat_ring">خواتم</button>
-    <button class="cat-pill" data-category="earring"  data-i18n="cat_earring">أقراط</button>
-    <button class="cat-pill" data-category="necklace" data-i18n="cat_necklace">قلادات</button>
-    <button class="cat-pill" data-category="bracelet" data-i18n="cat_bracelet">أساور</button>
-    <button class="cat-pill" data-category="collar"   data-i18n="cat_collar">أطواق</button>
-  </div>
-</div>
-
-<!-- PRODUCTS ─────────────────────────────────────────────── -->
-<section class="products-section container" id="products-section" aria-labelledby="products-heading">
-  <div class="section-header" data-aos="fade-up">
-    <p class="eyebrow t-eyebrow" data-i18n="products_eyebrow">تصاميم حصرية · أحجار كريمة نادرة</p>
-    <h2 id="products-heading" data-i18n="products_heading">NOS CRÉATIONS</h2>
-  </div>
-  <!-- Product cards are rendered by JS from PRODUCT_DATA -->
-  <div class="products-grid" id="products-grid" role="list" aria-label="قائمة المنتجات"></div>
-</section>
-
-<!-- FEATURES ─────────────────────────────────────────────── -->
-<section class="features-section container" aria-labelledby="features-heading">
-  <h2 id="features-heading" class="visually-hidden" data-i18n="features_heading">مميزاتنا</h2>
-  <div class="features-grid">
-    <article class="feature-card" data-aos="fade-up">
-      <div class="feature-icon" aria-hidden="true"><i class="fas fa-truck"></i></div>
-      <h3 data-i18n="feat_ship_title">شحن فاخر</h3>
-      <p data-i18n="feat_ship_desc">توصيل معزول وآمن مع تأمين شامل حتى باب منزلك</p>
-    </article>
-    <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="feature-icon" aria-hidden="true"><i class="fas fa-gem"></i></div>
-      <h3 data-i18n="feat_cert_title">أحجار معتمدة</h3>
-      <p data-i18n="feat_cert_desc">شهادات دولية من كبرى المعامل العالمية المعتمدة</p>
-    </article>
-    <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="feature-icon" aria-hidden="true"><i class="fas fa-infinity"></i></div>
-      <h3 data-i18n="feat_warranty_title">ضمان مدى الحياة</h3>
-      <p data-i18n="feat_warranty_desc">صيانة مجانية وتنظيف دوري بدون أي تكاليف إضافية</p>
-    </article>
-    <article class="feature-card" data-aos="fade-up" data-aos-delay="300">
-      <div class="feature-icon" aria-hidden="true"><i class="fas fa-undo-alt"></i></div>
-      <h3 data-i18n="feat_return_title">إرجاع مرن</h3>
-      <p data-i18n="feat_return_desc">سياسة إرجاع واسترجاع لمدة 30 يوماً بدون قيود</p>
-    </article>
-  </div>
-</section>
-
-<!-- NEWSLETTER ───────────────────────────────────────────── -->
-<section class="newsletter-section container" aria-labelledby="newsletter-heading">
-  <div class="newsletter-inner" data-aos="fade-up">
-    <h2 id="newsletter-heading" data-i18n="newsletter_heading">L'ART DE VIVRE</h2>
-    <p data-i18n="newsletter_desc">اشترك في نشرتنا لتصلك أحدث المجموعات والعروض الحصرية قبل الجميع</p>
-    <div class="newsletter-form" role="form" aria-label="النشرة البريدية">
-      <input type="email"
-             class="newsletter-input"
-             id="newsletter-input"
-             data-i18n-placeholder="newsletter_placeholder"
-             placeholder="بريدك الإلكتروني"
-             autocomplete="email"
-             aria-label="البريد الإلكتروني" />
-      <button class="btn btn-gold" id="newsletter-btn" type="button" data-i18n="newsletter_btn">
-        اشتراك
-      </button>
-    </div>
-    <p class="newsletter-msg" id="newsletter-msg" role="status" aria-live="polite"></p>
-  </div>
-</section>
-```
-
-  </main>
-
-  <!-- ==============================================================
-       FOOTER
-  ============================================================== -->
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-upper">
-        <div class="footer-brand brand">
-          <span class="brand-name">L'ÉCLAT</span>
-          <span class="brand-tagline" data-i18n="footer_tagline">Haute Joaillerie · Est. 2010</span>
+<body class="dark-mode" dir="rtl">
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>L'ÉCLAT</h1>
+                <p>HAUTE JOAILLERIE</p>
+            </div>
+            <nav class="nav-menu" id="desktopNav">
+                <a href="#" data-key="nav_home">الرئيسية</a>
+                <a href="#" data-key="nav_collections">المجموعات</a>
+                <a href="#" data-key="nav_about">عن الدار</a>
+                <a href="#" data-key="nav_craftsmanship">الحرفية</a>
+                <a href="#" data-key="nav_boutiques">معارضنا</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+            <div class="nav-controls">
+                <div class="language-select">
+                    <button class="language-btn" id="languageBtn" aria-label="تغيير اللغة"><i class="fas fa-globe"></i> <span id="current-lang">AR</span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
+                </div>
+                <button class="icon-btn" id="searchBtn" aria-label="بحث"><i class="fas fa-search"></i></button>
+                <button class="icon-btn" id="userBtn" aria-label="حسابي"><i class="fas fa-user"></i></button>
+                <button class="icon-btn cart-btn" id="cartBtn" aria-label="السلة"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+                <button class="icon-btn" id="themeToggle" aria-label="تبديل الوضع"><i class="fas fa-sun"></i></button>
+            </div>
         </div>
-        <nav class="footer-links-row" aria-label="روابط مهمة">
-          <a href="#" class="footer-link-card" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-            <span data-i18n="footer_privacy">سياسة الخصوصية</span>
-          </a>
-          <a href="#" class="footer-link-card" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
-            <span data-i18n="footer_returns">سياسة الإرجاع</span>
-          </a>
-          <a href="#" class="footer-link-card" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-file-contract" aria-hidden="true"></i>
-            <span data-i18n="footer_terms">الشروط والأحكام</span>
-          </a>
-          <a href="#" class="footer-link-card" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            <span data-i18n="footer_contact">تواصل معنا</span>
-          </a>
-        </nav>
-      </div>
-      <div class="footer-lower">
-        <p>© 2026 <span class="gold">L'ÉCLAT</span> — Haute Joaillerie. <span data-i18n="footer_rights">جميع الحقوق محفوظة.</span></p>
-        <p style="color: var(--txt-muted); font-size: 0.72rem;">Crafted with precision · Made in France</p>
-      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-mobile" id="closeMobile"><i class="fas fa-times"></i></button>
+        <a href="#" data-key="nav_home">الرئيسية</a>
+        <a href="#" data-key="nav_collections">المجموعات</a>
+        <a href="#" data-key="nav_about">عن الدار</a>
+        <a href="#" data-key="nav_craftsmanship">الحرفية</a>
+        <a href="#" data-key="nav_boutiques">معارضنا</a>
     </div>
-  </footer>
 
-  <!-- Back to top -->
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-header">
+                <h3 data-key="search_title">بحث</h3>
+                <button class="close-search" id="closeSearch"><i class="fas fa-times"></i></button>
+            </div>
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن خاتم، عقد، سوار...">
+            <ul class="search-suggestions" id="searchSuggestions"></ul>
+        </div>
+    </div>
 
-  <button id="back-to-top" aria-label="العودة إلى الأعلى" data-i18n-label="back_to_top">
-    <i class="fas fa-chevron-up" aria-hidden="true"></i>
-  </button>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-key="cart_title">سلة التسوق</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total"><span data-key="cart_total">المجموع</span><span id="cartTotal">$0</span></div>
+            <button class="checkout-btn" id="checkoutBtn" data-key="cart_checkout">إتمام الشراء</button>
+        </div>
+    </div>
 
-  <!-- ==============================================================
-       SCRIPTS
-  ============================================================== -->
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                <div class="hero-content" data-aos="fade-left">
+                    <div class="hero-subtitle" data-key="hero_subtitle">ÉDITION LIMITÉE</div>
+                    <h1 class="hero-title" data-key="hero_title">L'ÉCLAT<br>DE DIAMANT</h1>
+                    <p class="hero-desc" data-key="hero_desc">مجموعة حصرية من أرقى الألماس المصمم ليعبر عن أناقتك</p>
+                    <div>
+                        <a href="#" class="btn" data-key="hero_btn1">اكتشف المجموعة</a>
+                        <a href="#" class="btn btn-outline" data-key="hero_btn2">شاهد الفيديو</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Categories -->
+        <div class="container">
+            <div class="categories" id="categoriesContainer">
+                <button class="category-pill active" data-category="all" data-key="cat_all">الكل</button>
+                <button class="category-pill" data-category="rings" data-key="cat_rings">خواتم</button>
+                <button class="category-pill" data-category="earrings" data-key="cat_earrings">أقراط</button>
+                <button class="category-pill" data-category="necklaces" data-key="cat_necklaces">قلادات</button>
+                <button class="category-pill" data-category="bracelets" data-key="cat_bracelets">أساور</button>
+                <button class="category-pill" data-category="watches" data-key="cat_watches">ساعات</button>
+            </div>
+        </div>
 
-  <script data-cfasync='false'>
-  (function () {
-    'use strict';
+        <!-- Products Section -->
+        <section class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 data-key="products_title">NOS CRÉATIONS</h2>
+                <p data-key="products_subtitle">تصاميم حصرية | أحجار كريمة نادرة</p>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </section>
 
-    /* ==============================================================
-       SECTION A: TRANSLATIONS
-    ============================================================== */
-    var TRANSLATIONS = {
-      ar: {
-        skip_link: 'تخطى إلى المحتوى الرئيسي',
-        nav_home: 'الرئيسية',
-        nav_collections: 'المجموعات',
-        nav_about: 'عن الدار',
-        nav_craft: 'الحرفية',
-        nav_stores: 'معارضنا',
-        hero_eyebrow: 'إصدار محدود · 2026',
-        hero_title: 'L\'ÉCLAT<br><em>de Diamant</em>',
-        hero_desc: 'مجموعة حصرية من أرقى الألماس — مصممة لتعبّر عن أناقتك الأبدية',
-        hero_cta_primary: 'اكتشف المجموعة',
-        hero_cta_secondary: 'شاهد الفيديو',
-        categories_label: 'التصنيفات',
-        cat_all: 'الكل',
-        cat_ring: 'خواتم',
-        cat_earring: 'أقراط',
-        cat_necklace: 'قلادات',
-        cat_bracelet: 'أساور',
-        cat_collar: 'أطواق',
-        products_eyebrow: 'تصاميم حصرية · أحجار كريمة نادرة',
-        products_heading: 'NOS CRÉATIONS',
-        features_heading: 'مميزاتنا',
-        feat_ship_title: 'شحن فاخر',
-        feat_ship_desc: 'توصيل معزول وآمن مع تأمين شامل حتى باب منزلك',
-        feat_cert_title: 'أحجار معتمدة',
-        feat_cert_desc: 'شهادات دولية من كبرى المعامل العالمية المعتمدة',
-        feat_warranty_title: 'ضمان مدى الحياة',
-        feat_warranty_desc: 'صيانة مجانية وتنظيف دوري بدون أي تكاليف إضافية',
-        feat_return_title: 'إرجاع مرن',
-        feat_return_desc: 'سياسة إرجاع واسترجاع لمدة 30 يوماً بدون قيود',
-        newsletter_heading: 'L\'ART DE VIVRE',
-        newsletter_desc: 'اشترك في نشرتنا لتصلك أحدث المجموعات والعروض الحصرية قبل الجميع',
-        newsletter_placeholder: 'بريدك الإلكتروني',
-        newsletter_btn: 'اشتراك',
-        newsletter_success: '✓ تم الاشتراك بنجاح! شكراً لك',
-        newsletter_error_empty: '⚠ الرجاء إدخال بريدك الإلكتروني',
-        newsletter_error_invalid: '⚠ الرجاء إدخال بريد إلكتروني صحيح',
-        footer_tagline: 'Haute Joaillerie · Est. 2010',
-        footer_privacy: 'سياسة الخصوصية',
-        footer_returns: 'سياسة الإرجاع',
-        footer_terms: 'الشروط والأحكام',
-        footer_contact: 'تواصل معنا',
-        footer_rights: 'جميع الحقوق محفوظة.',
-        back_to_top: 'العودة إلى الأعلى',
-        cart_title: 'سلة التسوق',
-        cart_empty: 'السلة فارغة حالياً',
-        cart_total: 'المجموع',
-        cart_checkout: 'إتمام الشراء',
-        cart_remove: 'إزالة',
-        toast_added: '✓ تمت الإضافة إلى السلة',
-        quick_view: 'نظرة سريعة',
-        add_to_cart: 'أضف للسلة',
-        search_placeholder: 'ابحث عن خاتم، عقد، سوار...',
-        search_no_results: 'لا توجد نتائج',
-        product_cat_ring: 'خاتم',
-        product_cat_earring: 'أقراط',
-        product_cat_necklace: 'عقد',
-        product_cat_bracelet: 'سوار',
-        product_cat_collar: 'طوق',
-      },
-      en: {
-        skip_link: 'Skip to main content',
-        nav_home: 'Home',
-        nav_collections: 'Collections',
-        nav_about: 'About',
-        nav_craft: 'Craftsmanship',
-        nav_stores: 'Boutiques',
-        hero_eyebrow: 'Limited Edition · 2026',
-        hero_title: 'L\'ÉCLAT<br><em>de Diamant</em>',
-        hero_desc: 'An exclusive collection of the finest diamonds — crafted to express your timeless elegance',
-        hero_cta_primary: 'Explore Collection',
-        hero_cta_secondary: 'Watch Film',
-        categories_label: 'Categories',
-        cat_all: 'All',
-        cat_ring: 'Rings',
-        cat_earring: 'Earrings',
-        cat_necklace: 'Necklaces',
-        cat_bracelet: 'Bracelets',
-        cat_collar: 'Collars',
-        products_eyebrow: 'Exclusive Designs · Rare Gemstones',
-        products_heading: 'NOS CRÉATIONS',
-        features_heading: 'Our Promise',
-        feat_ship_title: 'Luxury Shipping',
-        feat_ship_desc: 'Fully insured, secure delivery straight to your door',
-        feat_cert_title: 'Certified Stones',
-        feat_cert_desc: 'International certificates from leading global laboratories',
-        feat_warranty_title: 'Lifetime Warranty',
-        feat_warranty_desc: 'Free maintenance and regular cleaning at no extra cost',
-        feat_return_title: 'Flexible Returns',
-        feat_return_desc: 'Hassle-free returns and exchanges within 30 days',
-        newsletter_heading: 'L\'ART DE VIVRE',
-        newsletter_desc: 'Subscribe to receive our latest collections and exclusive offers first',
-        newsletter_placeholder: 'Your email address',
-        newsletter_btn: 'Subscribe',
-        newsletter_success: '✓ Successfully subscribed! Thank you.',
-        newsletter_error_empty: '⚠ Please enter your email address',
-        newsletter_error_invalid: '⚠ Please enter a valid email address',
-        footer_tagline: 'Haute Joaillerie · Est. 2010',
-        footer_privacy: 'Privacy Policy',
-        footer_returns: 'Return Policy',
-        footer_terms: 'Terms & Conditions',
-        footer_contact: 'Contact Us',
-        footer_rights: 'All rights reserved.',
-        back_to_top: 'Back to top',
-        cart_title: 'Shopping Cart',
-        cart_empty: 'Your cart is empty',
-        cart_total: 'Total',
-        cart_checkout: 'Proceed to Checkout',
-        cart_remove: 'Remove',
-        toast_added: '✓ Added to cart',
-        quick_view: 'Quick View',
-        add_to_cart: 'Add to Cart',
-        search_placeholder: 'Search for rings, necklaces, bracelets...',
-        search_no_results: 'No results found',
-        product_cat_ring: 'Ring',
-        product_cat_earring: 'Earrings',
-        product_cat_necklace: 'Necklace',
-        product_cat_bracelet: 'Bracelet',
-        product_cat_collar: 'Collar',
-      },
-      fr: {
-        skip_link: 'Accéder au contenu principal',
-        nav_home: 'Accueil',
-        nav_collections: 'Collections',
-        nav_about: 'La Maison',
-        nav_craft: 'Savoir-Faire',
-        nav_stores: 'Boutiques',
-        hero_eyebrow: 'Édition Limitée · 2026',
-        hero_title: 'L\'ÉCLAT<br><em>de Diamant</em>',
-        hero_desc: 'Une collection exclusive des plus beaux diamants — conçue pour exprimer votre élégance éternelle',
-        hero_cta_primary: 'Découvrir la Collection',
-        hero_cta_secondary: 'Voir le Film',
-        categories_label: 'Catégories',
-        cat_all: 'Tout',
-        cat_ring: 'Bagues',
-        cat_earring: 'Boucles',
-        cat_necklace: 'Colliers',
-        cat_bracelet: 'Bracelets',
-        cat_collar: 'Tours de cou',
-        products_eyebrow: 'Créations Exclusives · Pierres Rares',
-        products_heading: 'NOS CRÉATIONS',
-        features_heading: 'Notre Promesse',
-        feat_ship_title: 'Livraison Luxe',
-        feat_ship_desc: 'Livraison sécurisée et assurée jusqu\'à votre porte',
-        feat_cert_title: 'Pierres Certifiées',
-        feat_cert_desc: 'Certificats internationaux des plus grands laboratoires',
-        feat_warranty_title: 'Garantie à Vie',
-        feat_warranty_desc: 'Entretien gratuit et nettoyage régulier sans frais supplémentaires',
-        feat_return_title: 'Retours Flexibles',
-        feat_return_desc: 'Politique de retour et d\'échange sous 30 jours sans conditions',
-        newsletter_heading: 'L\'ART DE VIVRE',
-        newsletter_desc: 'Abonnez-vous pour recevoir nos dernières collections et offres exclusives en avant-première',
-        newsletter_placeholder: 'Votre adresse e-mail',
-        newsletter_btn: 'S\'abonner',
-        newsletter_success: '✓ Abonnement réussi ! Merci.',
-        newsletter_error_empty: '⚠ Veuillez saisir votre adresse e-mail',
-        newsletter_error_invalid: '⚠ Veuillez saisir une adresse e-mail valide',
-        footer_tagline: 'Haute Joaillerie · Fondée en 2010',
-        footer_privacy: 'Politique de Confidentialité',
-        footer_returns: 'Politique de Retour',
-        footer_terms: 'Conditions Générales',
-        footer_contact: 'Nous Contacter',
-        footer_rights: 'Tous droits réservés.',
-        back_to_top: 'Retour en haut',
-        cart_title: 'Panier',
-        cart_empty: 'Votre panier est vide',
-        cart_total: 'Total',
-        cart_checkout: 'Passer la Commande',
-        cart_remove: 'Retirer',
-        toast_added: '✓ Ajouté au panier',
-        quick_view: 'Aperçu',
-        add_to_cart: 'Ajouter au Panier',
-        search_placeholder: 'Rechercher une bague, un collier...',
-        search_no_results: 'Aucun résultat',
-        product_cat_ring: 'Bague',
-        product_cat_earring: 'Boucles d\'oreilles',
-        product_cat_necklace: 'Collier',
-        product_cat_bracelet: 'Bracelet',
-        product_cat_collar: 'Tour de cou',
-      }
-    };
+        <!-- Features -->
+        <section class="container">
+            <div class="features">
+                <div class="feature-item" data-aos="fade-up"><i class="fas fa-truck"></i><h4 data-key="feature1_title">شحن فاخر</h4><p data-key="feature1_desc">توصيل معزول وآمن مع تأمين كامل</p></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-gem"></i><h4 data-key="feature2_title">أحجار معتمدة</h4><p data-key="feature2_desc">شهادات دولية من كبرى المعامل</p></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-clock"></i><h4 data-key="feature3_title">ضمان مدى الحياة</h4><p data-key="feature3_desc">صيانة مجانية وتنظيف دوري</p></div>
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-undo-alt"></i><h4 data-key="feature4_title">إرجاع 30 يوم</h4><p data-key="feature4_desc">سياسة مرنة لاسترجاع القطع</p></div>
+            </div>
+        </section>
 
-    /* ==============================================================
-       SECTION B: PRODUCT DATA
-    ============================================================== */
-    var PRODUCT_DATA = [
-      {
-        id: '1',
-        name: 'SOLITAIRE',
-        category: 'ring',
-        price: 2450,
-        badge: 'NEW',
-        img: 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_ring'
-      },
-      {
-        id: '2',
-        name: 'PERLES ROYALES',
-        category: 'necklace',
-        price: 3890,
-        badge: null,
-        img: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_necklace'
-      },
-      {
-        id: '3',
-        name: 'OR SCULPTÉ',
-        category: 'bracelet',
-        price: 1890,
-        badge: null,
-        img: 'https://images.unsplash.com/photo-1611085583191-55c4a2c2a9c2?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_bracelet'
-      },
-      {
-        id: '4',
-        name: 'DIAMANTS ÉTINCELLANTS',
-        category: 'earring',
-        price: 4200,
-        badge: 'BEST',
-        img: 'https://images.unsplash.com/photo-1608042314453-ae338d80c427?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_earring'
-      },
-      {
-        id: '5',
-        name: 'COLLIER BOLD',
-        category: 'collar',
-        price: 5400,
-        badge: null,
-        img: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_collar'
-      },
-      {
-        id: '6',
-        name: 'ÉMERAUDE IMPÉRIALE',
-        category: 'ring',
-        price: 6800,
-        badge: 'RARE',
-        img: 'https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=634&q=80',
-        altKey: 'product_cat_ring'
-      }
-    ];
+        <!-- Newsletter -->
+        <section class="container">
+            <div class="newsletter" data-aos="flip-up">
+                <h3 data-key="newsletter_title">L'ART DE VIVRE</h3>
+                <p data-key="newsletter_desc">اشترك في نشرتنا البريدية لتصلك أحدث المجموعات والعروض الحصرية</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="بريدك الإلكتروني" data-key="newsletter_placeholder">
+                    <button type="submit" data-key="newsletter_btn">اشتراك</button>
+                </form>
+                <div id="newsletterMessage" style="margin-top:15px; font-size:0.9rem;"></div>
+            </div>
+        </section>
+    </main>
 
-    /* ==============================================================
-       SECTION C: LANGUAGE SYSTEM
-    ============================================================== */
-    var currentLang = 'ar';
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <div class="footer-link-item"><a href="privacy.html"><i class="fas fa-shield-alt"></i><span data-key="footer_privacy">سياسة الخصوصية</span></a></div>
+                <div class="footer-link-item"><a href="returns.html"><i class="fas fa-exchange-alt"></i><span data-key="footer_returns">سياسة الاسترجاع</span></a></div>
+                <div class="footer-link-item"><a href="terms.html"><i class="fas fa-file-contract"></i><span data-key="footer_terms">الشروط والأحكام</span></a></div>
+                <div class="footer-link-item"><a href="contact.html"><i class="fas fa-envelope"></i><span data-key="footer_contact">اتصل بنا</span></a></div>
+            </div>
+            <div class="copyright"><p data-key="copyright">© 2026 L'ÉCLAT - HAUTE JOAILLERIE. جميع الحقوق محفوظة</p></div>
+        </div>
+    </footer>
 
-    function loadLang() {
-      var saved = null;
-      try { saved = localStorage.getItem('leclat-lang'); } catch (e) {}
-      if (saved && TRANSLATIONS[saved]) { currentLang = saved; }
-    }
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
-    function saveLang(lang) {
-      try { localStorage.setItem('leclat-lang', lang); } catch (e) {}
-    }
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // ---------- PRODUCTS DATA ----------
+        const products = [
+            { id: "1", name: { ar: "خاتم ألماس سوليتير", en: "Solitaire Diamond Ring", fr: "Bague Solitaire Diamant" }, category: "rings", price: 2450, image: "https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" },
+            { id: "2", name: { ar: "عقد لؤلؤ طبيعي", en: "Natural Pearl Necklace", fr: "Collier de Perles Naturelles" }, category: "necklaces", price: 3890, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" },
+            { id: "3", name: { ar: "سوار ذهب مطروق", en: "Hammered Gold Bracelet", fr: "Bracelet Or Martelé" }, category: "bracelets", price: 1890, image: "https://images.unsplash.com/photo-1611085583191-55c4a2c2a9c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" },
+            { id: "4", name: { ar: "أقراط ماس متدلية", en: "Diamond Drop Earrings", fr: "Boucles d'oreilles Diamant" }, category: "earrings", price: 4200, image: "https://images.unsplash.com/photo-1608042314453-ae338d80c427?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" },
+            { id: "5", name: { ar: "طوق ذهبي عصري", en: "Modern Gold Collar", fr: "Collier Or Moderne" }, category: "necklaces", price: 5400, image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" },
+            { id: "6", name: { ar: "خاتم زمرد ملكي", en: "Royal Emerald Ring", fr: "Bague Émeraude Royale" }, category: "rings", price: 6800, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" }
+        ];
 
-    function t(key) {
-      var lang = TRANSLATIONS[currentLang] || TRANSLATIONS['ar'];
-      return lang[key] || TRANSLATIONS['ar'][key] || key;
-    }
-
-    function applyLanguage(lang) {
-      if (!TRANSLATIONS[lang]) { return; }
-      currentLang = lang;
-      saveLang(lang);
-
-      var isRTL = (lang === 'ar');
-      document.documentElement.lang = lang;
-      document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
-      document.body.style.fontFamily = isRTL ? 'var(--font-body-ar)' : 'var(--font-body-en)';
-
-      /* Update all data-i18n elements */
-      var els = document.querySelectorAll('[data-i18n]');
-      for (var i = 0; i < els.length; i++) {
-        var el = els[i];
-        var key = el.getAttribute('data-i18n');
-        var val = t(key);
-        /* Allow HTML (for hero title with em tag) */
-        if (key === 'hero_title') {
-          el.innerHTML = val;
-        } else {
-          el.textContent = val;
-        }
-      }
-
-      /* Update placeholder texts */
-      var placeholderEls = document.querySelectorAll('[data-i18n-placeholder]');
-      for (var j = 0; j < placeholderEls.length; j++) {
-        var pEl = placeholderEls[j];
-        pEl.placeholder = t(pEl.getAttribute('data-i18n-placeholder'));
-      }
-
-      /* Update aria-labels that are language-dependent */
-      var backTopBtn = document.getElementById('back-to-top');
-      if (backTopBtn) { backTopBtn.setAttribute('aria-label', t('back_to_top')); }
-
-      /* Update lang menu aria-current */
-      var langLinks = document.querySelectorAll('.lang-menu a');
-      for (var k = 0; k < langLinks.length; k++) {
-        langLinks[k].setAttribute('aria-current', langLinks[k].getAttribute('data-lang') === lang ? 'true' : 'false');
-      }
-
-      /* Update lang label in button */
-      var labelEl = document.getElementById('lang-label');
-      if (labelEl) { labelEl.textContent = lang.toUpperCase(); }
-
-      /* Re-render products and cart with new language strings */
-      renderProducts(currentFilter);
-      renderCart();
-    }
-
-    /* ==============================================================
-       SECTION D: THEME SYSTEM
-    ============================================================== */
-    var isDark = true;
-
-    function loadTheme() {
-      var saved = null;
-      try { saved = localStorage.getItem('leclat-theme'); } catch (e) {}
-      isDark = saved !== 'light';
-      applyTheme(isDark ? 'dark' : 'light');
-    }
-
-    function saveTheme(theme) {
-      try { localStorage.setItem('leclat-theme', theme); } catch (e) {}
-    }
-
-    function applyTheme(theme) {
-      isDark = (theme === 'dark');
-      document.body.setAttribute('data-theme', theme);
-      var btn = document.getElementById('theme-btn');
-      if (btn) {
-        btn.innerHTML = isDark
-          ? '<i class="fas fa-sun" aria-hidden="true"></i>'
-          : '<i class="fas fa-moon" aria-hidden="true"></i>';
-        btn.setAttribute('aria-label', isDark ? 'تفعيل الوضع الفاتح' : 'تفعيل الوضع الداكن');
-      }
-    }
-
-    /* ==============================================================
-       SECTION E: PRODUCT RENDERING & FILTERING
-    ============================================================== */
-    var currentFilter = 'all';
-
-    function renderProducts(filter) {
-      currentFilter = filter;
-      var grid = document.getElementById('products-grid');
-      if (!grid) { return; }
-
-      var filtered = PRODUCT_DATA.filter(function (p) {
-        return filter === 'all' || p.category === filter;
-      });
-
-      /* Clear grid */
-      grid.innerHTML = '';
-
-      if (filtered.length === 0) {
-        var noMsg = document.createElement('div');
-        noMsg.className = 'no-results-msg';
-        noMsg.setAttribute('role', 'alert');
-        noMsg.innerHTML = '<i class="fas fa-gem" aria-hidden="true"></i><p>' + t('search_no_results') + '</p>';
-        grid.appendChild(noMsg);
-        return;
-      }
-
-      filtered.forEach(function (product, idx) {
-        var catLabel = t('product_cat_' + product.category);
-        var card = document.createElement('article');
-        card.className = 'product-card';
-        card.setAttribute('role', 'listitem');
-        card.setAttribute('data-id', product.id);
-        card.setAttribute('data-category', product.category);
-        card.setAttribute('data-aos', 'fade-up');
-        card.setAttribute('data-aos-delay', String(Math.min(idx % 3, 2) * 80));
-
-        var badgeHTML = product.badge
-          ? '<span class="product-badge">' + product.badge + '</span>'
-          : '';
-
-        card.innerHTML =
-          '<div class="product-img-wrap">' +
-            '<img src="' + product.img + '" alt="' + product.name + ' — ' + catLabel + '" loading="lazy" />' +
-            badgeHTML +
-            '<div class="product-quick-overlay" aria-hidden="true">' +
-              '<span class="quick-view-label">' + t('quick_view') + '</span>' +
-            '</div>' +
-          '</div>' +
-          '<div class="product-body">' +
-            '<p class="product-cat-label">' + catLabel + '</p>' +
-            '<h3 class="product-name t-display">' + product.name + '</h3>' +
-            '<p class="product-price">$' + product.price.toLocaleString() + '</p>' +
-            '<button class="btn-add" ' +
-              'aria-label="' + t('add_to_cart') + ' ' + product.name + '">' +
-              '<i class="fas fa-plus" aria-hidden="true"></i>' +
-              t('add_to_cart') +
-            '</button>' +
-          '</div>';
-
-        /* Attach add-to-cart event */
-        var addBtn = card.querySelector('.btn-add');
-        (function (p) {
-          addBtn.onclick = function () {
-            cartAddItem(p.id, p.name, p.price, p.img);
-            showToast(t('toast_added'), 'success');
-            /* Bump badge animation */
-            var badge = document.getElementById('cart-badge');
-            if (badge) {
-              badge.classList.remove('bump');
-              void badge.offsetWidth; /* reflow */
-              badge.classList.add('bump');
+        // ---------- TRANSLATIONS ----------
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية", nav_collections: "المجموعات", nav_about: "عن الدار", nav_craftsmanship: "الحرفية", nav_boutiques: "معارضنا",
+                hero_subtitle: "ÉDITION LIMITÉE", hero_title: "L'ÉCLAT<br>DE DIAMANT", hero_desc: "مجموعة حصرية من أرقى الألماس المصمم ليعبر عن أناقتك",
+                hero_btn1: "اكتشف المجموعة", hero_btn2: "شاهد الفيديو",
+                cat_all: "الكل", cat_rings: "خواتم", cat_earrings: "أقراط", cat_necklaces: "قلادات", cat_bracelets: "أساور", cat_watches: "ساعات",
+                products_title: "NOS CRÉATIONS", products_subtitle: "تصاميم حصرية | أحجار كريمة نادرة",
+                feature1_title: "شحن فاخر", feature1_desc: "توصيل معزول وآمن مع تأمين كامل",
+                feature2_title: "أحجار معتمدة", feature2_desc: "شهادات دولية من كبرى المعامل",
+                feature3_title: "ضمان مدى الحياة", feature3_desc: "صيانة مجانية وتنظيف دوري",
+                feature4_title: "إرجاع 30 يوم", feature4_desc: "سياسة مرنة لاسترجاع القطع",
+                newsletter_title: "L'ART DE VIVRE", newsletter_desc: "اشترك في نشرتنا البريدية لتصلك أحدث المجموعات والعروض الحصرية",
+                newsletter_placeholder: "بريدك الإلكتروني", newsletter_btn: "اشتراك",
+                footer_privacy: "سياسة الخصوصية", footer_returns: "سياسة الاسترجاع", footer_terms: "الشروط والأحكام", footer_contact: "اتصل بنا",
+                copyright: "© 2026 L'ÉCLAT - HAUTE JOAILLERIE. جميع الحقوق محفوظة",
+                search_title: "بحث", search_placeholder: "ابحث عن خاتم، عقد، سوار...",
+                cart_title: "سلة التسوق", cart_total: "المجموع", cart_checkout: "إتمام الشراء", cart_empty: "السلة فارغة",
+                toast_added: "تمت إضافة المنتج إلى السلة", newsletter_success: "تم الاشتراك بنجاح!", newsletter_error: "يرجى إدخال بريد إلكتروني صحيح."
+            },
+            en: {
+                nav_home: "Home", nav_collections: "Collections", nav_about: "About", nav_craftsmanship: "Craftsmanship", nav_boutiques: "Boutiques",
+                hero_subtitle: "LIMITED EDITION", hero_title: "L'ÉCLAT<br>OF DIAMOND", hero_desc: "Exclusive collection of finest diamonds designed to express your elegance",
+                hero_btn1: "Discover", hero_btn2: "Watch Video",
+                cat_all: "All", cat_rings: "Rings", cat_earrings: "Earrings", cat_necklaces: "Necklaces", cat_bracelets: "Bracelets", cat_watches: "Watches",
+                products_title: "OUR CREATIONS", products_subtitle: "Exclusive designs | Rare gemstones",
+                feature1_title: "Luxury Shipping", feature1_desc: "Insulated & secure delivery with full insurance",
+                feature2_title: "Certified Stones", feature2_desc: "International certificates from leading labs",
+                feature3_title: "Lifetime Warranty", feature3_desc: "Free maintenance & periodic cleaning",
+                feature4_title: "30-Day Returns", feature4_desc: "Flexible return policy",
+                newsletter_title: "THE ART OF LIVING", newsletter_desc: "Subscribe to our newsletter to receive latest collections and exclusive offers",
+                newsletter_placeholder: "Your email", newsletter_btn: "Subscribe",
+                footer_privacy: "Privacy Policy", footer_returns: "Returns Policy", footer_terms: "Terms & Conditions", footer_contact: "Contact Us",
+                copyright: "© 2026 L'ÉCLAT - HAUTE JOAILLERIE. All rights reserved",
+                search_title: "Search", search_placeholder: "Search for ring, necklace, bracelet...",
+                cart_title: "Shopping Cart", cart_total: "Total", cart_checkout: "Checkout", cart_empty: "Your cart is empty",
+                toast_added: "Product added to cart", newsletter_success: "Subscribed successfully!", newsletter_error: "Please enter a valid email address."
+            },
+            fr: {
+                nav_home: "Accueil", nav_collections: "Collections", nav_about: "À propos", nav_craftsmanship: "Artisanat", nav_boutiques: "Boutiques",
+                hero_subtitle: "ÉDITION LIMITÉE", hero_title: "L'ÉCLAT<br>DU DIAMANT", hero_desc: "Collection exclusive des plus beaux diamants pour exprimer votre élégance",
+                hero_btn1: "Découvrir", hero_btn2: "Voir la vidéo",
+                cat_all: "Tous", cat_rings: "Bagues", cat_earrings: "Boucles d'oreilles", cat_necklaces: "Colliers", cat_bracelets: "Bracelets", cat_watches: "Montres",
+                products_title: "NOS CRÉATIONS", products_subtitle: "Designs exclusifs | Pierres rares",
+                feature1_title: "Livraison luxueuse", feature1_desc: "Livraison sécurisée avec assurance complète",
+                feature2_title: "Pierres certifiées", feature2_desc: "Certificats internationaux des grands laboratoires",
+                feature3_title: "Garantie à vie", feature3_desc: "Entretien gratuit et nettoyage périodique",
+                feature4_title: "Retours 30 jours", feature4_desc: "Politique de retour flexible",
+                newsletter_title: "L'ART DE VIVRE", newsletter_desc: "Abonnez-vous à notre newsletter pour recevoir les dernières collections et offres exclusives",
+                newsletter_placeholder: "Votre e-mail", newsletter_btn: "S'abonner",
+                footer_privacy: "Politique de confidentialité", footer_returns: "Politique de retour", footer_terms: "Conditions d'utilisation", footer_contact: "Contactez-nous",
+                copyright: "© 2026 L'ÉCLAT - HAUTE JOAILLERIE. Tous droits réservés",
+                search_title: "Rechercher", search_placeholder: "Rechercher une bague, collier, bracelet...",
+                cart_title: "Panier", cart_total: "Total", cart_checkout: "Commander", cart_empty: "Votre panier est vide",
+                toast_added: "Produit ajouté au panier", newsletter_success: "Inscription réussie !", newsletter_error: "Veuillez entrer une adresse e-mail valide."
             }
-          };
-        })(product);
-
-        grid.appendChild(card);
-      });
-
-      /* Refresh AOS if available */
-      if (typeof AOS !== 'undefined' && AOS.refresh) {
-        AOS.refresh();
-      }
-    }
-
-    /* Category filter */
-    function initCategoryFilter() {
-      var filterRow = document.getElementById('category-filter');
-      if (!filterRow) { return; }
-
-      filterRow.addEventListener('click', function (e) {
-        var btn = e.target.closest('.cat-pill');
-        if (!btn) { return; }
-
-        /* Update active state */
-        var pills = filterRow.querySelectorAll('.cat-pill');
-        for (var i = 0; i < pills.length; i++) {
-          pills[i].classList.remove('is-active');
-          pills[i].setAttribute('aria-pressed', 'false');
-        }
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-pressed', 'true');
-
-        renderProducts(btn.getAttribute('data-category') || 'all');
-      });
-
-      /* Set initial aria-pressed */
-      var pills = filterRow.querySelectorAll('.cat-pill');
-      for (var i = 0; i < pills.length; i++) {
-        pills[i].setAttribute('aria-pressed', pills[i].classList.contains('is-active') ? 'true' : 'false');
-      }
-    }
-
-    /* ==============================================================
-       SECTION F: CART SYSTEM
-    ============================================================== */
-    var cartItems = [];
-
-    function loadCart() {
-      try {
-        var raw = localStorage.getItem('leclat-cart');
-        if (raw) {
-          var parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) { cartItems = parsed; }
-        }
-      } catch (e) {
-        cartItems = [];
-      }
-    }
-
-    function saveCart() {
-      try {
-        localStorage.setItem('leclat-cart', JSON.stringify(cartItems));
-      } catch (e) {}
-    }
-
-    function cartAddItem(id, name, price, img) {
-      var idx = -1;
-      for (var i = 0; i < cartItems.length; i++) {
-        if (cartItems[i].id === id) { idx = i; break; }
-      }
-      if (idx > -1) {
-        cartItems[idx].qty += 1;
-      } else {
-        cartItems.push({ id: id, name: name, price: price, img: img, qty: 1 });
-      }
-      saveCart();
-      updateCartBadge();
-      updateCartTotal();
-      renderCart();
-    }
-
-    function cartRemoveItem(id) {
-      cartItems = cartItems.filter(function (item) { return item.id !== id; });
-      saveCart();
-      updateCartBadge();
-      updateCartTotal();
-      renderCart();
-    }
-
-    function cartUpdateQty(id, delta) {
-      for (var i = 0; i < cartItems.length; i++) {
-        if (cartItems[i].id === id) {
-          cartItems[i].qty += delta;
-          if (cartItems[i].qty < 1) {
-            cartItems.splice(i, 1);
-          }
-          break;
-        }
-      }
-      saveCart();
-      updateCartBadge();
-      updateCartTotal();
-      renderCart();
-    }
-
-    function updateCartBadge() {
-      var total = 0;
-      for (var i = 0; i < cartItems.length; i++) { total += cartItems[i].qty; }
-      var badge = document.getElementById('cart-badge');
-      if (badge) { badge.textContent = String(total); }
-    }
-
-    function updateCartTotal() {
-      var total = 0;
-      for (var i = 0; i < cartItems.length; i++) {
-        total += cartItems[i].price * cartItems[i].qty;
-      }
-      var el = document.getElementById('cart-total');
-      if (el) { el.textContent = '$' + total.toLocaleString(); }
-
-      /* Disable/enable checkout button */
-      var checkoutBtn = document.getElementById('checkout-btn');
-      if (checkoutBtn) {
-        checkoutBtn.disabled = (cartItems.length === 0);
-      }
-    }
-
-    function renderCart() {
-      var body = document.getElementById('cart-body');
-      if (!body) { return; }
-
-      if (cartItems.length === 0) {
-        body.innerHTML =
-          '<div class="cart-empty-state">' +
-            '<i class="fas fa-shopping-bag" aria-hidden="true"></i>' +
-            '<p>' + t('cart_empty') + '</p>' +
-          '</div>';
-        return;
-      }
-
-      body.innerHTML = '';
-      cartItems.forEach(function (item) {
-        var itemEl = document.createElement('div');
-        itemEl.className = 'cart-item';
-        itemEl.innerHTML =
-          '<img class="cart-item-img" src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
-          '<div class="cart-item-info">' +
-            '<p class="cart-item-name" title="' + item.name + '">' + item.name + '</p>' +
-            '<p class="cart-item-price">$' + item.price.toLocaleString() + '</p>' +
-            '<div class="cart-qty-row">' +
-              '<button class="qty-btn" data-action="minus" data-id="' + item.id + '" aria-label="تقليل الكمية">−</button>' +
-              '<span class="qty-value" aria-label="الكمية">' + item.qty + '</span>' +
-              '<button class="qty-btn" data-action="plus" data-id="' + item.id + '" aria-label="زيادة الكمية">+</button>' +
-            '</div>' +
-            '<button class="remove-btn" data-id="' + item.id + '">' + t('cart_remove') + '</button>' +
-          '</div>';
-
-        /* Qty buttons */
-        var qtyBtns = itemEl.querySelectorAll('.qty-btn');
-        qtyBtns.forEach(function (btn) {
-          btn.onclick = function () {
-            var delta = btn.getAttribute('data-action') === 'plus' ? 1 : -1;
-            cartUpdateQty(btn.getAttribute('data-id'), delta);
-          };
-        });
-
-        /* Remove button */
-        var removeBtn = itemEl.querySelector('.remove-btn');
-        removeBtn.onclick = function () {
-          cartRemoveItem(removeBtn.getAttribute('data-id'));
         };
 
-        body.appendChild(itemEl);
-      });
-    }
+        let currentLang = localStorage.getItem('lang') || 'ar';
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        let cart = [];
+        let activeCategory = 'all';
 
-    /* ==============================================================
-       SECTION G: BACKDROP & OVERLAY HELPERS
-    ============================================================== */
-    var backdropCallback = null;
-
-    function showBackdrop(onClose) {
-      backdropCallback = onClose || null;
-      var bd = document.getElementById('backdrop');
-      if (bd) { bd.classList.add('is-visible'); }
-    }
-
-    function hideBackdrop() {
-      var bd = document.getElementById('backdrop');
-      if (bd) { bd.classList.remove('is-visible'); }
-      backdropCallback = null;
-    }
-
-    /* Initialise backdrop click handler once */
-    document.addEventListener('DOMContentLoaded', function () {
-      var bd = document.getElementById('backdrop');
-      if (bd) {
-        bd.addEventListener('click', function () {
-          if (typeof backdropCallback === 'function') {
-            backdropCallback();
-          }
-        });
-      }
-    });
-
-    /* ==============================================================
-       SECTION H: CART SIDEBAR OPEN/CLOSE
-    ============================================================== */
-    var cartOpen = false;
-
-    function openCart() {
-      cartOpen = true;
-      var sidebar = document.getElementById('cart-sidebar');
-      var btn = document.getElementById('cart-btn');
-      if (sidebar) {
-        sidebar.classList.add('is-open');
-        sidebar.setAttribute('aria-hidden', 'false');
-        /* Focus close button for accessibility */
-        var closeBtn = document.getElementById('close-cart-btn');
-        if (closeBtn) { setTimeout(function () { closeBtn.focus(); }, 100); }
-      }
-      if (btn) { btn.setAttribute('aria-expanded', 'true'); }
-      showBackdrop(closeCart);
-    }
-
-    function closeCart() {
-      cartOpen = false;
-      var sidebar = document.getElementById('cart-sidebar');
-      var btn = document.getElementById('cart-btn');
-      if (sidebar) {
-        sidebar.classList.remove('is-open');
-        sidebar.setAttribute('aria-hidden', 'true');
-      }
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      }
-      hideBackdrop();
-    }
-
-    /* ==============================================================
-       SECTION I: SEARCH OPEN/CLOSE
-    ============================================================== */
-    var searchOpen = false;
-
-    function openSearch() {
-      searchOpen = true;
-      var modal = document.getElementById('search-modal');
-      var btn = document.getElementById('search-btn');
-      if (modal) {
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        var input = document.getElementById('search-input');
-        if (input) { setTimeout(function () { input.focus(); }, 100); }
-      }
-      if (btn) { btn.setAttribute('aria-expanded', 'true'); }
-      showBackdrop(closeSearch);
-    }
-
-    function closeSearch() {
-      searchOpen = false;
-      var modal = document.getElementById('search-modal');
-      var btn = document.getElementById('search-btn');
-      var input = document.getElementById('search-input');
-      var resultsList = document.getElementById('search-results-list');
-      if (modal) {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      }
-      if (input) { input.value = ''; }
-      if (resultsList) { resultsList.innerHTML = ''; }
-      hideBackdrop();
-    }
-
-    /* Search input handler */
-    function initSearch() {
-      var input = document.getElementById('search-input');
-      var resultsList = document.getElementById('search-results-list');
-      if (!input || !resultsList) { return; }
-
-      input.addEventListener('input', function () {
-        var query = input.value.trim().toLowerCase();
-        resultsList.innerHTML = '';
-
-        if (!query) { return; }
-
-        var matches = PRODUCT_DATA.filter(function (p) {
-          var catLabel = t('product_cat_' + p.category).toLowerCase();
-          return (
-            p.name.toLowerCase().indexOf(query) > -1 ||
-            catLabel.indexOf(query) > -1 ||
-            (p.badge && p.badge.toLowerCase().indexOf(query) > -1)
-          );
-        });
-
-        if (matches.length === 0) {
-          var noItem = document.createElement('li');
-          noItem.className = 'search-no-results';
-          noItem.setAttribute('role', 'option');
-          noItem.textContent = t('search_no_results') + ' "' + input.value.trim() + '"';
-          resultsList.appendChild(noItem);
-          return;
+        // ---------- HELPER FUNCTIONS ----------
+        function t(key) {
+            return translations[currentLang][key] || key;
         }
 
-        matches.slice(0, 6).forEach(function (product) {
-          var li = document.createElement('li');
-          li.className = 'search-result-item';
-          li.setAttribute('role', 'option');
-          li.setAttribute('tabindex', '0');
-          li.innerHTML =
-            '<img src="' + product.img + '" alt="' + product.name + '" />' +
-            '<div class="result-info">' +
-              '<p class="result-name">' + product.name + '</p>' +
-              '<p class="result-price">$' + product.price.toLocaleString() + '</p>' +
-            '</div>';
-
-          function selectResult() {
-            closeSearch();
-            /* Scroll to product card */
-            var card = document.querySelector('[data-id="' + product.id + '"]');
-            if (card) {
-              /* Show all products first */
-              renderProducts('all');
-              /* Update filter pills */
-              var pills = document.querySelectorAll('.cat-pill');
-              for (var i = 0; i < pills.length; i++) {
-                pills[i].classList.remove('is-active');
-                if (pills[i].getAttribute('data-category') === 'all') {
-                  pills[i].classList.add('is-active');
+        function updateTexts() {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (key && translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
                 }
-              }
-              setTimeout(function () {
-                var target = document.querySelector('[data-id="' + product.id + '"]');
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  target.focus();
-                  target.style.outline = '2px solid var(--gold)';
-                  setTimeout(function () { target.style.outline = ''; }, 2000);
+            });
+            document.getElementById('searchInput').placeholder = t('search_placeholder');
+            document.getElementById('current-lang').innerText = currentLang.toUpperCase();
+            document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            if (currentLang === 'ar') document.body.classList.remove('ltr');
+            else document.body.classList.add('ltr');
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsGrid');
+            const filtered = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
+            container.innerHTML = filtered.map(p => `
+                <div class="product-card" data-id="${p.id}" data-category="${p.category}" data-name="${p.name[currentLang]}" data-price="${p.price}" data-image="${p.image}">
+                    <div class="product-image"><img src="${p.image}" alt="${p.name[currentLang]}"><div class="quick-view"><span>${t('quick_view') || 'نظرة سريعة'}</span></div></div>
+                    <div class="product-info"><div class="product-category">${t(`cat_${p.category}`) || p.category}</div><h3 class="product-name">${p.name[currentLang]}</h3><p class="product-price">$${p.price.toLocaleString()}</p><button class="btn-small add-to-cart">${t('add_to_cart') || 'أضف إلى السلة'}</button></div>
+                </div>
+            `).join('');
+            attachAddToCartEvents();
+        }
+
+        function attachAddToCartEvents() {
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.removeEventListener('click', handleAddToCart);
+                btn.addEventListener('click', handleAddToCart);
+            });
+        }
+
+        function handleAddToCart(e) {
+            const card = e.target.closest('.product-card');
+            if (!card) return;
+            const id = card.dataset.id;
+            const name = card.dataset.name;
+            const price = parseFloat(card.dataset.price);
+            const image = card.dataset.image;
+            addToCart(id, name, price, image);
+            showToast(t('toast_added'));
+        }
+
+        function addToCart(id, name, price, image) {
+            const existing = cart.find(i => i.id === id);
+            if (existing) existing.quantity++;
+            else cart.push({ id, name, price, image, quantity: 1 });
+            saveCart();
+            renderCart();
+            updateCartCount();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            saveCart();
+            renderCart();
+            updateCartCount();
+        }
+
+        function updateQuantity(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) removeFromCart(id);
+                else { saveCart(); renderCart(); updateCartCount(); }
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            try {
+                const stored = localStorage.getItem('cart');
+                if (stored) cart = JSON.parse(stored);
+                else cart = [];
+            } catch (e) { cart = []; }
+            renderCart();
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const total = cart.reduce((s, i) => s + i.quantity, 0);
+            document.getElementById('cartCount').innerText = total;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            if (!container) return;
+            if (cart.length === 0) {
+                container.innerHTML = `<div style="text-align:center;padding:40px;">${t('cart_empty')}</div>`;
+                document.getElementById('checkoutBtn').disabled = true;
+            } else {
+                document.getElementById('checkoutBtn').disabled = false;
+                let html = '';
+                cart.forEach(item => {
+                    html += `
+                        <div class="cart-item" data-id="${item.id}">
+                            <img src="${item.image}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">$${item.price.toLocaleString()}</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                                <div class="remove-item" data-id="${item.id}">${t('remove') || 'إزالة'}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+                document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                    btn.onclick = () => updateQuantity(btn.dataset.id, -1);
+                });
+                document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                    btn.onclick = () => updateQuantity(btn.dataset.id, 1);
+                });
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.onclick = () => removeFromCart(btn.dataset.id);
+                });
+            }
+            const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+            document.getElementById('cartTotal').innerText = `$${total.toLocaleString()}`;
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.textContent = msg;
+            toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:12px 24px;border-radius:50px;z-index:1000;box-shadow:var(--shadow);font-weight:bold;';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        // ---------- SEARCH ----------
+        function initSearch() {
+            const modal = document.getElementById('searchModal');
+            const searchBtn = document.getElementById('searchBtn');
+            const closeSearch = document.getElementById('closeSearch');
+            const searchInput = document.getElementById('searchInput');
+            const suggestions = document.getElementById('searchSuggestions');
+
+            searchBtn.onclick = () => { modal.classList.add('show'); searchInput.focus(); };
+            closeSearch.onclick = () => modal.classList.remove('show');
+            modal.onclick = (e) => { if (e.target === modal) modal.classList.remove('show'); };
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modal.classList.remove('show');
+                    document.getElementById('cartSidebar').classList.remove('open');
                 }
-              }, 100);
-            }
-          }
+            });
 
-          li.onclick = selectResult;
-          li.onkeydown = function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              selectResult();
-            }
-          };
-
-          resultsList.appendChild(li);
-        });
-      });
-    }
-
-    /* ==============================================================
-       SECTION J: MOBILE NAVIGATION
-    ============================================================== */
-    var mobileNavOpen = false;
-
-    function openMobileNav() {
-      mobileNavOpen = true;
-      var nav = document.getElementById('mobile-nav');
-      var btn = document.getElementById('mobile-menu-btn');
-      if (nav) {
-        nav.classList.add('is-open');
-        nav.setAttribute('aria-hidden', 'false');
-        var firstLink = nav.querySelector('a');
-        if (firstLink) { setTimeout(function () { firstLink.focus(); }, 100); }
-      }
-      if (btn) { btn.setAttribute('aria-expanded', 'true'); }
-      showBackdrop(closeMobileNav);
-    }
-
-    function closeMobileNav() {
-      mobileNavOpen = false;
-      var nav = document.getElementById('mobile-nav');
-      var btn = document.getElementById('mobile-menu-btn');
-      if (nav) {
-        nav.classList.remove('is-open');
-        nav.setAttribute('aria-hidden', 'true');
-      }
-      if (btn) {
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      }
-      hideBackdrop();
-    }
-
-    /* ==============================================================
-       SECTION K: LANGUAGE DROPDOWN
-    ============================================================== */
-    function initLangDropdown() {
-      var btn = document.getElementById('lang-btn');
-      var menu = document.getElementById('lang-menu');
-      if (!btn || !menu) { return; }
-
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var isOpen = menu.classList.contains('is-open');
-        if (isOpen) {
-          menu.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-        } else {
-          menu.classList.add('is-open');
-          btn.setAttribute('aria-expanded', 'true');
-          /* Focus first option */
-          var firstLink = menu.querySelector('a');
-          if (firstLink) { setTimeout(function () { firstLink.focus(); }, 50); }
-        }
-      });
-
-      /* Language selection */
-      menu.addEventListener('click', function (e) {
-        var link = e.target.closest('a[data-lang]');
-        if (!link) { return; }
-        e.preventDefault();
-        applyLanguage(link.getAttribute('data-lang'));
-        menu.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      });
-
-      /* Close on outside click */
-      document.addEventListener('click', function () {
-        menu.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-
-      /* Keyboard: close on Escape */
-      menu.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          menu.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-          btn.focus();
-        }
-      });
-    }
-
-    /* ==============================================================
-       SECTION L: NEWSLETTER VALIDATION
-    ============================================================== */
-    function validateEmail(email) {
-      /* RFC 5322-aligned regex — more robust than just checking "@" */
-      var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-      return re.test(email);
-    }
-
-    function initNewsletter() {
-      var btn = document.getElementById('newsletter-btn');
-      var input = document.getElementById('newsletter-input');
-      var msg = document.getElementById('newsletter-msg');
-      if (!btn || !input || !msg) { return; }
-
-      function submit() {
-        var val = input.value.trim();
-        msg.className = 'newsletter-msg';
-
-        if (!val) {
-          msg.textContent = t('newsletter_error_empty');
-          msg.classList.add('error');
-          input.focus();
-          return;
+            searchInput.oninput = () => {
+                const q = searchInput.value.trim().toLowerCase();
+                if (!q) { suggestions.innerHTML = ''; return; }
+                const filtered = products.filter(p => p.name[currentLang].toLowerCase().includes(q) || t(`cat_${p.category}`).toLowerCase().includes(q));
+                suggestions.innerHTML = filtered.map(p => `<li data-id="${p.id}">${p.name[currentLang]} - $${p.price}</li>`).join('');
+                document.querySelectorAll('.search-suggestions li').forEach(li => {
+                    li.onclick = () => {
+                        const productId = li.dataset.id;
+                        const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+                        if (productCard) productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        modal.classList.remove('show');
+                    };
+                });
+            };
         }
 
-        if (!validateEmail(val)) {
-          msg.textContent = t('newsletter_error_invalid');
-          msg.classList.add('error');
-          input.focus();
-          return;
+        // ---------- THEME ----------
+        function applyTheme() {
+            if (currentTheme === 'light') document.body.classList.add('light-mode');
+            else document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', currentTheme);
         }
 
-        /* Success */
-        msg.textContent = t('newsletter_success');
-        msg.classList.add('success');
-        input.value = '';
-        btn.disabled = true;
-        setTimeout(function () {
-          msg.textContent = '';
-          btn.disabled = false;
-        }, 5000);
-      }
+        function toggleTheme() {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme();
+            document.getElementById('themeToggle').innerHTML = currentTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
 
-      btn.addEventListener('click', submit);
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') { submit(); }
-      });
-    }
+        // ---------- LANGUAGE ----------
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            updateTexts();
+            renderProducts();
+            renderCart();
+            // update category buttons active class based on activeCategory already
+            document.querySelectorAll('.category-pill').forEach(btn => {
+                if (btn.dataset.category === activeCategory) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
 
-    /* ==============================================================
-       SECTION M: TOAST SYSTEM
-    ============================================================== */
-    function showToast(message, type) {
-      var container = document.getElementById('toast-container');
-      if (!container) { return; }
+        // ---------- CATEGORY FILTER ----------
+        function setActiveCategory(category) {
+            activeCategory = category;
+            renderProducts();
+            document.querySelectorAll('.category-pill').forEach(btn => {
+                if (btn.dataset.category === category) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
 
-      var toast = document.createElement('div');
-      toast.className = 'toast toast-' + (type || 'success');
-      toast.textContent = message;
-      container.appendChild(toast);
+        // ---------- NEWSLETTER ----------
+        function initNewsletter() {
+            const form = document.getElementById('newsletterForm');
+            const emailInput = document.getElementById('newsletterEmail');
+            const msgDiv = document.getElementById('newsletterMessage');
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                const isValid = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/.test(email);
+                if (!isValid) {
+                    msgDiv.innerHTML = `<span style="color:#ff6b6b;">${t('newsletter_error')}</span>`;
+                    return;
+                }
+                msgDiv.innerHTML = `<span style="color:var(--accent);">${t('newsletter_success')}</span>`;
+                emailInput.value = '';
+                setTimeout(() => msgDiv.innerHTML = '', 3000);
+            };
+        }
 
-      /* Animate in */
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          toast.classList.add('is-visible');
+        // ---------- MOBILE MENU ----------
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const nav = document.getElementById('mobileNav');
+            const close = document.getElementById('closeMobile');
+            btn.onclick = () => nav.classList.add('open');
+            close.onclick = () => nav.classList.remove('open');
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) nav.classList.remove('open');
+            });
+        }
+
+        // ---------- BACK TO TOP ----------
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) btn.classList.add('show');
+                else btn.classList.remove('show');
+            });
+            btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ---------- CART SIDEBAR ----------
+        function initCartSidebar() {
+            const cartBtn = document.getElementById('cartBtn');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const closeCart = document.getElementById('closeCart');
+            cartBtn.onclick = () => cartSidebar.classList.add('open');
+            closeCart.onclick = () => cartSidebar.classList.remove('open');
+        }
+
+        // ---------- INITIALIZE ----------
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+            applyTheme();
+            loadCart();
+            renderProducts();
+            initSearch();
+            initNewsletter();
+            initMobileMenu();
+            initBackToTop();
+            initCartSidebar();
+
+            document.getElementById('themeToggle').onclick = toggleTheme;
+            document.getElementById('languageBtn').onclick = (e) => {
+                e.stopPropagation();
+                document.getElementById('languageDropdown').classList.toggle('show');
+            };
+            document.addEventListener('click', () => document.getElementById('languageDropdown').classList.remove('show'));
+            document.querySelectorAll('.language-dropdown a').forEach(link => {
+                link.onclick = (e) => {
+                    e.preventDefault();
+                    setLanguage(link.dataset.lang);
+                    document.getElementById('languageDropdown').classList.remove('show');
+                };
+            });
+            document.querySelectorAll('.category-pill').forEach(btn => {
+                btn.onclick = () => setActiveCategory(btn.dataset.category);
+            });
+            setLanguage(currentLang);
+            setActiveCategory('all');
         });
-      });
-
-      /* Animate out and remove */
-      setTimeout(function () {
-        toast.classList.remove('is-visible');
-        setTimeout(function () {
-          if (toast.parentNode) { toast.parentNode.removeChild(toast); }
-        }, 400);
-      }, 2800);
-    }
-
-    /* ==============================================================
-       SECTION N: GLOBAL KEYBOARD HANDLING
-    ============================================================== */
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') { return; }
-      if (searchOpen) { closeSearch(); return; }
-      if (cartOpen)   { closeCart();   return; }
-      if (mobileNavOpen) { closeMobileNav(); return; }
-    });
-
-    /* ==============================================================
-       SECTION O: BACK TO TOP
-    ============================================================== */
-    function initBackToTop() {
-      var btn = document.getElementById('back-to-top');
-      if (!btn) { return; }
-
-      window.addEventListener('scroll', function () {
-        btn.classList.toggle('is-visible', window.scrollY > 400);
-      }, { passive: true });
-
-      btn.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    /* ==============================================================
-       SECTION P: INIT ALL — DOM READY
-    ============================================================== */
-    document.addEventListener('DOMContentLoaded', function () {
-
-      /* Init AOS if available */
-      if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 740, once: true, offset: 55 });
-      }
-
-      /* Load persisted settings */
-      loadLang();
-      loadTheme();
-      loadCart();
-
-      /* Apply language (also renders products) */
-      applyLanguage(currentLang);
-
-      /* Apply theme */
-      applyTheme(isDark ? 'dark' : 'light');
-
-      /* Cart state */
-      updateCartBadge();
-      updateCartTotal();
-
-      /* Init systems */
-      initCategoryFilter();
-      initSearch();
-      initNewsletter();
-      initLangDropdown();
-      initBackToTop();
-
-      /* Theme toggle */
-      var themeBtn = document.getElementById('theme-btn');
-      if (themeBtn) {
-        themeBtn.addEventListener('click', function () {
-          var next = isDark ? 'light' : 'dark';
-          applyTheme(next);
-          saveTheme(next);
-        });
-      }
-
-      /* Search open/close */
-      var searchBtn = document.getElementById('search-btn');
-      var closeSearchBtn = document.getElementById('close-search-btn');
-      if (searchBtn) { searchBtn.addEventListener('click', openSearch); }
-      if (closeSearchBtn) { closeSearchBtn.addEventListener('click', closeSearch); }
-
-      /* Cart open/close */
-      var cartBtn = document.getElementById('cart-btn');
-      var closeCartBtn = document.getElementById('close-cart-btn');
-      if (cartBtn) { cartBtn.addEventListener('click', openCart); }
-      if (closeCartBtn) { closeCartBtn.addEventListener('click', closeCart); }
-
-      /* Mobile menu */
-      var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', function () {
-          if (mobileNavOpen) { closeMobileNav(); } else { openMobileNav(); }
-        });
-      }
-
-      /* Close mobile nav links on click */
-      var mobileNav = document.getElementById('mobile-nav');
-      if (mobileNav) {
-        mobileNav.addEventListener('click', function (e) {
-          if (e.target.closest('a')) { closeMobileNav(); }
-        });
-      }
-
-      /* Checkout button (placeholder behaviour) */
-      var checkoutBtn = document.getElementById('checkout-btn');
-      if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', function () {
-          if (cartItems.length > 0) {
-            showToast('✓ سيتم توجيهك إلى صفحة الدفع', 'success');
-          }
-        });
-      }
-
-    }); /* end DOMContentLoaded */
-
-  })(); /* end IIFE */
-  </script>
-
+    </script>
 </body>
 </html>
