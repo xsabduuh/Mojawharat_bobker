@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -10,12 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   <style>
+    /* نفس التنسيقات التي في المثال، تم نسخها كاملة */
     :root{
       --gold:#c8a96e;--gold-l:#e2c98c;--gold-dim:rgba(200,169,110,.13);
       --bg:#080807;--bg2:#0f0f0d;--bg3:#161614;--sf:#1c1b18;
       --line:rgba(200,169,110,.13);
       --txt:#f0ebe0;--ts:#a89f8c;--tm:#6a6356;
       --r:16px;--rl:24px;--rp:999px;--hh:68px;
+      --sg:0 12px 40px rgba(200,169,110,.18);
       --tr:.3s cubic-bezier(.4,0,.2,1);
       --fd:'Cormorant Garamond',Georgia,serif;
     }
@@ -26,69 +27,46 @@
     ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px;}
     a{color:inherit;text-decoration:none;} :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
 
-```
-.nav{position:sticky;top:0;z-index:500;height:var(--hh);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);background:rgba(8,8,7,.88);}
-.nav-in{max-width:1300px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.brand{display:flex;flex-direction:column;line-height:1;}
-.bn{font-family:var(--fd);color:var(--gold);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;letter-spacing:clamp(.15em,1.5vw,.45em);text-transform:uppercase;}
-.bs{font-size:.5rem;letter-spacing:.3em;color:var(--tm);text-transform:uppercase;margin-top:3px;}
-.nl{display:flex;gap:22px;list-style:none;}
-.nl a{font-size:.78rem;color:var(--tm);transition:color var(--tr);}
-.nl a:hover,.nl a.cur{color:var(--gold);}
-@media(max-width:600px){.nl{display:none;}}
-.back{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1px solid var(--line);border-radius:var(--rp);color:var(--tm);font-size:.76rem;font-family:inherit;background:none;cursor:pointer;transition:all var(--tr);}
-.back:hover{border-color:var(--gold);color:var(--gold);}
-.back i{color:var(--gold);}
+    /* الهيدر */
+    .nav{position:sticky;top:0;z-index:500;height:var(--hh);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);background:rgba(8,8,7,.88);}
+    .nav-in{max-width:1300px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .brand{display:flex;flex-direction:column;line-height:1;}
+    .bn{font-family:var(--fd);color:var(--gold);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;letter-spacing:clamp(.15em,1.5vw,.45em);text-transform:uppercase;}
+    .bs{font-size:.5rem;letter-spacing:.3em;color:var(--tm);text-transform:uppercase;margin-top:3px;}
+    .nl{display:flex;gap:22px;list-style:none;}
+    .nl a{font-size:.78rem;color:var(--tm);transition:color var(--tr);}
+    .nl a:hover,.nl a.cur{color:var(--gold);}
+    @media(max-width:600px){.nl{display:none;}}
+    .back{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1px solid var(--line);border-radius:var(--rp);color:var(--tm);font-size:.76rem;font-family:inherit;background:none;cursor:pointer;transition:all var(--tr);}
+    .back:hover{border-color:var(--gold);color:var(--gold);}
+    .back i{color:var(--gold);}
 
-.hero{text-align:center;padding:clamp(56px,9vh,100px) clamp(16px,4vw,48px) clamp(36px,5vh,60px);position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(460px,100%);height:460px;pointer-events:none;background:radial-gradient(circle,rgba(200,169,110,.08) 0%,transparent 65%);}
-.ey{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--tm);margin-bottom:12px;}
-.ht{font-family:var(--fd);font-size:clamp(2.2rem,7vw,5rem);font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;}
-.hd{font-size:clamp(.88rem,2vw,1rem);color:var(--ts);max-width:min(500px,90%);margin-inline:auto;line-height:1.75;}
-.gr{width:50px;height:1px;background:var(--gold);margin:22px auto 0;opacity:.35;}
-.upd{font-size:.72rem;color:var(--tm);margin-top:12px;letter-spacing:.06em;}
+    /* الهيرو */
+    .hero{text-align:center;padding:clamp(56px,9vh,100px) clamp(16px,4vw,48px) clamp(36px,5vh,60px);position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(460px,100%);height:460px;pointer-events:none;background:radial-gradient(circle,rgba(200,169,110,.08) 0%,transparent 65%);}
+    .ey{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--tm);margin-bottom:12px;}
+    .ht{font-family:var(--fd);font-size:clamp(2.2rem,7vw,5rem);font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;}
+    .hd{font-size:clamp(.88rem,2vw,1rem);color:var(--ts);max-width:min(480px,90%);margin-inline:auto;line-height:1.75;}
+    .gr{width:50px;height:1px;background:var(--gold);margin:22px auto 0;opacity:.35;}
 
-.wrap{max-width:860px;margin-inline:auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px);}
+    /* محتوى البطاقات */
+    .wrap{max-width:1200px;margin-inline:auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px);}
+    .policy-grid{display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,40px);}
+    .policy-card{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(28px,4vw,48px);transition:all var(--tr);}
+    .policy-card:hover{border-color:var(--gold);box-shadow:var(--sg);}
+    .policy-card h2{font-family:var(--fd);font-size:clamp(1.4rem,3vw,2rem);font-weight:300;color:var(--gold);margin-bottom:18px;letter-spacing:.04em;}
+    .policy-card p{font-size:.88rem;line-height:1.85;color:var(--ts);margin-bottom:1rem;}
+    .policy-card ul{margin:1rem 1rem 1.2rem 0;padding-right:1rem;}
+    .policy-card li{font-size:.85rem;color:var(--ts);margin-bottom:6px;line-height:1.65;}
+    .highlight{background:rgba(200,169,110,.05);border-right:3px solid var(--gold);padding:1.2rem;margin:1.5rem 0;border-radius:8px;}
 
-/* TOC */
-.toc{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(20px,3vw,32px);margin-bottom:clamp(36px,5vw,56px);}
-.toc-title{font-family:var(--fd);font-size:1.15rem;font-weight:300;color:var(--gold);letter-spacing:.08em;margin-bottom:16px;}
-.toc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.toc-list li{display:flex;align-items:center;gap:10px;}
-.toc-list li::before{content:'';width:18px;height:1px;background:var(--gold);opacity:.4;flex-shrink:0;}
-.toc-list a{font-size:.82rem;color:var(--ts);transition:color var(--tr);}
-.toc-list a:hover{color:var(--gold);}
+    /* التذييل */
+    .foot{border-top:1px solid var(--line);background:var(--bg2);padding:26px clamp(16px,4vw,48px);margin-top:clamp(56px,8vw,96px);text-align:center;}
+    .foot p{font-size:.74rem;color:var(--tm);}
+    .foot a{color:var(--gold);}
 
-/* SECTIONS */
-.sec{margin-bottom:clamp(32px,5vw,52px);}
-.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);}
-.sec-num{font-family:var(--fd);font-size:1.6rem;font-weight:300;color:var(--gold);opacity:.5;line-height:1;flex-shrink:0;}
-.sec-title{font-family:var(--fd);font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:300;color:var(--gold);letter-spacing:.06em;}
-.sec-body{font-size:.88rem;color:var(--ts);line-height:1.85;}
-.sec-body p{margin-bottom:12px;}
-.sec-body p:last-child{margin-bottom:0;}
-.sec-body strong{color:var(--txt);font-weight:600;}
-.sec-body ul{padding-right:20px;margin:10px 0;display:flex;flex-direction:column;gap:7px;}
-.sec-body ul li{position:relative;padding-right:14px;}
-.sec-body ul li::before{content:'';position:absolute;right:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5;}
-
-.highlight-box{background:var(--bg3);border-right:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;margin:14px 0;font-size:.84rem;color:var(--ts);line-height:1.7;}
-
-.contact-strip{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(20px,3vw,32px);text-align:center;margin-top:clamp(40px,6vw,64px);}
-.contact-strip h3{font-family:var(--fd);font-size:1.4rem;font-weight:300;color:var(--gold);letter-spacing:.08em;margin-bottom:8px;}
-.contact-strip p{font-size:.82rem;color:var(--ts);margin-bottom:16px;}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--gold);border:none;border-radius:var(--rp);color:#000;font-family:'Tajawal',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all var(--tr);}
-.cta-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
-
-.foot{border-top:1px solid var(--line);background:var(--bg2);padding:26px clamp(16px,4vw,48px);margin-top:clamp(56px,8vw,96px);text-align:center;}
-.foot p{font-size:.74rem;color:var(--tm);}
-.foot a{color:var(--gold);}
-
-.au{opacity:0;transform:translateY(18px);animation:aup .6s ease forwards;}
-@keyframes aup{to{opacity:1;transform:none;}}
-.d1{animation-delay:.05s;}.d2{animation-delay:.12s;}.d3{animation-delay:.2s;}
-```
-
+    .au{opacity:0;transform:translateY(18px);animation:aup .6s ease forwards;}
+    @keyframes aup{to{opacity:1;transform:none;}}
   </style>
 </head>
 <body>
@@ -115,165 +93,89 @@
   </header>
 
   <div class="hero">
-    <p class="ey">L'ÉCLAT — Haute Joaillerie</p>
+    <p class="ey">Confidentialité & Données</p>
     <h1 class="ht">سياسة الخصوصية</h1>
-    <p class="hd">نحن نولي خصوصيتكم أهمية قصوى — هذه الوثيقة توضح كيف نحمي بياناتكم الشخصية</p>
+    <p class="hd">كيف نحمي معلوماتك الشخصية ونضمن تجربة آمنة تماماً</p>
     <div class="gr"></div>
-    <p class="upd">آخر تحديث: يناير 2026</p>
   </div>
 
   <main class="wrap">
+    <div class="policy-grid">
+      <div class="policy-card au">
+        <h2>١. نطاق السياسة</h2>
+        <p>تغطي سياسة الخصوصية هذه جميع البيانات التي نجمعها من خلال موقع L'ÉCLAT الإلكتروني، عند زيارتك، أو تسجيل حساب، أو إجراء عملية شراء، أو الاتصال بنا. نحن نلتزم بأعلى معايير حماية البيانات وفقاً للقوانين المحلية والدولية.</p>
+      </div>
 
-```
-<!-- TOC -->
-<div class="toc au d1">
-  <p class="toc-title">محتويات الوثيقة</p>
-  <ul class="toc-list">
-    <li><a href="#s1">المعلومات التي نجمعها</a></li>
-    <li><a href="#s2">كيف نستخدم معلوماتكم</a></li>
-    <li><a href="#s3">مشاركة المعلومات مع الأطراف الثالثة</a></li>
-    <li><a href="#s4">ملفات تعريف الارتباط (Cookies)</a></li>
-    <li><a href="#s5">حماية بياناتكم</a></li>
-    <li><a href="#s6">حقوقكم</a></li>
-    <li><a href="#s7">التواصل معنا</a></li>
-  </ul>
-</div>
+      <div class="policy-card au">
+        <h2>٢. المعلومات التي نجمعها</h2>
+        <p>نحن نجمع فقط المعلومات الضرورية لتقديم خدمة راقية:</p>
+        <ul>
+          <li><strong>البيانات الشخصية:</strong> الاسم الكامل، البريد الإلكتروني، رقم الهاتف، عنوان الشحن والفواتير.</li>
+          <li><strong>بيانات المعاملات:</strong> سجل المشتريات، المنتجات المفضلة، تاريخ الطلبات.</li>
+          <li><strong>بيانات تقنية:</strong> عنوان IP، نوع المتصفح، نظام التشغيل، سلوك التصفح (لتحسين تجربة المستخدم).</li>
+          <li><strong>التواصل:</strong> محتوى الرسائل التي ترسلها عبر النموذج أو البريد الإلكتروني.</li>
+        </ul>
+        <div class="highlight">
+          <i class="fas fa-shield-alt" style="color:var(--gold);margin-left:8px;"></i>
+          <strong>نحن لا نبيع أو نؤجر بياناتك لأي طرف ثالث.</strong>
+        </div>
+      </div>
 
-<!-- SECTIONS -->
-<div class="sec au d2" id="s1">
-  <div class="sec-head">
-    <span class="sec-num">01</span>
-    <h2 class="sec-title">المعلومات التي نجمعها</h2>
-  </div>
-  <div class="sec-body">
-    <p>عند تفاعلكم مع موقع L'ÉCLAT، قد نجمع الأنواع التالية من المعلومات:</p>
-    <ul>
-      <li><strong>معلومات الهوية:</strong> الاسم الكامل، رقم الهاتف، عنوان البريد الإلكتروني.</li>
-      <li><strong>معلومات الطلب:</strong> عنوان التوصيل، تفاصيل الفاتورة، سجل المشتريات.</li>
-      <li><strong>معلومات تقنية:</strong> عنوان IP، نوع المتصفح، الصفحات المُزارة، مدة الزيارة.</li>
-      <li><strong>المراسلات:</strong> رسائل التواصل معنا عبر نموذج الاتصال أو البريد الإلكتروني.</li>
-    </ul>
-    <div class="highlight-box">
-      لا نجمع أبداً أي معلومات حساسة كبيانات البطاقة المصرفية مباشرةً — تتم معالجة المدفوعات عبر بوابات دفع آمنة ومعتمدة.
+      <div class="policy-card au">
+        <h2>٣. كيف نستخدم معلوماتك</h2>
+        <p>تستخدم بياناتك للأغراض التالية فقط:</p>
+        <ul>
+          <li>معالجة طلباتك وتأكيد عمليات الشراء.</li>
+          <li>توصيل المنتجات وإرسال إشعارات الشحن.</li>
+          <li>تقديم دعم عملاء سريع وفعال.</li>
+          <li>تحسين أداء الموقع وتخصيص المحتوى حسب اهتماماتك.</li>
+          <li>إرسال عروض حصرية ونشرات إخبارية (فقط بموافقتك الصريحة).</li>
+        </ul>
+      </div>
+
+      <div class="policy-card au">
+        <h2>٤. أمان البيانات</h2>
+        <p>نستخدم تقنيات متقدمة لحماية معلوماتك:</p>
+        <ul>
+          <li>شهادات SSL لتشفير جميع الاتصالات.</li>
+          <li>جدران حماية وأنظمة مراقبة مستمرة.</li>
+          <li>تقييد الوصول إلى البيانات للموظفين المصرح لهم فقط.</li>
+          <li>نسخ احتياطية مشفرة ومستضافة في مراكز بيانات آمنة.</li>
+        </ul>
+      </div>
+
+      <div class="policy-card au">
+        <h2>٥. حقوقك فيما يخص بياناتك</h2>
+        <p>لك الحق في:</p>
+        <ul>
+          <li>طلب نسخة من جميع البيانات المحفوظة لدينا عنك.</li>
+          <li>تصحيح أي معلومات غير دقيقة.</li>
+          <li>طلب حذف بياناتك (مع مراعاة الالتزامات القانونية).</li>
+          <li>الانسحاب من تلقي الرسائل التسويقية في أي وقت.</li>
+        </ul>
+        <p>لتنفيذ أي من هذه الحقوق، راسلنا على <strong>privacy@leclat.com</strong> وسنرد خلال 15 يوم عمل.</p>
+      </div>
+
+      <div class="policy-card au">
+        <h2>٦. ملفات تعريف الارتباط (Cookies)</h2>
+        <p>يستخدم موقعنا ملفات تعريف الارتباط لتحسين أداء الموقع وتذكر تفضيلاتك. يمكنك تعديل إعدادات المتصفح لرفض بعض الكوكيز، لكن ذلك قد يؤثر على بعض الوظائف مثل سلة التسوق.</p>
+      </div>
+
+      <div class="policy-card au">
+        <h2>٧. تغييرات سياسة الخصوصية</h2>
+        <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سيتم نشر أي تعديلات على هذه الصفحة مع تحديث تاريخ "آخر مراجعة". ننصحك بمراجعتها دورياً.</p>
+        <p><em>آخر تحديث: ٢٣ مارس ٢٠٢٦</em></p>
+      </div>
     </div>
-  </div>
-</div>
-
-<div class="sec au d2" id="s2">
-  <div class="sec-head">
-    <span class="sec-num">02</span>
-    <h2 class="sec-title">كيف نستخدم معلوماتكم</h2>
-  </div>
-  <div class="sec-body">
-    <p>نستخدم المعلومات التي نجمعها للأغراض التالية حصراً:</p>
-    <ul>
-      <li>معالجة طلباتكم وتأكيد الشراء وتتبع الشحنات.</li>
-      <li>التواصل معكم بشأن طلباتكم أو استفساراتكم.</li>
-      <li>إرسال نشرات إخبارية أو عروض خاصة — <strong>فقط بموافقتكم الصريحة</strong>.</li>
-      <li>تحسين تجربة التصفح وخدماتنا بشكل مستمر.</li>
-      <li>الامتثال للالتزامات القانونية والتنظيمية.</li>
-    </ul>
-  </div>
-</div>
-
-<div class="sec au d2" id="s3">
-  <div class="sec-head">
-    <span class="sec-num">03</span>
-    <h2 class="sec-title">مشاركة المعلومات مع الأطراف الثالثة</h2>
-  </div>
-  <div class="sec-body">
-    <p>لا نبيع معلوماتكم الشخصية لأي طرف ثالث تحت أي ظرف كان. قد نشارك بياناتكم فقط في الحالات التالية:</p>
-    <ul>
-      <li><strong>شركاء الشحن:</strong> لتوصيل طلباتكم في أفضل الأوقات.</li>
-      <li><strong>بوابات الدفع:</strong> لإتمام عمليات الدفع بأمان تام.</li>
-      <li><strong>الجهات القانونية:</strong> إذا اقتضى القانون ذلك أو بموجب أمر قضائي.</li>
-    </ul>
-    <div class="highlight-box">
-      جميع شركائنا مُلزمون بسياسات خصوصية صارمة ولا يحق لهم استخدام بياناتكم لأي غرض آخر.
-    </div>
-  </div>
-</div>
-
-<div class="sec au d2" id="s4">
-  <div class="sec-head">
-    <span class="sec-num">04</span>
-    <h2 class="sec-title">ملفات تعريف الارتباط (Cookies)</h2>
-  </div>
-  <div class="sec-body">
-    <p>يستخدم موقعنا ملفات الارتباط لتحسين تجربتكم. تشمل هذه الملفات:</p>
-    <ul>
-      <li><strong>ملفات أساسية:</strong> ضرورية لعمل الموقع (سلة التسوق، تسجيل الدخول).</li>
-      <li><strong>ملفات تحليلية:</strong> تساعدنا على فهم كيفية استخدام الموقع لتحسينه.</li>
-      <li><strong>ملفات التفضيلات:</strong> لحفظ إعداداتكم كاللغة والمظهر.</li>
-    </ul>
-    <p>يمكنكم تعطيل ملفات الارتباط من إعدادات متصفحكم، غير أن ذلك قد يؤثر على بعض وظائف الموقع.</p>
-  </div>
-</div>
-
-<div class="sec au d2" id="s5">
-  <div class="sec-head">
-    <span class="sec-num">05</span>
-    <h2 class="sec-title">حماية بياناتكم</h2>
-  </div>
-  <div class="sec-body">
-    <p>نتخذ إجراءات أمنية صارمة لحماية معلوماتكم الشخصية، تشمل:</p>
-    <ul>
-      <li>تشفير البيانات باستخدام بروتوكول SSL/TLS خلال نقل المعلومات.</li>
-      <li>تخزين البيانات على خوادم آمنة ذات حماية متعددة الطبقات.</li>
-      <li>تقييد الوصول إلى بياناتكم للموظفين المخولين فقط.</li>
-      <li>مراجعات أمنية دورية للأنظمة والبنية التحتية.</li>
-    </ul>
-  </div>
-</div>
-
-<div class="sec au d2" id="s6">
-  <div class="sec-head">
-    <span class="sec-num">06</span>
-    <h2 class="sec-title">حقوقكم</h2>
-  </div>
-  <div class="sec-body">
-    <p>تتمتعون بحقوق كاملة فيما يخص بياناتكم الشخصية، وتشمل:</p>
-    <ul>
-      <li><strong>حق الوصول:</strong> طلب نسخة من جميع البيانات التي نحتفظ بها عنكم.</li>
-      <li><strong>حق التصحيح:</strong> تعديل أي معلومات غير دقيقة أو منقوصة.</li>
-      <li><strong>حق الحذف:</strong> طلب مسح بياناتكم الشخصية من أنظمتنا.</li>
-      <li><strong>حق الاعتراض:</strong> رفض معالجة بياناتكم لأغراض التسويق.</li>
-      <li><strong>إلغاء الاشتراك:</strong> إلغاء الاشتراك في النشرة الإخبارية في أي وقت.</li>
-    </ul>
-    <p>لممارسة أي من هذه الحقوق، تواصلوا معنا عبر البريد الإلكتروني أدناه.</p>
-  </div>
-</div>
-
-<div class="sec au d2" id="s7">
-  <div class="sec-head">
-    <span class="sec-num">07</span>
-    <h2 class="sec-title">التواصل معنا</h2>
-  </div>
-  <div class="sec-body">
-    <p>لأي استفسار يتعلق بسياسة الخصوصية أو لممارسة حقوقكم، تواصلوا معنا عبر:</p>
-    <ul>
-      <li>البريد الإلكتروني: <a href="mailto:privacy@leclat.ma" style="color:var(--gold);">privacy@leclat.ma</a></li>
-      <li>الهاتف: <a href="tel:+21200000000" dir="ltr" style="color:var(--gold);">+212 00 000 0000</a></li>
-    </ul>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="contact-strip au d3">
-  <h3>هل لديكم سؤال؟</h3>
-  <p>فريقنا جاهز للإجابة على جميع استفساراتكم المتعلقة بالخصوصية</p>
-  <a href="contact.html" class="cta-btn">
-    <i class="fas fa-envelope" aria-hidden="true"></i>
-    تواصل معنا
-  </a>
-</div>
-```
-
   </main>
 
   <footer class="foot">
     <p>© 2026 <a href="index.html">L'ÉCLAT</a> — Haute Joaillerie. جميع الحقوق محفوظة.</p>
   </footer>
 
+  <script>
+    // إضافة تأثير ظهور تدريجي
+    document.querySelectorAll('.au').forEach((el,i)=> el.style.animationDelay = (i*0.08)+'s');
+  </script>
 </body>
 </html>
