@@ -1,33 +1,304 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>...</head>
+
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الشروط والأحكام — L'ÉCLAT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    :root{
+      --gold:#c8a96e;--gold-l:#e2c98c;--gold-dim:rgba(200,169,110,.13);
+      --bg:#080807;--bg2:#0f0f0d;--bg3:#161614;--sf:#1c1b18;
+      --line:rgba(200,169,110,.13);
+      --txt:#f0ebe0;--ts:#a89f8c;--tm:#6a6356;
+      --r:16px;--rl:24px;--rp:999px;--hh:68px;
+      --tr:.3s cubic-bezier(.4,0,.2,1);
+      --fd:'Cormorant Garamond',Georgia,serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{overflow-x:hidden;scroll-behavior:smooth;}
+    body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--txt);direction:rtl;overflow-x:hidden;min-height:100vh;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");}
+    ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px;}
+    a{color:inherit;text-decoration:none;} :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+```
+.nav{position:sticky;top:0;z-index:500;height:var(--hh);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);background:rgba(8,8,7,.88);}
+.nav-in{max-width:1300px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.brand{display:flex;flex-direction:column;line-height:1;}
+.bn{font-family:var(--fd);color:var(--gold);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;letter-spacing:clamp(.15em,1.5vw,.45em);text-transform:uppercase;}
+.bs{font-size:.5rem;letter-spacing:.3em;color:var(--tm);text-transform:uppercase;margin-top:3px;}
+.nl{display:flex;gap:22px;list-style:none;}
+.nl a{font-size:.78rem;color:var(--tm);transition:color var(--tr);}
+.nl a:hover,.nl a.cur{color:var(--gold);}
+@media(max-width:600px){.nl{display:none;}}
+.back{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1px solid var(--line);border-radius:var(--rp);color:var(--tm);font-size:.76rem;font-family:inherit;background:none;cursor:pointer;transition:all var(--tr);}
+.back:hover{border-color:var(--gold);color:var(--gold);}
+.back i{color:var(--gold);}
+
+.hero{text-align:center;padding:clamp(56px,9vh,100px) clamp(16px,4vw,48px) clamp(36px,5vh,60px);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(460px,100%);height:460px;pointer-events:none;background:radial-gradient(circle,rgba(200,169,110,.08) 0%,transparent 65%);}
+.ey{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--tm);margin-bottom:12px;}
+.ht{font-family:var(--fd);font-size:clamp(2.2rem,7vw,5rem);font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;}
+.hd{font-size:clamp(.88rem,2vw,1rem);color:var(--ts);max-width:min(500px,90%);margin-inline:auto;line-height:1.75;}
+.gr{width:50px;height:1px;background:var(--gold);margin:22px auto 0;opacity:.35;}
+.upd{font-size:.72rem;color:var(--tm);margin-top:12px;letter-spacing:.06em;}
+
+.wrap{max-width:860px;margin-inline:auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px);}
+
+/* TOC */
+.toc{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(20px,3vw,32px);margin-bottom:clamp(36px,5vw,56px);}
+.toc-title{font-family:var(--fd);font-size:1.1rem;font-weight:300;color:var(--gold);letter-spacing:.08em;margin-bottom:16px;}
+.toc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;}
+@media(max-width:500px){.toc-list{grid-template-columns:1fr;}}
+.toc-list li{display:flex;align-items:center;gap:9px;}
+.toc-list li::before{content:'';width:16px;height:1px;background:var(--gold);opacity:.4;flex-shrink:0;}
+.toc-list a{font-size:.8rem;color:var(--ts);transition:color var(--tr);}
+.toc-list a:hover{color:var(--gold);}
+
+/* SECTIONS */
+.sec{margin-bottom:clamp(32px,5vw,52px);}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.sec-num{font-family:var(--fd);font-size:1.6rem;font-weight:300;color:var(--gold);opacity:.5;line-height:1;flex-shrink:0;}
+.sec-title{font-family:var(--fd);font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:300;color:var(--gold);letter-spacing:.06em;}
+.sec-body{font-size:.88rem;color:var(--ts);line-height:1.85;}
+.sec-body p{margin-bottom:12px;}
+.sec-body p:last-child{margin-bottom:0;}
+.sec-body strong{color:var(--txt);font-weight:600;}
+.sec-body ul{padding-right:18px;margin:10px 0;display:flex;flex-direction:column;gap:7px;}
+.sec-body ul li{position:relative;padding-right:14px;}
+.sec-body ul li::before{content:'';position:absolute;right:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.5;}
+
+.highlight-box{background:var(--bg3);border-right:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;margin:14px 0;font-size:.84rem;color:var(--ts);line-height:1.7;}
+.warn-box{background:rgba(192,57,43,.07);border-right:3px solid #c0392b;border-radius:0 var(--r) var(--r) 0;padding:16px 18px;margin:14px 0;font-size:.84rem;color:var(--ts);line-height:1.7;}
+
+.contact-strip{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(20px,3vw,32px);text-align:center;margin-top:clamp(40px,6vw,64px);}
+.contact-strip h3{font-family:var(--fd);font-size:1.4rem;font-weight:300;color:var(--gold);letter-spacing:.08em;margin-bottom:8px;}
+.contact-strip p{font-size:.82rem;color:var(--ts);margin-bottom:16px;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--gold);border:none;border-radius:var(--rp);color:#000;font-family:'Tajawal',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all var(--tr);}
+.cta-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
+
+.foot{border-top:1px solid var(--line);background:var(--bg2);padding:26px clamp(16px,4vw,48px);margin-top:clamp(56px,8vw,96px);text-align:center;}
+.foot p{font-size:.74rem;color:var(--tm);}
+.foot a{color:var(--gold);}
+
+.au{opacity:0;transform:translateY(18px);animation:aup .6s ease forwards;}
+@keyframes aup{to{opacity:1;transform:none;}}
+.d1{animation-delay:.05s;}.d2{animation-delay:.12s;}.d3{animation-delay:.2s;}
+```
+
+  </style>
+</head>
 <body>
-    <header>...</header>
-    <main>
-        <div class="container">
-            <div class="page-header">
-                <h1>الشروط والأحكام</h1>
-                <p>اتفاقية استخدام موقع L'ÉCLAT</p>
-            </div>
-            <div class="content-card">
-                <p>باستخدامك لهذا الموقع، فإنك توافق على الالتزام بالشروط والأحكام التالية.</p>
-                <h2>الاستخدام المسموح به</h2>
-                <p>يُسمح لك بتصفح الموقع وشراء المنتجات للاستخدام الشخصي فقط. لا يجوز نسخ أو إعادة بيع أي محتوى دون إذن خطي.</p>
-                <h2>الملكية الفكرية</h2>
-                <p>جميع التصاميم والصور والعلامات التجارية المعروضة على الموقع هي ملك لـ L'ÉCLAT أو مرخصة لنا. يحظر استخدامها دون موافقة مسبقة.</p>
-                <h2>الأسعار والدفع</h2>
-                <p>الأسعار المعروضة بالدولار الأمريكي وتشمل الضرائب. نقبل الدفع عبر بطاقات الائتمان الرئيسية، باي بال، والتحويل البنكي.</p>
-                <h2>الشحن والتسليم</h2>
-                <p>سيتم شحن الطلبات خلال 2-3 أيام عمل. نقدم تأميناً شاملاً على جميع الشحنات.</p>
-                <h2>تحديد المسؤولية</h2>
-                <p>لن نكون مسؤولين عن أي أضرار غير مباشرة ناتجة عن استخدام الموقع أو المنتجات. أقصى مسؤولية لدينا تقتصر على مبلغ الشراء.</p>
-                <h2>تعديل الشروط</h2>
-                <p>نحتفظ بحق تعديل هذه الشروط في أي وقت. سيتم نشر التعديلات على هذه الصفحة.</p>
-                <p>آخر تحديث: 23 مارس 2026</p>
-            </div>
-        </div>
-    </main>
-    <footer>...</footer>
-    <script>...</script>
+
+  <header class="nav">
+    <div class="nav-in">
+      <a href="index.html" class="brand">
+        <span class="bn">L'ÉCLAT</span>
+        <span class="bs">Haute Joaillerie</span>
+      </a>
+      <nav aria-label="روابط الموقع">
+        <ul class="nl">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+          <li><a href="privacy.html">الخصوصية</a></li>
+          <li><a href="returns.html">الإرجاع</a></li>
+          <li><a href="terms.html" class="cur">الشروط</a></li>
+        </ul>
+      </nav>
+      <a href="index.html" class="back">
+        <i class="fas fa-arrow-right" aria-hidden="true"></i> العودة للرئيسية
+      </a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <p class="ey">L'ÉCLAT — Haute Joaillerie</p>
+    <h1 class="ht">الشروط والأحكام</h1>
+    <p class="hd">يرجى قراءة هذه الشروط بعناية قبل استخدام موقعنا أو إتمام أي عملية شراء</p>
+    <div class="gr"></div>
+    <p class="upd">آخر تحديث: يناير 2026</p>
+  </div>
+
+  <main class="wrap">
+
+```
+<!-- TOC -->
+<div class="toc au d1">
+  <p class="toc-title">محتويات الوثيقة</p>
+  <ul class="toc-list">
+    <li><a href="#s1">قبول الشروط</a></li>
+    <li><a href="#s2">استخدام الموقع</a></li>
+    <li><a href="#s3">الطلبات والمدفوعات</a></li>
+    <li><a href="#s4">الشحن والتوصيل</a></li>
+    <li><a href="#s5">الملكية الفكرية</a></li>
+    <li><a href="#s6">إخلاء المسؤولية</a></li>
+    <li><a href="#s7">تعديل الشروط</a></li>
+    <li><a href="#s8">القانون المطبق</a></li>
+  </ul>
+</div>
+
+<!-- INTRO -->
+<div class="sec au d2">
+  <div class="sec-body">
+    <div class="highlight-box">
+      مرحباً بكم في L'ÉCLAT — Haute Joaillerie. باستخدامكم لهذا الموقع أو إجراء أي عملية شراء، فإنكم توافقون على الالتزام بالشروط والأحكام الواردة في هذه الوثيقة. إذا كنتم لا توافقون على هذه الشروط، يُرجى عدم استخدام الموقع.
+    </div>
+  </div>
+</div>
+
+<div class="sec au d2" id="s1">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">قبول الشروط</h2>
+  </div>
+  <div class="sec-body">
+    <p>باستخدامكم لموقع L'ÉCLAT وخدماته، فإنكم تؤكدون:</p>
+    <ul>
+      <li>أنكم بلغتم سن 18 عاماً أو تتمتعون بالأهلية القانونية للتعاقد.</li>
+      <li>أن المعلومات التي تقدمونها صحيحة ودقيقة وكاملة.</li>
+      <li>أنكم اطلعتم على هذه الشروط وتوافقون عليها بالكامل.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec au d2" id="s2">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">استخدام الموقع</h2>
+  </div>
+  <div class="sec-body">
+    <p>يُصرح لكم باستخدام هذا الموقع للأغراض المشروعة فقط. يُحظر:</p>
+    <ul>
+      <li>نشر أي محتوى مسيء أو مضلل أو غير قانوني.</li>
+      <li>محاولة الوصول غير المصرح به إلى أي جزء من الموقع أو خوادمه.</li>
+      <li>استخدام أدوات آلية لاستخراج بيانات الموقع دون إذن مسبق.</li>
+      <li>انتهاك أي حقوق ملكية فكرية خاصة بـ L'ÉCLAT أو غيرها.</li>
+    </ul>
+    <p>نحتفظ بحق تعليق أو إنهاء وصولكم للموقع في حالة انتهاك هذه الشروط.</p>
+  </div>
+</div>
+
+<div class="sec au d2" id="s3">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">الطلبات والمدفوعات</h2>
+  </div>
+  <div class="sec-body">
+    <p>عند إتمام طلبكم على موقعنا، تسري الشروط التالية:</p>
+    <ul>
+      <li>يُعدّ الطلب مؤكداً فور استلامكم رسالة تأكيد عبر البريد الإلكتروني.</li>
+      <li>نحتفظ بحق رفض أو إلغاء أي طلب في حالة عدم توفر المنتج أو وجود خطأ في السعر.</li>
+      <li>الأسعار المعروضة تشمل الضريبة وقابلة للتغيير دون إشعار مسبق.</li>
+      <li>تتم معالجة المدفوعات عبر بوابات دفع آمنة ومعتمدة — لا نحتفظ ببيانات بطاقاتكم.</li>
+    </ul>
+    <div class="highlight-box">
+      في حالة وجود خطأ في السعر المعروض، سنتواصل معكم فور اكتشاف الخطأ لإعطائكم خيار الإلغاء أو المتابعة بالسعر الصحيح.
+    </div>
+  </div>
+</div>
+
+<div class="sec au d2" id="s4">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">الشحن والتوصيل</h2>
+  </div>
+  <div class="sec-body">
+    <p>نسعى دائماً لتوصيل طلباتكم في أفضل الأوقات وبأعلى معايير الأمان. تسري الشروط التالية:</p>
+    <ul>
+      <li>مدة التوصيل تتراوح بين 3 و10 أيام عمل حسب الوجهة.</li>
+      <li>جميع الشحنات مؤمنة بالكامل — نضمن سلامة منتجاتكم حتى استلامها.</li>
+      <li>رسوم الشحن تُحدد عند الطلب وفق الوجهة والوزن.</li>
+      <li>في حالة عدم الاستلام خلال المدة المحددة، تواصلوا معنا فوراً.</li>
+    </ul>
+    <div class="warn-box">
+      L'ÉCLAT غير مسؤولة عن أي تأخير ناتج عن ظروف خارجة عن إرادتها كالكوارث الطبيعية أو العوامل الجمركية.
+    </div>
+  </div>
+</div>
+
+<div class="sec au d2" id="s5">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">الملكية الفكرية</h2>
+  </div>
+  <div class="sec-body">
+    <p>جميع عناصر هذا الموقع — بما تشمل التصاميم والصور والنصوص والعلامة التجارية — هي ملكية حصرية لـ L'ÉCLAT ومحمية بموجب قوانين الملكية الفكرية.</p>
+    <ul>
+      <li>يُحظر نسخ أو إعادة استخدام أي محتوى دون إذن كتابي مسبق.</li>
+      <li>يُحظر استخدام اسم أو شعار L'ÉCLAT لأي غرض تجاري.</li>
+      <li>يمكن مشاركة محتوى الموقع للاستخدام الشخصي غير التجاري مع الإشارة إلى المصدر.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec au d2" id="s6">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2 class="sec-title">إخلاء المسؤولية</h2>
+  </div>
+  <div class="sec-body">
+    <p>رغم حرصنا الشديد على دقة المعلومات المقدمة، فإن L'ÉCLAT تُخلي مسؤوليتها عن:</p>
+    <ul>
+      <li>أي أخطاء أو انقطاعات مؤقتة في خدمات الموقع.</li>
+      <li>أي أضرار مباشرة أو غير مباشرة ناتجة عن استخدام الموقع.</li>
+      <li>محتوى المواقع الخارجية المرتبطة بموقعنا.</li>
+    </ul>
+    <div class="warn-box">
+      مسؤوليتنا القانونية محدودة بقيمة المنتج المشترى — لا يمكن المطالبة بأي تعويضات إضافية خارج نطاق ذلك.
+    </div>
+  </div>
+</div>
+
+<div class="sec au d2" id="s7">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
+    <h2 class="sec-title">تعديل الشروط</h2>
+  </div>
+  <div class="sec-body">
+    <p>تحتفظ L'ÉCLAT بحق تعديل هذه الشروط في أي وقت. عند إجراء تعديلات جوهرية:</p>
+    <ul>
+      <li>سيتم تحديث تاريخ آخر مراجعة أعلى هذه الصفحة.</li>
+      <li>سيُبلَّغ المستخدمون المسجلون عبر البريد الإلكتروني.</li>
+      <li>استمرار استخدام الموقع بعد التعديل يُعد موافقة ضمنية على الشروط الجديدة.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec au d2" id="s8">
+  <div class="sec-head">
+    <span class="sec-num">08</span>
+    <h2 class="sec-title">القانون المطبق</h2>
+  </div>
+  <div class="sec-body">
+    <p>تخضع هذه الشروط والأحكام للتشريعات المغربية المعمول بها. في حالة أي نزاع ينشأ عن استخدام الموقع أو المنتجات:</p>
+    <ul>
+      <li>يُسعى أولاً للتسوية الودية مع فريق دعم العملاء.</li>
+      <li>في حالة تعذر الحل الودي، يُحال النزاع للجهات القضائية المختصة في المغرب.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="contact-strip au d3">
+  <h3>لديكم استفسار قانوني؟</h3>
+  <p>فريقنا جاهز للإجابة على أسئلتكم حول هذه الشروط والأحكام</p>
+  <a href="contact.html" class="cta-btn">
+    <i class="fas fa-envelope" aria-hidden="true"></i>
+    تواصل معنا
+  </a>
+</div>
+```
+
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 <a href="index.html">L'ÉCLAT</a> — Haute Joaillerie. جميع الحقوق محفوظة.</p>
+  </footer>
+
 </body>
 </html>
