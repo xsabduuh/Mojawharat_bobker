@@ -814,9 +814,59 @@
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(295px, 100%), 1fr));
-      gap: clamp(16px, 3vw, 28px);
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(12px, 1.8vw, 18px);
     }
+
+    /* ── Editorial card sizing — Cartier/Tiffany style ── */
+    .product-card:nth-child(1) { grid-column: span 7; }
+    .product-card:nth-child(2) { grid-column: span 5; }
+    .product-card:nth-child(3) { grid-column: span 4; }
+    .product-card:nth-child(4) { grid-column: span 4; }
+    .product-card:nth-child(5) { grid-column: span 4; }
+    .product-card:nth-child(6) { grid-column: span 12; }
+
+    /* Image heights per position */
+    .product-card:nth-child(1) .product-img-wrap,
+    .product-card:nth-child(2) .product-img-wrap { height: clamp(300px, 40vw, 540px); }
+    .product-card:nth-child(3) .product-img-wrap,
+    .product-card:nth-child(4) .product-img-wrap,
+    .product-card:nth-child(5) .product-img-wrap { height: clamp(220px, 26vw, 360px); }
+    .product-card:nth-child(6) .product-img-wrap  { height: clamp(260px, 34vw, 460px); }
+
+    /* Wide card (6th): side-by-side layout */
+    .product-card:nth-child(6) {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+    }
+    .product-card:nth-child(6) .product-img-wrap {
+      height: 100%;
+      min-height: clamp(260px, 34vw, 460px);
+    }
+    .product-card:nth-child(6) .product-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(28px, 4vw, 60px);
+      text-align: right;
+    }
+    [dir="ltr"] .product-card:nth-child(6) .product-body { text-align: left; }
+    .product-card:nth-child(6) .product-name { font-size: clamp(1.6rem, 2.5vw, 2.4rem); }
+    .product-card:nth-child(6) .product-price { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+    .product-card:nth-child(6) .btn-add { align-self: flex-start; }
+    [dir="ltr"] .product-card:nth-child(6) .btn-add { align-self: flex-start; }
+
+    /* Filtered state: uniform 4-col grid */
+    .products-grid.filtered .product-card,
+    .products-grid.filtered .product-card:nth-child(n) {
+      grid-column: span 4;
+      display: block;
+    }
+    .products-grid.filtered .product-card .product-img-wrap,
+    .products-grid.filtered .product-card:nth-child(n) .product-img-wrap { height: clamp(220px, 26vw, 340px); }
+    .products-grid.filtered .product-card .product-body { text-align: center; }
+
+    .product-card[hidden] { display: none !important; }
 
     .product-card {
       background: var(--bg-3);
@@ -825,26 +875,20 @@
       overflow: hidden;
       position: relative;
       transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-    }
-
-    .product-card[hidden] {
-      display: none;
+      cursor: pointer;
     }
 
     .product-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-6px);
       border-color: var(--gold);
       box-shadow: var(--shadow-gold);
     }
 
-    .product-card:focus-within {
-      border-color: var(--gold);
-    }
+    .product-card:focus-within { border-color: var(--gold); }
 
     /* Image */
     .product-img-wrap {
       position: relative;
-      height: 310px;
       overflow: hidden;
     }
 
@@ -856,7 +900,7 @@
     }
 
     .product-card:hover .product-img-wrap img {
-      transform: scale(1.07);
+      transform: scale(1.06);
     }
 
     /* Badge */
@@ -1696,6 +1740,18 @@
       .products-section  { margin-bottom: 72px; }
       .features-section  { margin-bottom: 72px; }
       .newsletter-section{ margin-bottom: 72px; }
+
+      /* Products: 2 columns on tablet/mobile */
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .product-card:nth-child(n) { grid-column: span 1; display: block; }
+      .product-card:nth-child(1) { grid-column: span 2; }
+      .product-card:nth-child(1) .product-img-wrap { height: clamp(220px, 50vw, 340px); }
+      .product-card:nth-child(n) .product-img-wrap { height: clamp(180px, 38vw, 260px); }
+      .product-card:nth-child(6) { grid-column: span 2; }
+      .product-card:nth-child(6) .product-img-wrap { height: clamp(200px, 45vw, 300px); }
+      .product-card:nth-child(6) .product-body { text-align: center; padding: 20px; }
     }
 
     /* ============================================================
@@ -1717,10 +1773,13 @@
       /* Hide lang wrap in header on tiny phones — it's in mobile nav */
       .header-controls .lang-wrap { display: none; }
 
-      /* Products: single column on very small phones */
+      /* Products: single column on small phones */
       .products-grid {
         grid-template-columns: 1fr;
       }
+      .product-card:nth-child(n) { grid-column: span 1; display: block; }
+      .product-card:nth-child(n) .product-img-wrap { height: clamp(200px, 55vw, 280px); }
+      .product-card:nth-child(6) .product-body { text-align: center; padding: 20px; }
 
       /* Features: single column */
       .features-grid {
@@ -1938,7 +1997,7 @@
     <div class="cart-footer">
       <div class="cart-total-row">
         <span data-i18n="cart_total">المجموع</span>
-        <span class="cart-total-amount" id="cart-total">$0</span>
+        <span class="cart-total-amount" id="cart-total">0 د.م</span>
       </div>
       <button class="checkout-btn" id="checkout-btn" disabled data-i18n="cart_checkout">
         إتمام الشراء
@@ -2521,7 +2580,7 @@
           '<div class="product-body">' +
             '<p class="product-cat-label">' + catLabel + '</p>' +
             '<h3 class="product-name t-display">' + product.name + '</h3>' +
-            '<p class="product-price">$' + product.price.toLocaleString() + '</p>' +
+            '<p class="product-price">' + product.price.toLocaleString('ar-MA') + ' د.م</p>' +
             '<button class="btn-add" ' +
               'aria-label="' + t('add_to_cart') + ' ' + product.name + '">' +
               '<i class="fas fa-plus" aria-hidden="true"></i>' +
@@ -2658,7 +2717,7 @@
         total += cartItems[i].price * cartItems[i].qty;
       }
       var el = document.getElementById('cart-total');
-      if (el) { el.textContent = '$' + total.toLocaleString(); }
+      if (el) { el.textContent = total.toLocaleString('ar-MA') + ' د.م'; }
 
       /* Disable/enable checkout button */
       var checkoutBtn = document.getElementById('checkout-btn');
@@ -2688,7 +2747,7 @@
           '<img class="cart-item-img" src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
           '<div class="cart-item-info">' +
             '<p class="cart-item-name" title="' + item.name + '">' + item.name + '</p>' +
-            '<p class="cart-item-price">$' + item.price.toLocaleString() + '</p>' +
+            '<p class="cart-item-price">' + item.price.toLocaleString('ar-MA') + ' د.م</p>' +
             '<div class="cart-qty-row">' +
               '<button class="qty-btn" data-action="minus" data-id="' + item.id + '" aria-label="تقليل الكمية">−</button>' +
               '<span class="qty-value" aria-label="الكمية">' + item.qty + '</span>' +
@@ -2857,7 +2916,7 @@
             '<img src="' + product.img + '" alt="' + product.name + '" loading="lazy" />' +
             '<div class="result-info">' +
               '<p class="result-name">' + product.name + '</p>' +
-              '<p class="result-price">$' + product.price.toLocaleString() + '</p>' +
+              '<p class="result-price">' + product.price.toLocaleString('ar-MA') + ' د.م</p>' +
             '</div>';
 
           function selectResult() {
@@ -3171,13 +3230,23 @@
         });
       }
 
-      /* Checkout button (placeholder behaviour) */
+      /* Checkout button — real redirect to checkout page */
       var checkoutBtn = document.getElementById('checkout-btn');
       if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function () {
-          if (cartItems.length > 0) {
-            showToast('✓ سيتم توجيهك إلى صفحة الدفع', 'success');
+          if (cartItems.length === 0) { return; }
+          /* Build order summary for checkout page */
+          var total = 0;
+          for (var ci = 0; ci < cartItems.length; ci++) {
+            total += cartItems[ci].price * cartItems[ci].qty;
           }
+          /* Store cart in sessionStorage for checkout page */
+          try {
+            sessionStorage.setItem('leclat-checkout-cart', JSON.stringify(cartItems));
+            sessionStorage.setItem('leclat-checkout-total', total);
+          } catch(e) {}
+          /* Redirect to checkout */
+          window.location.href = 'checkout.html';
         });
       }
 
