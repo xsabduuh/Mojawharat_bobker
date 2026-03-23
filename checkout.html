@@ -67,18 +67,7 @@
 .fl{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:6px;}
 .fi,.fsel{width:100%;padding:13px 15px;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);color:var(--txt);font-family:'Tajawal',sans-serif;font-size:.88rem;outline:none;transition:border-color var(--tr),box-shadow var(--tr);}
 .fi::placeholder{color:var(--tm);}
-.fi:focus,.fsel:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,110,.1);}
-.fsel{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23c8a96e' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 13px center;padding-left:32px;}
-.fsel option{background:var(--bg2);}
-
-/* Payment method selector */
-.pay-methods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
-.pay-opt{flex:1;min-width:100px;padding:12px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--sf);cursor:pointer;transition:all var(--tr);text-align:center;}
-.pay-opt.selected{border-color:var(--gold);background:var(--gold-dim);}
-.pay-opt i{font-size:1.3rem;color:var(--ts);display:block;margin-bottom:5px;}
-.pay-opt.selected i{color:var(--gold);}
-.pay-opt span{font-size:.72rem;color:var(--tm);}
-.pay-opt.selected span{color:var(--gold);}
+.fi:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,110,.1);}
 
 /* Card number input styling */
 .card-input-wrap{position:relative;}
@@ -228,45 +217,16 @@
         <div class="fg"><label class="fl" for="c-fname">الاسم</label><input type="text" id="c-fname" class="fi" placeholder="محمد" autocomplete="given-name" /></div>
         <div class="fg"><label class="fl" for="c-lname">اللقب</label><input type="text" id="c-lname" class="fi" placeholder="الأمين" autocomplete="family-name" /></div>
       </div>
-      <div class="fg"><label class="fl" for="c-email">البريد الإلكتروني</label><input type="email" id="c-email" class="fi" placeholder="email@example.com" autocomplete="email" /></div>
       <div class="fg"><label class="fl" for="c-phone">الهاتف</label><input type="tel" id="c-phone" class="fi" placeholder="+212 6xx xxx xxx" autocomplete="tel" dir="ltr" /></div>
       <div class="fg"><label class="fl" for="c-addr">العنوان</label><input type="text" id="c-addr" class="fi" placeholder="الشارع، الحي..." autocomplete="street-address" /></div>
-      <div class="frow">
-        <div class="fg"><label class="fl" for="c-city">المدينة</label>
-          <select id="c-city" class="fsel">
-            <option value="">اختر المدينة...</option>
-            <option>مراكش</option><option>الدار البيضاء</option>
-            <option>الرباط</option><option>فاس</option>
-            <option>أكادير</option><option>طنجة</option>
-            <option>أخرى</option>
-          </select>
-        </div>
-        <div class="fg"><label class="fl" for="c-zip">الرمز البريدي</label><input type="text" id="c-zip" class="fi" placeholder="40000" maxlength="5" /></div>
-      </div>
-      <div class="fg"><label class="fl" for="c-notes">ملاحظات (اختياري)</label><input type="text" id="c-notes" class="fi" placeholder="أي تعليمات خاصة للتوصيل..." /></div>
+      <div class="fg"><label class="fl" for="c-city">المدينة</label><input type="text" id="c-city" class="fi" placeholder="مراكش، الدار البيضاء..." autocomplete="address-level2" /></div>
     </div>
 
-    <!-- PAYMENT -->
+    <!-- PAYMENT — card only -->
     <div class="form-card au d2">
-      <h2 class="card-title">طريقة الدفع</h2>
+      <h2 class="card-title">الدفع بالبطاقة البنكية</h2>
       <p class="card-sub">جميع المعاملات مشفرة وآمنة تماماً</p>
 
-      <div class="pay-methods" id="pay-methods">
-        <div class="pay-opt selected" data-method="card">
-          <i class="fas fa-credit-card" aria-hidden="true"></i>
-          <span>بطاقة بنكية</span>
-        </div>
-        <div class="pay-opt" data-method="cash">
-          <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
-          <span>الدفع عند الاستلام</span>
-        </div>
-        <div class="pay-opt" data-method="transfer">
-          <i class="fas fa-university" aria-hidden="true"></i>
-          <span>تحويل بنكي</span>
-        </div>
-      </div>
-
-      <!-- Card fields (shown when card selected) -->
       <div id="card-fields">
         <div class="fg">
           <label class="fl" for="c-cardnum">رقم البطاقة</label>
@@ -280,18 +240,6 @@
           <div class="fg"><label class="fl" for="c-cvv">CVV</label><input type="text" id="c-cvv" class="fi" placeholder="123" maxlength="4" dir="ltr" inputmode="numeric" /></div>
         </div>
         <div class="fg"><label class="fl" for="c-cname">اسم صاحب البطاقة</label><input type="text" id="c-cname" class="fi" placeholder="كما هو مكتوب على البطاقة" dir="ltr" autocomplete="cc-name" /></div>
-      </div>
-
-      <!-- Cash on delivery message -->
-      <div id="cash-msg" style="display:none;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:.84rem;color:var(--ts);line-height:1.65;">
-        <i class="fas fa-info-circle" style="color:var(--gold);margin-left:6px;" aria-hidden="true"></i>
-        ستدفع مبلغ الطلب نقداً عند استلام القطعة من مندوب التوصيل.
-      </div>
-
-      <!-- Transfer message -->
-      <div id="transfer-msg" style="display:none;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:.84rem;color:var(--ts);line-height:1.65;">
-        <i class="fas fa-info-circle" style="color:var(--gold);margin-left:6px;" aria-hidden="true"></i>
-        سنرسل لك تفاصيل الحساب البنكي عبر البريد الإلكتروني بعد تأكيد الطلب.
       </div>
 
       <div class="err-msg" id="form-err" role="alert" aria-live="polite"></div>
@@ -392,19 +340,6 @@
     document.getElementById('s-total').textContent = fmt(total);
   }
 
-  /* ── Payment method toggle ── */
-  var selectedMethod = 'card';
-  document.getElementById('pay-methods').addEventListener('click', function(e) {
-    var opt = e.target.closest('.pay-opt');
-    if (!opt) return;
-    document.querySelectorAll('.pay-opt').forEach(function(o){ o.classList.remove('selected'); });
-    opt.classList.add('selected');
-    selectedMethod = opt.getAttribute('data-method');
-    document.getElementById('card-fields').style.display = selectedMethod === 'card' ? 'block' : 'none';
-    document.getElementById('cash-msg').style.display = selectedMethod === 'cash' ? 'block' : 'none';
-    document.getElementById('transfer-msg').style.display = selectedMethod === 'transfer' ? 'block' : 'none';
-  });
-
   /* ── Card number formatting ── */
   document.getElementById('c-cardnum').addEventListener('input', function() {
     var v = this.value.replace(/\D/g, '').substring(0, 16);
@@ -436,9 +371,6 @@
     }
   });
 
-  /* ── Validation ── */
-  function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
-
   function showErr(msg) {
     var el = document.getElementById('form-err');
     el.textContent = msg;
@@ -456,28 +388,24 @@
 
     var fname = document.getElementById('c-fname').value.trim();
     var lname = document.getElementById('c-lname').value.trim();
-    var email = document.getElementById('c-email').value.trim();
     var phone = document.getElementById('c-phone').value.trim();
     var addr  = document.getElementById('c-addr').value.trim();
-    var city  = document.getElementById('c-city').value;
+    var city  = document.getElementById('c-city').value.trim();
 
-    if (!fname)              { showErr('يرجى إدخال اسمك'); return; }
-    if (!lname)              { showErr('يرجى إدخال لقبك'); return; }
-    if (!validateEmail(email)) { showErr('يرجى إدخال بريد إلكتروني صحيح'); return; }
-    if (!phone)              { showErr('يرجى إدخال رقم الهاتف'); return; }
-    if (!addr)               { showErr('يرجى إدخال عنوان التوصيل'); return; }
-    if (!city)               { showErr('يرجى اختيار المدينة'); return; }
+    if (!fname)  { showErr('يرجى إدخال اسمك'); return; }
+    if (!lname)  { showErr('يرجى إدخال لقبك'); return; }
+    if (!phone)  { showErr('يرجى إدخال رقم الهاتف'); return; }
+    if (!addr)   { showErr('يرجى إدخال عنوان التوصيل'); return; }
+    if (!city)   { showErr('يرجى إدخال المدينة'); return; }
 
-    if (selectedMethod === 'card') {
-      var cardnum = document.getElementById('c-cardnum').value.replace(/\s/g,'');
-      var exp    = document.getElementById('c-exp').value;
-      var cvv    = document.getElementById('c-cvv').value;
-      var cname  = document.getElementById('c-cname').value.trim();
-      if (cardnum.length < 16) { showErr('يرجى إدخال رقم البطاقة كاملاً'); return; }
-      if (exp.length < 5)      { showErr('يرجى إدخال تاريخ انتهاء صحيح (MM/YY)'); return; }
-      if (cvv.length < 3)      { showErr('يرجى إدخال رمز CVV'); return; }
-      if (!cname)              { showErr('يرجى إدخال اسم صاحب البطاقة'); return; }
-    }
+    var cardnum = document.getElementById('c-cardnum').value.replace(/\s/g,'');
+    var exp     = document.getElementById('c-exp').value;
+    var cvv     = document.getElementById('c-cvv').value;
+    var cname   = document.getElementById('c-cname').value.trim();
+    if (cardnum.length < 16) { showErr('يرجى إدخال رقم البطاقة كاملاً'); return; }
+    if (exp.length < 5)      { showErr('يرجى إدخال تاريخ انتهاء صحيح (MM/YY)'); return; }
+    if (cvv.length < 3)      { showErr('يرجى إدخال رمز CVV'); return; }
+    if (!cname)              { showErr('يرجى إدخال اسم صاحب البطاقة'); return; }
 
     /* Submit */
     var btn = document.getElementById('place-order-btn');
@@ -485,22 +413,18 @@
     btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> جاري المعالجة...';
 
     setTimeout(function() {
-      /* Clear cart */
       try {
         localStorage.removeItem('leclat-cart');
         sessionStorage.removeItem('leclat-checkout-cart');
         sessionStorage.removeItem('leclat-checkout-total');
       } catch(e) {}
 
-      /* Generate order number */
       var orderNum = '#LC-' + Math.floor(100000 + Math.random() * 900000);
       document.getElementById('order-num').textContent = orderNum;
 
-      /* Show success */
       document.getElementById('checkout-grid').style.display = 'none';
       document.getElementById('success-state').style.display = 'block';
 
-      /* Update step */
       document.getElementById('step2').className = 'step-item done';
       document.getElementById('step2').querySelector('.step-circle').innerHTML = '<i class="fas fa-check" style="font-size:.6rem;"></i>';
       document.getElementById('step3').className = 'step-item active';
