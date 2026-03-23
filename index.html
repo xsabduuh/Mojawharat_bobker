@@ -57,27 +57,27 @@
       --transition:   0.32s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Light theme override */
+    /* Light theme — warm ivory & deep gold */
     [data-theme="light"] {
-      --bg:           #f8f5ef;
-      --bg-2:         #ffffff;
-      --bg-3:         #f2ede3;
-      --surface:      #ffffff;
-      --surface-2:    #ede8de;
-      --line:         rgba(160, 126, 68, 0.18);
-      --line-soft:    rgba(0, 0, 0, 0.06);
-      --txt:          #1e1b14;
-      --txt-soft:     #6b6050;
-      --txt-muted:    #a09070;
-      --gold:         #a07830;
-      --gold-light:   #c49a44;
-      --gold-pale:    #e8d5a8;
-      --gold-dim:     rgba(160, 120, 48, 0.12);
-      --gold-glow:    rgba(160, 120, 48, 0.22);
-      --shadow-sm:    0 4px 16px rgba(0, 0, 0, 0.08);
-      --shadow-md:    0 12px 40px rgba(0, 0, 0, 0.12);
-      --shadow-lg:    0 24px 72px rgba(0, 0, 0, 0.15);
-      --shadow-gold:  0 16px 48px rgba(160, 120, 48, 0.18);
+      --bg:           #f4efe6;   /* warm ivory */
+      --bg-2:         #fdf9f3;   /* cream white */
+      --bg-3:         #ede5d8;   /* warm sand */
+      --surface:      #fdf9f3;
+      --surface-2:    #e8dfd0;
+      --line:         rgba(139, 107, 60, 0.2);
+      --line-soft:    rgba(100, 75, 35, 0.1);
+      --txt:          #1a1510;   /* deep warm black */
+      --txt-soft:     #5a4a35;   /* warm brown */
+      --txt-muted:    #9c866a;   /* muted tan */
+      --gold:         #8b5e1a;   /* deep rich gold */
+      --gold-light:   #b07828;   /* medium gold */
+      --gold-pale:    #d4a055;   /* light gold */
+      --gold-dim:     rgba(139, 94, 26, 0.1);
+      --gold-glow:    rgba(139, 94, 26, 0.2);
+      --shadow-sm:    0 4px 16px rgba(80, 55, 20, 0.1);
+      --shadow-md:    0 12px 40px rgba(80, 55, 20, 0.14);
+      --shadow-lg:    0 24px 72px rgba(80, 55, 20, 0.18);
+      --shadow-gold:  0 16px 48px rgba(139, 94, 26, 0.16);
     }
 
     /* ============================================================
@@ -314,7 +314,7 @@
     }
 
     [data-theme="light"] .site-header {
-      background: rgba(248, 245, 239, 0.9);
+      background: rgba(244, 239, 230, 0.92);
     }
 
     .header-inner {
@@ -559,27 +559,28 @@
     /* Mobile nav panel */
     .mobile-nav {
       position: fixed;
-      top: var(--header-h);
+      top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       width: 100%;
       max-width: 100vw;
       background: var(--bg-2);
-      border-top: 1px solid var(--line);
-      z-index: 490;
-      padding: 24px 16px;
+      z-index: 510; /* above header (500) */
+      padding: calc(var(--header-h) + 16px) 16px 32px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      transform: translateY(-110%);
-      transition: transform 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-100%);
+      transition: transform 0.34s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       overflow-x: hidden;
+      visibility: hidden;
     }
 
     .mobile-nav.is-open {
-      transform: translateY(0);
+      transform: translateX(0);
+      visibility: visible;
     }
 
     .mobile-nav a {
@@ -1845,8 +1846,8 @@
       <span class="cart-badge" id="cart-badge" aria-label="عدد المنتجات في السلة">0</span>
     </div>
 
-    <!-- Theme toggle (hidden on mobile — accessible via mobile nav) -->
-    <button class="icon-btn hide-mobile" id="theme-btn" aria-label="تبديل المظهر">
+    <!-- Theme toggle (always visible) -->
+    <button class="icon-btn" id="theme-btn" aria-label="تبديل المظهر">
       <i class="fas fa-sun" aria-hidden="true"></i>
     </button>
 
@@ -2911,6 +2912,7 @@
       if (nav) {
         nav.classList.add('is-open');
         nav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; /* lock scroll */
         var firstLink = nav.querySelector('a');
         if (firstLink) { setTimeout(function () { firstLink.focus(); }, 100); }
       }
@@ -2925,6 +2927,7 @@
       if (nav) {
         nav.classList.remove('is-open');
         nav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; /* restore scroll */
       }
       if (btn) {
         btn.setAttribute('aria-expanded', 'false');
