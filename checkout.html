@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إتمام الشراء — L'ÉCLAT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    :root{
+      --gold:#c8a96e;--gold-l:#e2c98c;--gold-dim:rgba(200,169,110,.13);
+      --bg:#080807;--bg2:#0f0f0d;--bg3:#161614;--sf:#1c1b18;
+      --line:rgba(200,169,110,.13);
+      --txt:#f0ebe0;--ts:#a89f8c;--tm:#6a6356;
+      --r:16px;--rl:24px;--rp:999px;--hh:68px;
+      --tr:.3s cubic-bezier(.4,0,.2,1);
+      --fd:'Cormorant Garamond',Georgia,serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{overflow-x:hidden;scroll-behavior:smooth;}
+    body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--txt);direction:rtl;overflow-x:hidden;min-height:100vh;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");}
+    ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px;}
+    a{color:inherit;text-decoration:none;} :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+```
+/* NAV */
+.nav{position:sticky;top:0;z-index:500;height:var(--hh);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);background:rgba(8,8,7,.88);}
+.nav-in{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.brand{display:flex;flex-direction:column;line-height:1;}
+.bn{font-family:var(--fd);color:var(--gold);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;letter-spacing:clamp(.15em,1.5vw,.45em);text-transform:uppercase;}
+.bs{font-size:.5rem;letter-spacing:.3em;color:var(--tm);text-transform:uppercase;margin-top:3px;}
+.back{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1px solid var(--line);border-radius:var(--rp);color:var(--tm);font-size:.76rem;font-family:inherit;background:none;cursor:pointer;transition:all var(--tr);}
+.back:hover{border-color:var(--gold);color:var(--gold);}
+.back i{color:var(--gold);}
+
+/* STEPS */
+.steps-bar{max-width:1200px;margin-inline:auto;padding:24px clamp(16px,4vw,48px);display:flex;align-items:center;justify-content:center;gap:0;}
+.step-item{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--tm);}
+.step-item.active{color:var(--gold);}
+.step-item.done{color:var(--gold);opacity:.6;}
+.step-circle{width:28px;height:28px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;}
+.step-item.active .step-circle{background:var(--gold);border-color:var(--gold);color:#000;}
+.step-item.done .step-circle{background:none;}
+.step-connector{width:clamp(24px,5vw,60px);height:1px;background:var(--line);margin:0 8px;}
+
+/* LAYOUT */
+.page-wrap{max-width:1200px;margin-inline:auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,48px);}
+.checkout-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,3vw,40px);align-items:start;}
+@media(max-width:800px){.checkout-grid{grid-template-columns:1fr;}}
+
+/* FORM CARD */
+.form-card{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(22px,3.5vw,38px);}
+.card-title{font-family:var(--fd);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:300;color:var(--gold);letter-spacing:.08em;margin-bottom:6px;}
+.card-sub{font-size:.8rem;color:var(--tm);margin-bottom:24px;}
+
+.section-sep{display:flex;align-items:center;gap:12px;margin:22px 0 18px;}
+.section-sep span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);white-space:nowrap;}
+.section-sep::before,.section-sep::after{content:'';flex:1;height:1px;background:var(--line);}
+
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+@media(max-width:480px){.frow{grid-template-columns:1fr;}}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:6px;}
+.fi,.fsel{width:100%;padding:13px 15px;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);color:var(--txt);font-family:'Tajawal',sans-serif;font-size:.88rem;outline:none;transition:border-color var(--tr),box-shadow var(--tr);}
+.fi::placeholder{color:var(--tm);}
+.fi:focus,.fsel:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,110,.1);}
+.fsel{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23c8a96e' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 13px center;padding-left:32px;}
+.fsel option{background:var(--bg2);}
+
+/* Payment method selector */
+.pay-methods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.pay-opt{flex:1;min-width:100px;padding:12px 10px;border:1px solid var(--line);border-radius:var(--r);background:var(--sf);cursor:pointer;transition:all var(--tr);text-align:center;}
+.pay-opt.selected{border-color:var(--gold);background:var(--gold-dim);}
+.pay-opt i{font-size:1.3rem;color:var(--ts);display:block;margin-bottom:5px;}
+.pay-opt.selected i{color:var(--gold);}
+.pay-opt span{font-size:.72rem;color:var(--tm);}
+.pay-opt.selected span{color:var(--gold);}
+
+/* Card number input styling */
+.card-input-wrap{position:relative;}
+.card-input-wrap .fi{padding-left:44px;}
+.card-input-wrap .card-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:1rem;}
+
+.submit-btn{
+  width:100%;padding:15px;background:var(--gold);border:none;border-radius:var(--rp);
+  color:#000;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;
+  letter-spacing:.06em;cursor:pointer;transition:all var(--tr);margin-top:8px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.submit-btn:hover:not(:disabled){background:var(--gold-l);transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,169,110,.28);}
+.submit-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+
+.secure-note{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:12px;font-size:.72rem;color:var(--tm);}
+.secure-note i{color:var(--gold);}
+
+/* ORDER SUMMARY */
+.summary-card{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(22px,3.5vw,32px);position:sticky;top:calc(var(--hh) + 16px);}
+.summary-items{display:flex;flex-direction:column;gap:14px;margin-bottom:20px;max-height:320px;overflow-y:auto;}
+.s-item{display:flex;gap:12px;align-items:center;}
+.s-img{width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid var(--line);flex-shrink:0;}
+.s-info{flex:1;min-width:0;}
+.s-name{font-size:.82rem;font-weight:600;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.s-qty{font-size:.72rem;color:var(--tm);}
+.s-price{font-size:.88rem;font-weight:700;color:var(--gold);white-space:nowrap;}
+
+.summary-divider{height:1px;background:var(--line);margin:16px 0;}
+.summary-row{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;margin-bottom:8px;}
+.summary-row.total{font-size:1.05rem;font-weight:700;color:var(--gold);margin-top:8px;}
+.summary-row span:first-child{color:var(--tm);}
+.summary-row.total span:first-child{color:var(--txt);}
+
+.promo-row{display:flex;gap:8px;margin-top:14px;}
+.promo-input{flex:1;padding:11px 13px;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);color:var(--txt);font-family:'Tajawal',sans-serif;font-size:.82rem;outline:none;transition:border-color var(--tr);}
+.promo-input::placeholder{color:var(--tm);}
+.promo-input:focus{border-color:var(--gold);}
+.promo-btn{padding:11px 18px;border:1px solid var(--gold);border-radius:var(--r);background:none;color:var(--gold);font-family:'Tajawal',sans-serif;font-size:.78rem;cursor:pointer;transition:all var(--tr);white-space:nowrap;}
+.promo-btn:hover{background:var(--gold);color:#000;}
+
+/* SUCCESS STATE */
+.success-state{display:none;text-align:center;padding:60px 20px;}
+.success-icon{width:80px;height:80px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;color:var(--gold);}
+.success-state h2{font-family:var(--fd);font-size:2.2rem;font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;}
+.success-state p{font-size:.9rem;color:var(--ts);margin-bottom:24px;line-height:1.7;}
+.order-num{font-size:.75rem;color:var(--tm);letter-spacing:.1em;margin-bottom:28px;}
+.order-num span{color:var(--gold);font-weight:700;}
+.back-home-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 32px;background:var(--gold);border:none;border-radius:var(--rp);color:#000;font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all var(--tr);}
+.back-home-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
+
+/* Empty cart state */
+.empty-state{text-align:center;padding:80px 20px;}
+.empty-state i{font-size:3rem;color:var(--tm);display:block;margin-bottom:16px;opacity:.4;}
+.empty-state h2{font-family:var(--fd);font-size:1.8rem;font-weight:300;color:var(--gold);margin-bottom:10px;}
+.empty-state p{font-size:.85rem;color:var(--ts);margin-bottom:24px;}
+
+/* ERROR */
+.err-msg{margin-top:10px;padding:10px 14px;border-radius:var(--r);font-size:.8rem;font-weight:500;background:rgba(192,57,43,.1);border:1px solid #c0392b;color:#e74c3c;display:none;}
+.err-msg.show{display:block;}
+
+.foot{border-top:1px solid var(--line);background:var(--bg2);padding:22px clamp(16px,4vw,48px);margin-top:clamp(48px,8vw,80px);text-align:center;}
+.foot p{font-size:.74rem;color:var(--tm);}
+.foot a{color:var(--gold);}
+
+.au{opacity:0;transform:translateY(16px);animation:aup .55s ease forwards;}
+@keyframes aup{to{opacity:1;transform:none;}}
+.d1{animation-delay:.06s;}.d2{animation-delay:.14s;}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <header class="nav">
+    <div class="nav-in">
+      <a href="index.html" class="brand">
+        <span class="bn">L'ÉCLAT</span>
+        <span class="bs">Haute Joaillerie</span>
+      </a>
+      <a href="index.html" class="back">
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        العودة للمتجر
+      </a>
+    </div>
+  </header>
+
+  <!-- STEPS -->
+
+  <div class="steps-bar" aria-label="مراحل الشراء">
+    <div class="step-item done" id="step1">
+      <div class="step-circle"><i class="fas fa-check" style="font-size:.6rem;"></i></div>
+      <span>السلة</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-item active" id="step2">
+      <div class="step-circle">2</div>
+      <span>الطلب</span>
+    </div>
+    <div class="step-connector"></div>
+    <div class="step-item" id="step3">
+      <div class="step-circle">3</div>
+      <span>التأكيد</span>
+    </div>
+  </div>
+
+  <main class="page-wrap">
+
+```
+<!-- EMPTY CART STATE -->
+<div class="empty-state" id="empty-state" style="display:none;">
+  <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+  <h2>السلة فارغة</h2>
+  <p>أضف منتجات إلى سلتك قبل إتمام الشراء</p>
+  <a href="index.html" class="back-home-btn">
+    <i class="fas fa-gem" aria-hidden="true"></i>
+    تصفح المجموعة
+  </a>
+</div>
+
+<!-- SUCCESS STATE -->
+<div class="success-state" id="success-state">
+  <div class="success-icon"><i class="fas fa-check" aria-hidden="true"></i></div>
+  <h2>تم تأكيد طلبك!</h2>
+  <p>شكراً لثقتكم بـ L'ÉCLAT — سنتواصل معكم قريباً<br>لتأكيد التفاصيل وموعد التوصيل</p>
+  <p class="order-num">رقم الطلب: <span id="order-num">#LC-000000</span></p>
+  <a href="index.html" class="back-home-btn">
+    <i class="fas fa-home" aria-hidden="true"></i>
+    العودة للرئيسية
+  </a>
+</div>
+
+<!-- CHECKOUT GRID -->
+<div class="checkout-grid" id="checkout-grid">
+
+  <!-- FORM -->
+  <div>
+
+    <!-- SHIPPING INFO -->
+    <div class="form-card au d1" style="margin-bottom:16px;">
+      <h2 class="card-title">معلومات التوصيل</h2>
+      <p class="card-sub">سنوصل طلبك في أقرب وقت ممكن</p>
+
+      <div class="frow">
+        <div class="fg"><label class="fl" for="c-fname">الاسم</label><input type="text" id="c-fname" class="fi" placeholder="محمد" autocomplete="given-name" /></div>
+        <div class="fg"><label class="fl" for="c-lname">اللقب</label><input type="text" id="c-lname" class="fi" placeholder="الأمين" autocomplete="family-name" /></div>
+      </div>
+      <div class="fg"><label class="fl" for="c-email">البريد الإلكتروني</label><input type="email" id="c-email" class="fi" placeholder="email@example.com" autocomplete="email" /></div>
+      <div class="fg"><label class="fl" for="c-phone">الهاتف</label><input type="tel" id="c-phone" class="fi" placeholder="+212 6xx xxx xxx" autocomplete="tel" dir="ltr" /></div>
+      <div class="fg"><label class="fl" for="c-addr">العنوان</label><input type="text" id="c-addr" class="fi" placeholder="الشارع، الحي..." autocomplete="street-address" /></div>
+      <div class="frow">
+        <div class="fg"><label class="fl" for="c-city">المدينة</label>
+          <select id="c-city" class="fsel">
+            <option value="">اختر المدينة...</option>
+            <option>مراكش</option><option>الدار البيضاء</option>
+            <option>الرباط</option><option>فاس</option>
+            <option>أكادير</option><option>طنجة</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl" for="c-zip">الرمز البريدي</label><input type="text" id="c-zip" class="fi" placeholder="40000" maxlength="5" /></div>
+      </div>
+      <div class="fg"><label class="fl" for="c-notes">ملاحظات (اختياري)</label><input type="text" id="c-notes" class="fi" placeholder="أي تعليمات خاصة للتوصيل..." /></div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="form-card au d2">
+      <h2 class="card-title">طريقة الدفع</h2>
+      <p class="card-sub">جميع المعاملات مشفرة وآمنة تماماً</p>
+
+      <div class="pay-methods" id="pay-methods">
+        <div class="pay-opt selected" data-method="card">
+          <i class="fas fa-credit-card" aria-hidden="true"></i>
+          <span>بطاقة بنكية</span>
+        </div>
+        <div class="pay-opt" data-method="cash">
+          <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+          <span>الدفع عند الاستلام</span>
+        </div>
+        <div class="pay-opt" data-method="transfer">
+          <i class="fas fa-university" aria-hidden="true"></i>
+          <span>تحويل بنكي</span>
+        </div>
+      </div>
+
+      <!-- Card fields (shown when card selected) -->
+      <div id="card-fields">
+        <div class="fg">
+          <label class="fl" for="c-cardnum">رقم البطاقة</label>
+          <div class="card-input-wrap">
+            <i class="fas fa-credit-card card-icon" aria-hidden="true"></i>
+            <input type="text" id="c-cardnum" class="fi" placeholder="0000 0000 0000 0000" maxlength="19" dir="ltr" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label class="fl" for="c-exp">تاريخ الانتهاء</label><input type="text" id="c-exp" class="fi" placeholder="MM/YY" maxlength="5" dir="ltr" inputmode="numeric" /></div>
+          <div class="fg"><label class="fl" for="c-cvv">CVV</label><input type="text" id="c-cvv" class="fi" placeholder="123" maxlength="4" dir="ltr" inputmode="numeric" /></div>
+        </div>
+        <div class="fg"><label class="fl" for="c-cname">اسم صاحب البطاقة</label><input type="text" id="c-cname" class="fi" placeholder="كما هو مكتوب على البطاقة" dir="ltr" autocomplete="cc-name" /></div>
+      </div>
+
+      <!-- Cash on delivery message -->
+      <div id="cash-msg" style="display:none;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:.84rem;color:var(--ts);line-height:1.65;">
+        <i class="fas fa-info-circle" style="color:var(--gold);margin-left:6px;" aria-hidden="true"></i>
+        ستدفع مبلغ الطلب نقداً عند استلام القطعة من مندوب التوصيل.
+      </div>
+
+      <!-- Transfer message -->
+      <div id="transfer-msg" style="display:none;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:16px;font-size:.84rem;color:var(--ts);line-height:1.65;">
+        <i class="fas fa-info-circle" style="color:var(--gold);margin-left:6px;" aria-hidden="true"></i>
+        سنرسل لك تفاصيل الحساب البنكي عبر البريد الإلكتروني بعد تأكيد الطلب.
+      </div>
+
+      <div class="err-msg" id="form-err" role="alert" aria-live="polite"></div>
+
+      <button class="submit-btn" id="place-order-btn" type="button">
+        <i class="fas fa-lock" aria-hidden="true"></i>
+        تأكيد الطلب
+      </button>
+
+      <div class="secure-note">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <span>مدفوعاتك محمية بتشفير SSL 256-bit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="summary-card au d1">
+    <h2 class="card-title" style="margin-bottom:20px;">ملخص الطلب</h2>
+
+    <div class="summary-items" id="summary-items">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="promo-row">
+      <input type="text" class="promo-input" id="promo-input" placeholder="رمز الخصم..." />
+      <button class="promo-btn" id="promo-btn" type="button">تطبيق</button>
+    </div>
+
+    <div class="summary-divider"></div>
+
+    <div class="summary-row"><span>المجموع الفرعي</span><span id="s-subtotal">0 د.م</span></div>
+    <div class="summary-row"><span>تكلفة الشحن</span><span id="s-shipping" style="color:var(--gold);">مجاني</span></div>
+    <div class="summary-row" id="discount-row" style="display:none;color:#27ae60;"><span>خصم</span><span id="s-discount"></span></div>
+    <div class="summary-divider"></div>
+    <div class="summary-row total"><span>المجموع الكلي</span><span id="s-total">0 د.م</span></div>
+  </div>
+
+</div>
+```
+
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 <a href="index.html">L'ÉCLAT</a> — Haute Joaillerie. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script data-cfasync='false'>
+  'use strict';
+
+  /* ── Load cart from sessionStorage (passed from main store) ── */
+  var cartItems = [];
+  var discountApplied = 0;
+
+  try {
+    var raw = sessionStorage.getItem('leclat-checkout-cart');
+    if (raw) { cartItems = JSON.parse(raw); }
+    /* Also try localStorage as fallback */
+    if (!cartItems || cartItems.length === 0) {
+      var raw2 = localStorage.getItem('leclat-cart');
+      if (raw2) { cartItems = JSON.parse(raw2); }
+    }
+  } catch(e) { cartItems = []; }
+
+  /* ── Show empty or checkout ── */
+  if (!cartItems || cartItems.length === 0) {
+    document.getElementById('empty-state').style.display = 'block';
+    document.getElementById('checkout-grid').style.display = 'none';
+  } else {
+    renderSummary();
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('ar-MA') + ' د.م';
+  }
+
+  function renderSummary() {
+    var container = document.getElementById('summary-items');
+    container.innerHTML = '';
+    var subtotal = 0;
+
+    cartItems.forEach(function(item) {
+      subtotal += item.price * item.qty;
+      var div = document.createElement('div');
+      div.className = 's-item';
+      div.innerHTML =
+        '<img class="s-img" src="' + item.img + '" alt="' + item.name + '" loading="lazy" />' +
+        '<div class="s-info">' +
+          '<p class="s-name">' + item.name + '</p>' +
+          '<p class="s-qty">الكمية: ' + item.qty + '</p>' +
+        '</div>' +
+        '<span class="s-price">' + fmt(item.price * item.qty) + '</span>';
+      container.appendChild(div);
+    });
+
+    var total = subtotal - discountApplied;
+    document.getElementById('s-subtotal').textContent = fmt(subtotal);
+    document.getElementById('s-total').textContent = fmt(total);
+  }
+
+  /* ── Payment method toggle ── */
+  var selectedMethod = 'card';
+  document.getElementById('pay-methods').addEventListener('click', function(e) {
+    var opt = e.target.closest('.pay-opt');
+    if (!opt) return;
+    document.querySelectorAll('.pay-opt').forEach(function(o){ o.classList.remove('selected'); });
+    opt.classList.add('selected');
+    selectedMethod = opt.getAttribute('data-method');
+    document.getElementById('card-fields').style.display = selectedMethod === 'card' ? 'block' : 'none';
+    document.getElementById('cash-msg').style.display = selectedMethod === 'cash' ? 'block' : 'none';
+    document.getElementById('transfer-msg').style.display = selectedMethod === 'transfer' ? 'block' : 'none';
+  });
+
+  /* ── Card number formatting ── */
+  document.getElementById('c-cardnum').addEventListener('input', function() {
+    var v = this.value.replace(/\D/g, '').substring(0, 16);
+    this.value = v.replace(/(.{4})/g, '$1 ').trim();
+  });
+
+  document.getElementById('c-exp').addEventListener('input', function() {
+    var v = this.value.replace(/\D/g, '').substring(0, 4);
+    if (v.length >= 3) { v = v.substring(0,2) + '/' + v.substring(2); }
+    this.value = v;
+  });
+
+  /* ── Promo code ── */
+  var PROMO_CODES = { 'ECLAT10': 10, 'VIP20': 20 };
+  document.getElementById('promo-btn').addEventListener('click', function() {
+    var code = document.getElementById('promo-input').value.trim().toUpperCase();
+    if (PROMO_CODES[code]) {
+      discountApplied = PROMO_CODES[code];
+      var subtotal = cartItems.reduce(function(s,i){ return s + i.price * i.qty; }, 0);
+      document.getElementById('discount-row').style.display = 'flex';
+      document.getElementById('s-discount').textContent = '- ' + fmt(discountApplied);
+      document.getElementById('s-total').textContent = fmt(subtotal - discountApplied);
+      this.textContent = '✓ تم';
+      this.style.color = 'var(--gold)';
+    } else {
+      this.textContent = '✗ غير صالح';
+      this.style.color = '#c0392b';
+      setTimeout(function(){ document.getElementById('promo-btn').textContent = 'تطبيق'; document.getElementById('promo-btn').style.color = ''; }, 2000);
+    }
+  });
+
+  /* ── Validation ── */
+  function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e); }
+
+  function showErr(msg) {
+    var el = document.getElementById('form-err');
+    el.textContent = msg;
+    el.classList.add('show');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function hideErr() {
+    document.getElementById('form-err').classList.remove('show');
+  }
+
+  /* ── Place order ── */
+  document.getElementById('place-order-btn').addEventListener('click', function() {
+    hideErr();
+
+    var fname = document.getElementById('c-fname').value.trim();
+    var lname = document.getElementById('c-lname').value.trim();
+    var email = document.getElementById('c-email').value.trim();
+    var phone = document.getElementById('c-phone').value.trim();
+    var addr  = document.getElementById('c-addr').value.trim();
+    var city  = document.getElementById('c-city').value;
+
+    if (!fname)              { showErr('يرجى إدخال اسمك'); return; }
+    if (!lname)              { showErr('يرجى إدخال لقبك'); return; }
+    if (!validateEmail(email)) { showErr('يرجى إدخال بريد إلكتروني صحيح'); return; }
+    if (!phone)              { showErr('يرجى إدخال رقم الهاتف'); return; }
+    if (!addr)               { showErr('يرجى إدخال عنوان التوصيل'); return; }
+    if (!city)               { showErr('يرجى اختيار المدينة'); return; }
+
+    if (selectedMethod === 'card') {
+      var cardnum = document.getElementById('c-cardnum').value.replace(/\s/g,'');
+      var exp    = document.getElementById('c-exp').value;
+      var cvv    = document.getElementById('c-cvv').value;
+      var cname  = document.getElementById('c-cname').value.trim();
+      if (cardnum.length < 16) { showErr('يرجى إدخال رقم البطاقة كاملاً'); return; }
+      if (exp.length < 5)      { showErr('يرجى إدخال تاريخ انتهاء صحيح (MM/YY)'); return; }
+      if (cvv.length < 3)      { showErr('يرجى إدخال رمز CVV'); return; }
+      if (!cname)              { showErr('يرجى إدخال اسم صاحب البطاقة'); return; }
+    }
+
+    /* Submit */
+    var btn = document.getElementById('place-order-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> جاري المعالجة...';
+
+    setTimeout(function() {
+      /* Clear cart */
+      try {
+        localStorage.removeItem('leclat-cart');
+        sessionStorage.removeItem('leclat-checkout-cart');
+        sessionStorage.removeItem('leclat-checkout-total');
+      } catch(e) {}
+
+      /* Generate order number */
+      var orderNum = '#LC-' + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('order-num').textContent = orderNum;
+
+      /* Show success */
+      document.getElementById('checkout-grid').style.display = 'none';
+      document.getElementById('success-state').style.display = 'block';
+
+      /* Update step */
+      document.getElementById('step2').className = 'step-item done';
+      document.getElementById('step2').querySelector('.step-circle').innerHTML = '<i class="fas fa-check" style="font-size:.6rem;"></i>';
+      document.getElementById('step3').className = 'step-item active';
+      document.getElementById('step3').querySelector('.step-circle').innerHTML = '<i class="fas fa-check" style="font-size:.6rem;"></i>';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2000);
+  });
+  </script>
+
+</body>
+</html>
