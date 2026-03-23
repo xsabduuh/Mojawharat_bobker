@@ -1,43 +1,265 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>...</head>
+
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا — L'ÉCLAT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    :root{
+      --gold:#c8a96e;--gold-l:#e2c98c;--gold-dim:rgba(200,169,110,.13);
+      --bg:#080807;--bg2:#0f0f0d;--bg3:#161614;--sf:#1c1b18;
+      --line:rgba(200,169,110,.13);
+      --txt:#f0ebe0;--ts:#a89f8c;--tm:#6a6356;
+      --r:16px;--rl:24px;--rp:999px;--hh:68px;
+      --sg:0 12px 40px rgba(200,169,110,.18);
+      --tr:.3s cubic-bezier(.4,0,.2,1);
+      --fd:'Cormorant Garamond',Georgia,serif;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{overflow-x:hidden;scroll-behavior:smooth;}
+    body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--txt);direction:rtl;overflow-x:hidden;min-height:100vh;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");}
+    ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px;}
+    a{color:inherit;text-decoration:none;} :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
+
+```
+.nav{position:sticky;top:0;z-index:500;height:var(--hh);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);background:rgba(8,8,7,.88);}
+.nav-in{max-width:1300px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px);height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.brand{display:flex;flex-direction:column;line-height:1;}
+.bn{font-family:var(--fd);color:var(--gold);font-size:clamp(1.2rem,3vw,1.7rem);font-weight:300;letter-spacing:clamp(.15em,1.5vw,.45em);text-transform:uppercase;}
+.bs{font-size:.5rem;letter-spacing:.3em;color:var(--tm);text-transform:uppercase;margin-top:3px;}
+.nl{display:flex;gap:22px;list-style:none;}
+.nl a{font-size:.78rem;color:var(--tm);transition:color var(--tr);}
+.nl a:hover,.nl a.cur{color:var(--gold);}
+@media(max-width:600px){.nl{display:none;}}
+.back{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border:1px solid var(--line);border-radius:var(--rp);color:var(--tm);font-size:.76rem;font-family:inherit;background:none;cursor:pointer;transition:all var(--tr);}
+.back:hover{border-color:var(--gold);color:var(--gold);}
+.back i{color:var(--gold);}
+
+.hero{text-align:center;padding:clamp(56px,9vh,100px) clamp(16px,4vw,48px) clamp(36px,5vh,60px);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(460px,100%);height:460px;pointer-events:none;background:radial-gradient(circle,rgba(200,169,110,.08) 0%,transparent 65%);}
+.ey{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--tm);margin-bottom:12px;}
+.ht{font-family:var(--fd);font-size:clamp(2.2rem,7vw,5rem);font-weight:300;color:var(--gold);letter-spacing:.1em;margin-bottom:14px;}
+.hd{font-size:clamp(.88rem,2vw,1rem);color:var(--ts);max-width:min(480px,90%);margin-inline:auto;line-height:1.75;}
+.gr{width:50px;height:1px;background:var(--gold);margin:22px auto 0;opacity:.35;}
+
+.wrap{max-width:1200px;margin-inline:auto;padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px);}
+
+.cgrid{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(20px,3.5vw,48px);align-items:start;}
+@media(max-width:780px){.cgrid{grid-template-columns:1fr;}}
+
+.istack{display:flex;flex-direction:column;gap:14px;}
+.ic{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(16px,2.5vw,24px);transition:all var(--tr);}
+.ic:hover{border-color:var(--gold);box-shadow:var(--sg);}
+.ich{display:flex;align-items:center;gap:11px;margin-bottom:9px;}
+.ici{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--gold-dim);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);}
+.ich h3{font-size:.85rem;font-weight:600;letter-spacing:.04em;}
+.icb{font-size:.8rem;color:var(--ts);line-height:1.65;}
+.icb a:hover{color:var(--gold);}
+
+.htbl{width:100%;border-collapse:collapse;font-size:.78rem;}
+.htbl tr{border-bottom:1px solid rgba(200,169,110,.06);}
+.htbl tr:last-child{border-bottom:none;}
+.htbl td{padding:6px 0;color:var(--tm);}
+.htbl td:last-child{color:var(--ts);text-align:left;}
+.cl{color:#c0392b !important;}
+
+.srow{display:flex;gap:8px;margin-top:9px;}
+.sb{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--tm);font-size:.88rem;display:flex;align-items:center;justify-content:center;transition:all var(--tr);cursor:pointer;}
+.sb:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+
+.fcard{background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);padding:clamp(22px,3.5vw,38px);}
+.fh{margin-bottom:22px;}
+.fh h2{font-family:var(--fd);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:300;color:var(--gold);letter-spacing:.08em;}
+.fh p{font-size:.8rem;color:var(--tm);margin-top:4px;}
+
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+@media(max-width:480px){.frow{grid-template-columns:1fr;}}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin-bottom:6px;}
+.fi,.fsel,.fta{width:100%;padding:12px 14px;background:var(--sf);border:1px solid var(--line);border-radius:var(--r);color:var(--txt);font-family:'Tajawal',sans-serif;font-size:.86rem;outline:none;transition:border-color var(--tr),box-shadow var(--tr);}
+.fi::placeholder,.fta::placeholder{color:var(--tm);}
+.fi:focus,.fsel:focus,.fta:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,110,.1);}
+.fta{resize:vertical;min-height:110px;line-height:1.6;}
+.fsel{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23c8a96e' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 13px center;padding-left:32px;}
+.fsel option{background:var(--bg2);}
+.sbtn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--rp);color:#000;font-family:'Tajawal',sans-serif;font-size:.92rem;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:all var(--tr);margin-top:4px;}
+.sbtn:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 10px 26px rgba(200,169,110,.28);}
+.sbtn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+.fst{margin-top:11px;padding:11px 14px;border-radius:var(--r);font-size:.8rem;font-weight:500;display:none;}
+.fst.ok{background:rgba(200,169,110,.1);border:1px solid var(--gold);color:var(--gold);display:block;}
+.fst.er{background:rgba(192,57,43,.1);border:1px solid #c0392b;color:#e74c3c;display:block;}
+
+.msec{margin-top:clamp(48px,6vw,80px);}
+.msec h2{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;color:var(--gold);letter-spacing:.1em;text-align:center;margin-bottom:20px;}
+.mbox{width:100%;height:clamp(200px,32vw,320px);background:var(--bg3);border:1px solid var(--line);border-radius:var(--rl);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.mbox::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(200,169,110,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(200,169,110,.04) 40px);}
+.mi{text-align:center;position:relative;z-index:1;}
+.mi i{font-size:2rem;color:var(--gold);display:block;margin-bottom:10px;opacity:.5;}
+.mi p{font-size:.8rem;color:var(--tm);}
+
+.foot{border-top:1px solid var(--line);background:var(--bg2);padding:26px clamp(16px,4vw,48px);margin-top:clamp(56px,8vw,96px);text-align:center;}
+.foot p{font-size:.74rem;color:var(--tm);}
+.foot a{color:var(--gold);}
+
+.au{opacity:0;transform:translateY(18px);animation:aup .6s ease forwards;}
+@keyframes aup{to{opacity:1;transform:none;}}
+.d1{animation-delay:.08s;}.d2{animation-delay:.16s;}.d3{animation-delay:.24s;}.d4{animation-delay:.32s;}.d5{animation-delay:.4s;}
+```
+
+  </style>
+</head>
 <body>
-    <header>...</header>
-    <main>
-        <div class="container">
-            <div class="page-header">
-                <h1>اتصل بنا</h1>
-                <p>نحن هنا لخدمتك</p>
-            </div>
-            <div class="content-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                <div>
-                    <h2>معلومات الاتصال</h2>
-                    <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية – حي الملقا</p>
-                    <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
-                    <p><i class="fas fa-envelope"></i> contact@leclat.com</p>
-                    <p><i class="fas fa-clock"></i> ساعات العمل: السبت – الخميس 10 ص – 10 م</p>
-                    <div style="margin-top: 30px;">
-                        <h3>تابعنا</h3>
-                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 15px;">
-                            <a href="#" style="color: var(--accent); font-size: 1.8rem;"><i class="fab fa-instagram"></i></a>
-                            <a href="#" style="color: var(--accent); font-size: 1.8rem;"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" style="color: var(--accent); font-size: 1.8rem;"><i class="fab fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h2>أرسل لنا رسالة</h2>
-                    <form style="display: flex; flex-direction: column; gap: 15px;">
-                        <input type="text" placeholder="الاسم الكامل" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-primary);">
-                        <input type="email" placeholder="البريد الإلكتروني" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-primary);">
-                        <textarea rows="5" placeholder="رسالتك" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--input-bg); color: var(--text-primary);"></textarea>
-                        <button type="submit" class="btn" style="width: fit-content; margin-top: 10px;">إرسال</button>
-                    </form>
-                </div>
-            </div>
+
+  <header class="nav">
+    <div class="nav-in">
+      <a href="index.html" class="brand">
+        <span class="bn">L'ÉCLAT</span>
+        <span class="bs">Haute Joaillerie</span>
+      </a>
+      <nav aria-label="روابط الموقع">
+        <ul class="nl">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="contact.html" class="cur">تواصل معنا</a></li>
+          <li><a href="privacy.html">الخصوصية</a></li>
+          <li><a href="returns.html">الإرجاع</a></li>
+          <li><a href="terms.html">الشروط</a></li>
+        </ul>
+      </nav>
+      <a href="index.html" class="back">
+        <i class="fas fa-arrow-right" aria-hidden="true"></i> العودة للرئيسية
+      </a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <p class="ey">Maison L'ÉCLAT</p>
+    <h1 class="ht">تواصل معنا</h1>
+    <p class="hd">فريقنا المتخصص جاهز للإجابة على جميع استفساراتكم — نحن في خدمتكم</p>
+    <div class="gr"></div>
+  </div>
+
+  <main class="wrap">
+    <div class="cgrid">
+
+```
+  <div class="istack">
+    <div class="ic au d1">
+      <div class="ich"><div class="ici"><i class="fas fa-phone-alt" aria-hidden="true"></i></div><h3>الهاتف</h3></div>
+      <div class="icb"><a href="tel:+21200000000" dir="ltr">+212 00 000 0000</a><p style="margin-top:5px;font-size:.74rem;color:var(--tm);">السبت — الخميس · 9:00 – 20:00</p></div>
+    </div>
+
+    <div class="ic au d2">
+      <div class="ich"><div class="ici"><i class="fas fa-envelope" aria-hidden="true"></i></div><h3>البريد الإلكتروني</h3></div>
+      <div class="icb"><a href="mailto:contact@leclat.ma">contact@leclat.ma</a><p style="margin-top:5px;font-size:.74rem;color:var(--tm);">نرد خلال 24 ساعة عمل</p></div>
+    </div>
+
+    <div class="ic au d3">
+      <div class="ich"><div class="ici"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div><h3>العنوان</h3></div>
+      <div class="icb">شارع محمد الخامس، مراكش، المغرب</div>
+    </div>
+
+    <div class="ic au d4">
+      <div class="ich"><div class="ici"><i class="fas fa-clock" aria-hidden="true"></i></div><h3>ساعات العمل</h3></div>
+      <div class="icb">
+        <table class="htbl">
+          <tr><td>السبت — الخميس</td><td>09:00 – 20:00</td></tr>
+          <tr><td>الجمعة</td><td class="cl">مغلق</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ic au d5">
+      <div class="ich"><div class="ici"><i class="fas fa-share-alt" aria-hidden="true"></i></div><h3>تابعونا</h3></div>
+      <div class="icb">
+        <div class="srow">
+          <a href="#" class="sb" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="sb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="sb" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="sb" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
-    </main>
-    <footer>...</footer>
-    <script>...</script>
+      </div>
+    </div>
+  </div>
+
+  <div class="fcard au d2">
+    <div class="fh">
+      <h2>NOUS ÉCRIRE</h2>
+      <p>أرسل لنا رسالة وسنرد عليك في أقرب وقت ممكن</p>
+    </div>
+    <div class="frow">
+      <div class="fg"><label class="fl" for="fn">الاسم الكامل</label><input type="text" id="fn" class="fi" placeholder="محمد الأمين" autocomplete="name" /></div>
+      <div class="fg"><label class="fl" for="fe">البريد الإلكتروني</label><input type="email" id="fe" class="fi" placeholder="email@example.com" autocomplete="email" /></div>
+    </div>
+    <div class="fg"><label class="fl" for="fp">الهاتف (اختياري)</label><input type="tel" id="fp" class="fi" placeholder="+212 6xx xxx xxx" dir="ltr" /></div>
+    <div class="fg">
+      <label class="fl" for="fs">الموضوع</label>
+      <select id="fs" class="fsel">
+        <option value="">اختر موضوعاً...</option>
+        <option value="info">استفسار عن منتج</option>
+        <option value="order">متابعة طلب</option>
+        <option value="custom">تصميم خاص</option>
+        <option value="return">إرجاع أو استبدال</option>
+        <option value="other">أخرى</option>
+      </select>
+    </div>
+    <div class="fg"><label class="fl" for="fm">رسالتك</label><textarea id="fm" class="fta" placeholder="اكتب رسالتك هنا..."></textarea></div>
+    <button class="sbtn" id="sbtn" type="button">إرسال الرسالة</button>
+    <div class="fst" id="fst" role="status" aria-live="polite"></div>
+  </div>
+
+</div>
+
+<div class="msec">
+  <h2>موقعنا</h2>
+  <div class="mbox">
+    <div class="mi">
+      <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+      <p>شارع محمد الخامس، مراكش — المغرب</p>
+    </div>
+  </div>
+</div>
+```
+
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 <a href="index.html">L'ÉCLAT</a> — Haute Joaillerie. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script data-cfasync='false'>
+  'use strict';
+  function valEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
+  document.getElementById('sbtn').onclick = function(){
+    var n=document.getElementById('fn').value.trim();
+    var e=document.getElementById('fe').value.trim();
+    var s=document.getElementById('fs').value;
+    var m=document.getElementById('fm').value.trim();
+    var st=document.getElementById('fst');
+    st.className='fst'; st.textContent='';
+    if(!n){st.textContent='يرجى إدخال اسمك الكامل';st.className='fst er';return;}
+    if(!valEmail(e)){st.textContent='يرجى إدخال بريد إلكتروني صحيح';st.className='fst er';return;}
+    if(!s){st.textContent='يرجى اختيار موضوع';st.className='fst er';return;}
+    if(!m){st.textContent='يرجى كتابة رسالتك';st.className='fst er';return;}
+    var btn=document.getElementById('sbtn');
+    btn.disabled=true; btn.textContent='جاري الإرسال...';
+    setTimeout(function(){
+      st.textContent='✓ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.';
+      st.className='fst ok';
+      btn.disabled=false; btn.textContent='إرسال الرسالة';
+      document.getElementById('fn').value='';
+      document.getElementById('fe').value='';
+      document.getElementById('fp').value='';
+      document.getElementById('fs').value='';
+      document.getElementById('fm').value='';
+    },1200);
+  };
+  </script>
+
 </body>
 </html>
