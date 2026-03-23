@@ -131,11 +131,6 @@
 .fi::placeholder { color:var(--tm); }
 .fi:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(200,169,110,.1); }
 
-/* card number icon */
-.fi-wrap { position:relative; }
-.fi-wrap .fi { padding-left:40px; }
-.fi-wrap .fi-icon { position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--gold); font-size:.9rem; pointer-events:none; }
-
 /* ── SUBMIT ── */
 .submit-btn {
   width:100%; padding:14px;
@@ -181,21 +176,6 @@
 .s-row span:first-child { color:var(--tm); }
 .s-row.total { font-size:1rem; font-weight:700; color:var(--gold); margin-top:6px; }
 .s-row.total span:first-child { color:var(--txt); }
-.promo-row { display:flex; gap:7px; margin-top:12px; }
-.promo-in {
-  flex:1; padding:10px 12px;
-  background:var(--sf); border:1px solid var(--line); border-radius:var(--r);
-  color:var(--txt); font-family:'Tajawal',sans-serif; font-size:.8rem; outline:none;
-  transition:border-color var(--tr);
-}
-.promo-in::placeholder { color:var(--tm); }
-.promo-in:focus { border-color:var(--gold); }
-.promo-btn {
-  padding:10px 16px; border:1px solid var(--gold); border-radius:var(--r);
-  background:none; color:var(--gold); font-family:'Tajawal',sans-serif;
-  font-size:.76rem; cursor:pointer; transition:all var(--tr); white-space:nowrap;
-}
-.promo-btn:hover { background:var(--gold); color:#000; }
 
 /* ── EMPTY STATE ── */
 .empty {
@@ -350,45 +330,16 @@
       </div>
     </div>
 
-    <!-- CARD PAYMENT -->
-    <div class="card au d2">
-      <h2 class="card-h">الدفع بالبطاقة البنكية</h2>
-      <p class="card-s">جميع المعاملات مشفرة وآمنة تماماً</p>
-
-      <div class="fg">
-        <label class="fl" for="c-cardnum">رقم البطاقة</label>
-        <div class="fi-wrap">
-          <i class="fas fa-credit-card fi-icon" aria-hidden="true"></i>
-          <input type="text" id="c-cardnum" class="fi" placeholder="0000 0000 0000 0000" maxlength="19" dir="ltr" inputmode="numeric" />
-        </div>
-      </div>
-
-      <div class="frow">
-        <div class="fg">
-          <label class="fl" for="c-exp">تاريخ الانتهاء</label>
-          <input type="text" id="c-exp" class="fi" placeholder="MM/YY" maxlength="5" dir="ltr" inputmode="numeric" />
-        </div>
-        <div class="fg">
-          <label class="fl" for="c-cvv">CVV</label>
-          <input type="text" id="c-cvv" class="fi" placeholder="123" maxlength="4" dir="ltr" inputmode="numeric" />
-        </div>
-      </div>
-
-      <div class="fg">
-        <label class="fl" for="c-cname">اسم صاحب البطاقة</label>
-        <input type="text" id="c-cname" class="fi" placeholder="كما هو مكتوب على البطاقة" dir="ltr" autocomplete="cc-name" />
-      </div>
-
       <div class="err" id="form-err" role="alert" aria-live="polite"></div>
 
       <button class="submit-btn" id="place-btn" type="button">
-        <i class="fas fa-lock" aria-hidden="true"></i>
+        <i class="fas fa-check" aria-hidden="true"></i>
         تأكيد الطلب
       </button>
 
       <div class="secure">
         <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        <span>مدفوعاتك محمية بتشفير SSL 256-bit</span>
+        <span>سيتم التواصل معك لتأكيد الطلب وترتيب الدفع</span>
       </div>
     </div>
 
@@ -400,15 +351,9 @@
 
     <div class="s-items" id="s-items"></div>
 
-    <div class="promo-row">
-      <input type="text" class="promo-in" id="promo-in" placeholder="رمز الخصم..." />
-      <button class="promo-btn" id="promo-btn" type="button">تطبيق</button>
-    </div>
-
     <div class="s-div"></div>
     <div class="s-row"><span>المجموع الفرعي</span><span id="s-sub">0 د.م</span></div>
     <div class="s-row"><span>الشحن</span><span style="color:var(--gold);">مجاني</span></div>
-    <div class="s-row" id="disc-row" style="display:none;color:#27ae60;"><span>خصم</span><span id="s-disc"></span></div>
     <div class="s-div"></div>
     <div class="s-row total"><span>المجموع الكلي</span><span id="s-total">0 د.م</span></div>
   </div>
@@ -426,7 +371,6 @@
   'use strict';
 
   var cartItems = [];
-  var discount  = 0;
 
   /* Load cart */
   try {
@@ -466,43 +410,10 @@
         '<span class="s-price">' + fmt(item.price * item.qty) + '</span>';
       box.appendChild(d);
     });
-    var total = sub - discount;
     document.getElementById('s-sub').textContent   = fmt(sub);
-    document.getElementById('s-total').textContent = fmt(total);
+    document.getElementById('s-total').textContent = fmt(sub);
   }
 
-  /* Card number auto-format */
-  document.getElementById('c-cardnum').addEventListener('input', function() {
-    var v = this.value.replace(/\D/g, '').substring(0, 16);
-    this.value = v.replace(/(.{4})/g, '$1 ').trim();
-  });
-
-  /* Expiry auto-format */
-  document.getElementById('c-exp').addEventListener('input', function() {
-    var v = this.value.replace(/\D/g, '').substring(0, 4);
-    if (v.length >= 3) { v = v.substring(0,2) + '/' + v.substring(2); }
-    this.value = v;
-  });
-
-  /* Promo code */
-  var PROMOS = { 'ECLAT10': 10, 'VIP20': 20 };
-  document.getElementById('promo-btn').addEventListener('click', function() {
-    var code = document.getElementById('promo-in').value.trim().toUpperCase();
-    if (PROMOS[code]) {
-      discount = PROMOS[code];
-      var sub = cartItems.reduce(function(s,i){ return s + i.price * i.qty; }, 0);
-      document.getElementById('disc-row').style.display = 'flex';
-      document.getElementById('s-disc').textContent = '- ' + fmt(discount);
-      document.getElementById('s-total').textContent = fmt(sub - discount);
-      this.textContent = '✓ تم';
-      this.style.color = 'var(--gold)';
-    } else {
-      this.textContent = '✗ غير صالح';
-      this.style.color = '#c0392b';
-      var btn = this;
-      setTimeout(function() { btn.textContent = 'تطبيق'; btn.style.color = ''; }, 2000);
-    }
-  });
 
   /* Validation helpers */
   function showErr(msg) {
@@ -519,47 +430,35 @@
   document.getElementById('place-btn').addEventListener('click', function() {
     hideErr();
 
-    var fname   = document.getElementById('c-fname').value.trim();
-    var lname   = document.getElementById('c-lname').value.trim();
-    var phone   = document.getElementById('c-phone').value.trim();
-    var addr    = document.getElementById('c-addr').value.trim();
-    var city    = document.getElementById('c-city').value.trim();
-    var cardnum = document.getElementById('c-cardnum').value.replace(/\s/g,'');
-    var exp     = document.getElementById('c-exp').value.trim();
-    var cvv     = document.getElementById('c-cvv').value.trim();
-    var cname   = document.getElementById('c-cname').value.trim();
+    var fname = document.getElementById('c-fname').value.trim();
+    var lname = document.getElementById('c-lname').value.trim();
+    var phone = document.getElementById('c-phone').value.trim();
+    var addr  = document.getElementById('c-addr').value.trim();
+    var city  = document.getElementById('c-city').value.trim();
 
-    if (!fname)              { showErr('يرجى إدخال اسمك'); return; }
-    if (!lname)              { showErr('يرجى إدخال لقبك'); return; }
-    if (!phone)              { showErr('يرجى إدخال رقم الهاتف'); return; }
-    if (!addr)               { showErr('يرجى إدخال عنوان التوصيل'); return; }
-    if (!city)               { showErr('يرجى إدخال اسم المدينة'); return; }
-    if (cardnum.length < 16) { showErr('يرجى إدخال رقم البطاقة كاملاً (16 رقماً)'); return; }
-    if (exp.length < 5)      { showErr('يرجى إدخال تاريخ انتهاء صحيح مثال: 12/27'); return; }
-    if (cvv.length < 3)      { showErr('يرجى إدخال رمز CVV'); return; }
-    if (!cname)              { showErr('يرجى إدخال اسم صاحب البطاقة'); return; }
+    if (!fname) { showErr('يرجى إدخال اسمك'); return; }
+    if (!lname) { showErr('يرجى إدخال لقبك'); return; }
+    if (!phone) { showErr('يرجى إدخال رقم الهاتف'); return; }
+    if (!addr)  { showErr('يرجى إدخال عنوان التوصيل'); return; }
+    if (!city)  { showErr('يرجى إدخال اسم المدينة'); return; }
 
     var btn = document.getElementById('place-btn');
     btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> جاري المعالجة...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> جاري التأكيد...';
 
     setTimeout(function() {
-      /* Clear cart */
       try {
         localStorage.removeItem('leclat-cart');
         sessionStorage.removeItem('leclat-checkout-cart');
         sessionStorage.removeItem('leclat-checkout-total');
       } catch(e) {}
 
-      /* Order number */
       var num = '#LC-' + Math.floor(100000 + Math.random() * 900000);
       document.getElementById('order-num').textContent = num;
 
-      /* Show success, hide grid */
       document.getElementById('checkout-grid').style.display = 'none';
       document.getElementById('success-state').style.display = 'block';
 
-      /* Update steps */
       var s2 = document.getElementById('stp2');
       s2.className = 'stp done';
       s2.querySelector('.stp-c').innerHTML = '<i class="fas fa-check" style="font-size:.58rem;"></i>';
@@ -568,8 +467,9 @@
       s3.querySelector('.stp-c').innerHTML = '<i class="fas fa-check" style="font-size:.58rem;"></i>';
 
       window.scrollTo({ top:0, behavior:'smooth' });
-    }, 1800);
+    }, 1500);
   });
+
 
   </script>
 
